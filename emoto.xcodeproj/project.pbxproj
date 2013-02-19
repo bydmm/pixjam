@@ -1,0 +1,300 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C86FD20316D3704000CB4898 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86FD20216D3704000CB4898 /* UIKit.framework */; };
+		C86FD20516D3704000CB4898 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86FD20416D3704000CB4898 /* Foundation.framework */; };
+		C86FD20716D3704000CB4898 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86FD20616D3704000CB4898 /* CoreGraphics.framework */; };
+		C86FD20D16D3704000CB4898 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C86FD20B16D3704000CB4898 /* InfoPlist.strings */; };
+		C86FD20F16D3704000CB4898 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C86FD20E16D3704000CB4898 /* main.m */; };
+		C86FD21316D3704000CB4898 /* emotoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C86FD21216D3704000CB4898 /* emotoAppDelegate.m */; };
+		C86FD21516D3704000CB4898 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C86FD21416D3704000CB4898 /* Default.png */; };
+		C86FD21716D3704000CB4898 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C86FD21616D3704000CB4898 /* Default@2x.png */; };
+		C86FD21916D3704000CB4898 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C86FD21816D3704000CB4898 /* Default-568h@2x.png */; };
+		C86FD21C16D3704000CB4898 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86FD21A16D3704000CB4898 /* MainStoryboard.storyboard */; };
+		C86FD21F16D3704000CB4898 /* emotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C86FD21E16D3704000CB4898 /* emotoViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C86FD1FE16D3704000CB4898 /* emoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = emoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C86FD20216D3704000CB4898 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C86FD20416D3704000CB4898 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C86FD20616D3704000CB4898 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C86FD20A16D3704000CB4898 /* emoto-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "emoto-Info.plist"; sourceTree = "<group>"; };
+		C86FD20C16D3704000CB4898 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C86FD20E16D3704000CB4898 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C86FD21016D3704000CB4898 /* emoto-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "emoto-Prefix.pch"; sourceTree = "<group>"; };
+		C86FD21116D3704000CB4898 /* emotoAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = emotoAppDelegate.h; sourceTree = "<group>"; };
+		C86FD21216D3704000CB4898 /* emotoAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = emotoAppDelegate.m; sourceTree = "<group>"; };
+		C86FD21416D3704000CB4898 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		C86FD21616D3704000CB4898 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		C86FD21816D3704000CB4898 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		C86FD21B16D3704000CB4898 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		C86FD21D16D3704000CB4898 /* emotoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = emotoViewController.h; sourceTree = "<group>"; };
+		C86FD21E16D3704000CB4898 /* emotoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = emotoViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C86FD1FB16D3704000CB4898 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C86FD20316D3704000CB4898 /* UIKit.framework in Frameworks */,
+				C86FD20516D3704000CB4898 /* Foundation.framework in Frameworks */,
+				C86FD20716D3704000CB4898 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C86FD1F316D3704000CB4898 = {
+			isa = PBXGroup;
+			children = (
+				C86FD20816D3704000CB4898 /* emoto */,
+				C86FD20116D3704000CB4898 /* Frameworks */,
+				C86FD1FF16D3704000CB4898 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C86FD1FF16D3704000CB4898 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C86FD1FE16D3704000CB4898 /* emoto.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C86FD20116D3704000CB4898 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C86FD20216D3704000CB4898 /* UIKit.framework */,
+				C86FD20416D3704000CB4898 /* Foundation.framework */,
+				C86FD20616D3704000CB4898 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C86FD20816D3704000CB4898 /* emoto */ = {
+			isa = PBXGroup;
+			children = (
+				C86FD21116D3704000CB4898 /* emotoAppDelegate.h */,
+				C86FD21216D3704000CB4898 /* emotoAppDelegate.m */,
+				C86FD21A16D3704000CB4898 /* MainStoryboard.storyboard */,
+				C86FD21D16D3704000CB4898 /* emotoViewController.h */,
+				C86FD21E16D3704000CB4898 /* emotoViewController.m */,
+				C86FD20916D3704000CB4898 /* Supporting Files */,
+			);
+			path = emoto;
+			sourceTree = "<group>";
+		};
+		C86FD20916D3704000CB4898 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C86FD20A16D3704000CB4898 /* emoto-Info.plist */,
+				C86FD20B16D3704000CB4898 /* InfoPlist.strings */,
+				C86FD20E16D3704000CB4898 /* main.m */,
+				C86FD21016D3704000CB4898 /* emoto-Prefix.pch */,
+				C86FD21416D3704000CB4898 /* Default.png */,
+				C86FD21616D3704000CB4898 /* Default@2x.png */,
+				C86FD21816D3704000CB4898 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C86FD1FD16D3704000CB4898 /* emoto */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C86FD22216D3704000CB4898 /* Build configuration list for PBXNativeTarget "emoto" */;
+			buildPhases = (
+				C86FD1FA16D3704000CB4898 /* Sources */,
+				C86FD1FB16D3704000CB4898 /* Frameworks */,
+				C86FD1FC16D3704000CB4898 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = emoto;
+			productName = emoto;
+			productReference = C86FD1FE16D3704000CB4898 /* emoto.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C86FD1F516D3704000CB4898 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = emoto;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = emoto;
+			};
+			buildConfigurationList = C86FD1F816D3704000CB4898 /* Build configuration list for PBXProject "emoto" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C86FD1F316D3704000CB4898;
+			productRefGroup = C86FD1FF16D3704000CB4898 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C86FD1FD16D3704000CB4898 /* emoto */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C86FD1FC16D3704000CB4898 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C86FD20D16D3704000CB4898 /* InfoPlist.strings in Resources */,
+				C86FD21516D3704000CB4898 /* Default.png in Resources */,
+				C86FD21716D3704000CB4898 /* Default@2x.png in Resources */,
+				C86FD21916D3704000CB4898 /* Default-568h@2x.png in Resources */,
+				C86FD21C16D3704000CB4898 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C86FD1FA16D3704000CB4898 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C86FD20F16D3704000CB4898 /* main.m in Sources */,
+				C86FD21316D3704000CB4898 /* emotoAppDelegate.m in Sources */,
+				C86FD21F16D3704000CB4898 /* emotoViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C86FD20B16D3704000CB4898 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C86FD20C16D3704000CB4898 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C86FD21A16D3704000CB4898 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C86FD21B16D3704000CB4898 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C86FD22016D3704000CB4898 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C86FD22116D3704000CB4898 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C86FD22316D3704000CB4898 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "emoto/emoto-Prefix.pch";
+				INFOPLIST_FILE = "emoto/emoto-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C86FD22416D3704000CB4898 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "emoto/emoto-Prefix.pch";
+				INFOPLIST_FILE = "emoto/emoto-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C86FD1F816D3704000CB4898 /* Build configuration list for PBXProject "emoto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C86FD22016D3704000CB4898 /* Debug */,
+				C86FD22116D3704000CB4898 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C86FD22216D3704000CB4898 /* Build configuration list for PBXNativeTarget "emoto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C86FD22316D3704000CB4898 /* Debug */,
+				C86FD22416D3704000CB4898 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C86FD1F516D3704000CB4898 /* Project object */;
+}
