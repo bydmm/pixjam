@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 
-@interface PhotoViewController : UIViewController<FBLoginViewDelegate>
+@interface PhotoViewController : UIViewController<FBLoginViewDelegate,UITextFieldDelegate>
 {
     
 }
+@property (weak, nonatomic) IBOutlet UITextField *statusMessage;
 @property (weak, nonatomic) IBOutlet UIImageView *photo;
 @property (retain, nonatomic) UIImage *photoImage;
 @property (strong, nonatomic) id<FBGraphUser> loggedInUser;

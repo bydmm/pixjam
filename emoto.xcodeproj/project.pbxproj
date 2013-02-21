@@ -13,6 +13,8 @@
 		C819A4FE16D5F4DE00CA2A24 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C819A4FD16D5F4DE00CA2A24 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C819A50016D5F4EA00CA2A24 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C819A4FF16D5F4EA00CA2A24 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C819A50216D5F4FB00CA2A24 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C819A50116D5F4FB00CA2A24 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		C819A50B16D605FD00CA2A24 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C819A50816D605FD00CA2A24 /* SVProgressHUD.bundle */; };
+		C819A50C16D605FD00CA2A24 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C819A50A16D605FD00CA2A24 /* SVProgressHUD.m */; };
 		C86FD20316D3704000CB4898 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86FD20216D3704000CB4898 /* UIKit.framework */; };
 		C86FD20516D3704000CB4898 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86FD20416D3704000CB4898 /* Foundation.framework */; };
 		C86FD20716D3704000CB4898 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86FD20616D3704000CB4898 /* CoreGraphics.framework */; };
@@ -42,6 +44,9 @@
 		C819A4FD16D5F4DE00CA2A24 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		C819A4FF16D5F4EA00CA2A24 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		C819A50116D5F4FB00CA2A24 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		C819A50816D605FD00CA2A24 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		C819A50916D605FD00CA2A24 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		C819A50A16D605FD00CA2A24 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		C86FD1FE16D3704000CB4898 /* emoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = emoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C86FD20216D3704000CB4898 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C86FD20416D3704000CB4898 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -97,9 +102,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C819A50716D605FD00CA2A24 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				C819A50816D605FD00CA2A24 /* SVProgressHUD.bundle */,
+				C819A50916D605FD00CA2A24 /* SVProgressHUD.h */,
+				C819A50A16D605FD00CA2A24 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		C86FD1F316D3704000CB4898 = {
 			isa = PBXGroup;
 			children = (
+				C819A50716D605FD00CA2A24 /* SVProgressHUD */,
 				C86FD23C16D3731700CB4898 /* CameraImageHelper */,
 				C86FD23816D372FE00CB4898 /* ALAssetsLibrary-CustomPhotoAlbum */,
 				C86FD20816D3704000CB4898 /* emoto */,
@@ -243,6 +259,7 @@
 				C86FD21916D3704000CB4898 /* Default-568h@2x.png in Resources */,
 				C86FD21C16D3704000CB4898 /* MainStoryboard.storyboard in Resources */,
 				C819A4FC16D5F4C300CA2A24 /* FacebookSDKResources.bundle in Resources */,
+				C819A50B16D605FD00CA2A24 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +276,7 @@
 				C86FD22B16D3728800CB4898 /* PhotoViewController.m in Sources */,
 				C86FD23B16D372FE00CB4898 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 				C86FD23F16D3732F00CB4898 /* CameraImageHelper.m in Sources */,
+				C819A50C16D605FD00CA2A24 /* SVProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

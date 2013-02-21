@@ -8,6 +8,7 @@
 
 #import "PhotoViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "SVProgressHUD.h"
 
 @implementation PhotoViewController
 @synthesize photo;
@@ -17,6 +18,7 @@
 {
     [super viewDidLoad];
     [self facebooklogin];
+    self.statusMessage.delegate = self;
     self.photo.image = self.photoImage;
 	// Do any additional setup after loading the view.
 }
@@ -43,6 +45,13 @@
     [self.view addSubview:loginview];
     
     [loginview sizeToFit];
+}
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 #pragma mark - FBLoginViewDelegate
@@ -96,10 +105,44 @@
     
 }
 
-- (IBAction)sharetofacebook:(id)sender {
-    // Just use the icon image from the application itself.  A real app would have a more
-    // useful way to get an image.
+-(void)sharePhotoWithMessage
+{
+    [SVProgressHUD showWithStatus:@"Share to facebook"];
+    NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
+    [params setObject:self.statusMessage.text forKey:@"message"];
+    [params setObject:UIImagePNGRepresentation([self resizePhoto]) forKey:@"picture"];
+    //_shareToFbBtn.enabled = NO; //for not allowing multiple hits
     
+    [FBRequestConnection startWithGraphPath:@"me/photos"
+                                 parameters:params
+                                 HTTPMethod:@"POST"
+                          completionHandler:^(FBRequestConnection *connection,
+                                              id result,
+                                              NSError *error)
+     {
+         if (error)
+         {
+             [SVProgressHUD dismissWithError:@"error"];
+             //showing an alert for failure
+             //[self alertWithTitle:@"Facebook" message:@"Unable to share the photo please try later."];
+         }
+         else
+         {
+             [SVProgressHUD dismissWithSuccess:@"Success"];
+             //showing an alert for success
+             //[UIUtils alertWithTitle:@"Facebook" message:@"Shared the photo successfully"];
+         }
+         //_shareToFbBtn.enabled = YES;
+     }];
+}
+
+- (IBAction)sharetofacebook:(id)sender {
+    [self.view endEditing:YES];
+    [self sharePhotoWithMessage];
+}
+
+- (UIImage *)resizePhoto
+{
     float max = 1000;
     float newwidth;
     float newheight;
@@ -121,84 +164,9 @@
     NSLog(@"%d",imagedata.length);
     img = [UIImage imageWithData:imagedata];
     
-    
-    // if it is available to us, we will post using the native dialog
-    BOOL displayedNativeDialog = [FBNativeDialogs presentShareDialogModallyFrom:self
-                                                                    initialText:nil
-                                                                          image:img
-                                                                            url:nil
-                                                                        handler:nil];
-    if (!displayedNativeDialog) {
-        [self performPublishAction:^{
-            
-            [FBRequestConnection startForUploadPhoto:img
-                                   completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-                                       [self showAlert:@"Photo Post" result:result error:error];
-                                       //self.buttonPostPhoto.enabled = YES;
-                                   }];
-            
-            //self.buttonPostPhoto.enabled = NO;
-        }];
-    }
+    return img;
 }
 
-// Post Status Update button handler; will attempt to invoke the native
-// share dialog and, if that's unavailable, will post directly
-- (IBAction)postStatusUpdateClick:(UIButton *)sender {
-    // Post a status update to the user's feed via the Graph API, and display an alert view
-    // with the results or an error.
-    NSString *name = self.loggedInUser.first_name;
-    NSString *message = [NSString stringWithFormat:@"Updating status for %@ at %@",
-                         name != nil ? name : @"me" , [NSDate date]];
-    
-    // if it is available to us, we will post using the native dialog
-    BOOL displayedNativeDialog = [FBNativeDialogs presentShareDialogModallyFrom:self
-                                                                    initialText:nil
-                                                                          image:nil
-                                                                            url:nil
-                                                                        handler:nil];
-    if (!displayedNativeDialog) {
-        
-        [self performPublishAction:^{
-            // otherwise fall back on a request for permissions and a direct post
-            [FBRequestConnection startForPostStatusUpdate:message
-                                        completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-                                            
-                                            [self showAlert:message result:result error:error];
-                                            //self.buttonPostStatus.enabled = YES;
-                                        }];
-            
-            //self.buttonPostStatus.enabled = NO;
-        }];
-    }
-}
-
-// UIAlertView helper for post buttons
-- (void)showAlert:(NSString *)message
-           result:(id)result
-            error:(NSError *)error {
-    
-    NSString *alertMsg;
-    NSString *alertTitle;
-    if (error) {
-        alertMsg = error.localizedDescription;
-        alertTitle = @"Error";
-    } else {
-        NSDictionary *resultDict = (NSDictionary *)result;
-        alertMsg = [NSString stringWithFormat:@"Successfully posted '%@'.\nPost ID: %@",
-                    message, [resultDict valueForKey:@"id"]];
-        alertTitle = @"Success";
-    }
-    
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle
-                                                        message:alertMsg
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-    [alertView show];
-}
-
-//
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
     //UIGraphicsBeginImageContext(newSize);
     UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
