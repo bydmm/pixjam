@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C819A4EE16D5E3B500CA2A24 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C819A4ED16D5E3B500CA2A24 /* Twitter.framework */; };
+		C819A4F116D5F3E500CA2A24 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C819A4F016D5F3E500CA2A24 /* FacebookSDK.framework */; };
+		C819A4FC16D5F4C300CA2A24 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C819A4FB16D5F4C300CA2A24 /* FacebookSDKResources.bundle */; };
+		C819A4FE16D5F4DE00CA2A24 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C819A4FD16D5F4DE00CA2A24 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		C819A50016D5F4EA00CA2A24 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C819A4FF16D5F4EA00CA2A24 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		C819A50216D5F4FB00CA2A24 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C819A50116D5F4FB00CA2A24 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C86FD20316D3704000CB4898 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86FD20216D3704000CB4898 /* UIKit.framework */; };
 		C86FD20516D3704000CB4898 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86FD20416D3704000CB4898 /* Foundation.framework */; };
 		C86FD20716D3704000CB4898 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86FD20616D3704000CB4898 /* CoreGraphics.framework */; };
@@ -18,9 +24,24 @@
 		C86FD21916D3704000CB4898 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C86FD21816D3704000CB4898 /* Default-568h@2x.png */; };
 		C86FD21C16D3704000CB4898 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86FD21A16D3704000CB4898 /* MainStoryboard.storyboard */; };
 		C86FD21F16D3704000CB4898 /* emotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C86FD21E16D3704000CB4898 /* emotoViewController.m */; };
+		C86FD22B16D3728800CB4898 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C86FD22A16D3728800CB4898 /* PhotoViewController.m */; };
+		C86FD22D16D372BD00CB4898 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86FD22C16D372BD00CB4898 /* AssetsLibrary.framework */; };
+		C86FD22F16D372C400CB4898 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86FD22E16D372C400CB4898 /* CoreVideo.framework */; };
+		C86FD23116D372CE00CB4898 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86FD23016D372CE00CB4898 /* CoreMedia.framework */; };
+		C86FD23316D372D500CB4898 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86FD23216D372D500CB4898 /* QuartzCore.framework */; };
+		C86FD23516D372DA00CB4898 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86FD23416D372DA00CB4898 /* AVFoundation.framework */; };
+		C86FD23716D372DF00CB4898 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86FD23616D372DF00CB4898 /* ImageIO.framework */; };
+		C86FD23B16D372FE00CB4898 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = C86FD23A16D372FE00CB4898 /* ALAssetsLibrary+CustomPhotoAlbum.m */; };
+		C86FD23F16D3732F00CB4898 /* CameraImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C86FD23E16D3732F00CB4898 /* CameraImageHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C819A4ED16D5E3B500CA2A24 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		C819A4F016D5F3E500CA2A24 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		C819A4FB16D5F4C300CA2A24 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FacebookSDKResources.bundle; sourceTree = "<group>"; };
+		C819A4FD16D5F4DE00CA2A24 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		C819A4FF16D5F4EA00CA2A24 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		C819A50116D5F4FB00CA2A24 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		C86FD1FE16D3704000CB4898 /* emoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = emoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C86FD20216D3704000CB4898 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C86FD20416D3704000CB4898 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -37,6 +58,18 @@
 		C86FD21B16D3704000CB4898 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		C86FD21D16D3704000CB4898 /* emotoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = emotoViewController.h; sourceTree = "<group>"; };
 		C86FD21E16D3704000CB4898 /* emotoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = emotoViewController.m; sourceTree = "<group>"; };
+		C86FD22916D3728800CB4898 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		C86FD22A16D3728800CB4898 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		C86FD22C16D372BD00CB4898 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		C86FD22E16D372C400CB4898 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		C86FD23016D372CE00CB4898 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		C86FD23216D372D500CB4898 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C86FD23416D372DA00CB4898 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		C86FD23616D372DF00CB4898 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		C86FD23916D372FE00CB4898 /* ALAssetsLibrary+CustomPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAssetsLibrary+CustomPhotoAlbum.h"; sourceTree = "<group>"; };
+		C86FD23A16D372FE00CB4898 /* ALAssetsLibrary+CustomPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+CustomPhotoAlbum.m"; sourceTree = "<group>"; };
+		C86FD23D16D3732F00CB4898 /* CameraImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraImageHelper.h; sourceTree = "<group>"; };
+		C86FD23E16D3732F00CB4898 /* CameraImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraImageHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,9 +77,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C819A50216D5F4FB00CA2A24 /* Social.framework in Frameworks */,
+				C819A50016D5F4EA00CA2A24 /* AdSupport.framework in Frameworks */,
+				C819A4FE16D5F4DE00CA2A24 /* Accounts.framework in Frameworks */,
+				C819A4EE16D5E3B500CA2A24 /* Twitter.framework in Frameworks */,
+				C86FD23716D372DF00CB4898 /* ImageIO.framework in Frameworks */,
+				C86FD23516D372DA00CB4898 /* AVFoundation.framework in Frameworks */,
+				C86FD23316D372D500CB4898 /* QuartzCore.framework in Frameworks */,
+				C86FD23116D372CE00CB4898 /* CoreMedia.framework in Frameworks */,
+				C86FD22F16D372C400CB4898 /* CoreVideo.framework in Frameworks */,
+				C86FD22D16D372BD00CB4898 /* AssetsLibrary.framework in Frameworks */,
 				C86FD20316D3704000CB4898 /* UIKit.framework in Frameworks */,
 				C86FD20516D3704000CB4898 /* Foundation.framework in Frameworks */,
 				C86FD20716D3704000CB4898 /* CoreGraphics.framework in Frameworks */,
+				C819A4F116D5F3E500CA2A24 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +100,8 @@
 		C86FD1F316D3704000CB4898 = {
 			isa = PBXGroup;
 			children = (
+				C86FD23C16D3731700CB4898 /* CameraImageHelper */,
+				C86FD23816D372FE00CB4898 /* ALAssetsLibrary-CustomPhotoAlbum */,
 				C86FD20816D3704000CB4898 /* emoto */,
 				C86FD20116D3704000CB4898 /* Frameworks */,
 				C86FD1FF16D3704000CB4898 /* Products */,
@@ -73,6 +119,18 @@
 		C86FD20116D3704000CB4898 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C819A50116D5F4FB00CA2A24 /* Social.framework */,
+				C819A4FF16D5F4EA00CA2A24 /* AdSupport.framework */,
+				C819A4FD16D5F4DE00CA2A24 /* Accounts.framework */,
+				C819A4FB16D5F4C300CA2A24 /* FacebookSDKResources.bundle */,
+				C819A4F016D5F3E500CA2A24 /* FacebookSDK.framework */,
+				C819A4ED16D5E3B500CA2A24 /* Twitter.framework */,
+				C86FD23616D372DF00CB4898 /* ImageIO.framework */,
+				C86FD23416D372DA00CB4898 /* AVFoundation.framework */,
+				C86FD23216D372D500CB4898 /* QuartzCore.framework */,
+				C86FD23016D372CE00CB4898 /* CoreMedia.framework */,
+				C86FD22E16D372C400CB4898 /* CoreVideo.framework */,
+				C86FD22C16D372BD00CB4898 /* AssetsLibrary.framework */,
 				C86FD20216D3704000CB4898 /* UIKit.framework */,
 				C86FD20416D3704000CB4898 /* Foundation.framework */,
 				C86FD20616D3704000CB4898 /* CoreGraphics.framework */,
@@ -88,6 +146,8 @@
 				C86FD21A16D3704000CB4898 /* MainStoryboard.storyboard */,
 				C86FD21D16D3704000CB4898 /* emotoViewController.h */,
 				C86FD21E16D3704000CB4898 /* emotoViewController.m */,
+				C86FD22916D3728800CB4898 /* PhotoViewController.h */,
+				C86FD22A16D3728800CB4898 /* PhotoViewController.m */,
 				C86FD20916D3704000CB4898 /* Supporting Files */,
 			);
 			path = emoto;
@@ -105,6 +165,24 @@
 				C86FD21816D3704000CB4898 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C86FD23816D372FE00CB4898 /* ALAssetsLibrary-CustomPhotoAlbum */ = {
+			isa = PBXGroup;
+			children = (
+				C86FD23916D372FE00CB4898 /* ALAssetsLibrary+CustomPhotoAlbum.h */,
+				C86FD23A16D372FE00CB4898 /* ALAssetsLibrary+CustomPhotoAlbum.m */,
+			);
+			path = "ALAssetsLibrary-CustomPhotoAlbum";
+			sourceTree = "<group>";
+		};
+		C86FD23C16D3731700CB4898 /* CameraImageHelper */ = {
+			isa = PBXGroup;
+			children = (
+				C86FD23D16D3732F00CB4898 /* CameraImageHelper.h */,
+				C86FD23E16D3732F00CB4898 /* CameraImageHelper.m */,
+			);
+			name = CameraImageHelper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +242,7 @@
 				C86FD21716D3704000CB4898 /* Default@2x.png in Resources */,
 				C86FD21916D3704000CB4898 /* Default-568h@2x.png in Resources */,
 				C86FD21C16D3704000CB4898 /* MainStoryboard.storyboard in Resources */,
+				C819A4FC16D5F4C300CA2A24 /* FacebookSDKResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +256,9 @@
 				C86FD20F16D3704000CB4898 /* main.m in Sources */,
 				C86FD21316D3704000CB4898 /* emotoAppDelegate.m in Sources */,
 				C86FD21F16D3704000CB4898 /* emotoViewController.m in Sources */,
+				C86FD22B16D3728800CB4898 /* PhotoViewController.m in Sources */,
+				C86FD23B16D372FE00CB4898 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
+				C86FD23F16D3732F00CB4898 /* CameraImageHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,9 +337,18 @@
 		C86FD22316D3704000CB4898 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "emoto/emoto-Prefix.pch";
 				INFOPLIST_FILE = "emoto/emoto-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lsqlite3.0",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -266,9 +357,18 @@
 		C86FD22416D3704000CB4898 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "emoto/emoto-Prefix.pch";
 				INFOPLIST_FILE = "emoto/emoto-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lsqlite3.0",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -293,6 +393,7 @@
 				C86FD22416D3704000CB4898 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
