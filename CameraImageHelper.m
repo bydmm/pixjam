@@ -26,7 +26,8 @@ static CameraImageHelper *sharedInstance = nil;
     
     
     //2.创建、配置输入设备
-    device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    device = [self cameraWithPosition:AVCaptureDevicePositionBack];
+
 	NSError *error;
 	AVCaptureDeviceInput *captureInput = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
     
@@ -50,6 +51,7 @@ static CameraImageHelper *sharedInstance = nil;
 
 - (id) init
 {
+    position = AVCaptureDevicePositionBack;
 	if (self = [super init]) [self initialize];
 	return self;
 }
@@ -172,6 +174,60 @@ static CameraImageHelper *sharedInstance = nil;
     [device unlockForConfiguration];
 }
 
+
+
+//- (void)swapFrontAndBackCameras {
+//    if (position == AVCaptureDevicePositionBack) {
+//        position = AVCaptureDevicePositionFront;
+//    }
+//    else if (position == AVCaptureDevicePositionFront){
+//        position = AVCaptureDevicePositionBack;
+//    }
+//    [self initialize];
+//}
+
+
+// Switching between front and back cameras
+
+- (AVCaptureDevice *)cameraWithPosition:(AVCaptureDevicePosition)theposition
+{
+    NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    for ( AVCaptureDevice *thedevice in devices )
+        if ( thedevice.position == theposition )
+            return thedevice;
+    return nil;
+}
+
+- (void)swapFrontAndBackCameras {
+    // Assume the session is already running
+    
+    NSArray *inputs = self.session.inputs;
+    for ( AVCaptureDeviceInput *input in inputs ) {
+        AVCaptureDevice *thedevice = input.device;
+        if ( [thedevice hasMediaType:AVMediaTypeVideo] ) {
+            AVCaptureDevicePosition theposition = thedevice.position;
+            AVCaptureDevice *newCamera = nil;
+            AVCaptureDeviceInput *newInput = nil;
+            
+            if (theposition == AVCaptureDevicePositionFront)
+                newCamera = [self cameraWithPosition:AVCaptureDevicePositionBack];
+            else
+                newCamera = [self cameraWithPosition:AVCaptureDevicePositionFront];
+            newInput = [AVCaptureDeviceInput deviceInputWithDevice:newCamera error:nil];
+            
+            // beginConfiguration ensures that pending changes are not applied immediately
+            [self.session beginConfiguration];
+            
+            [self.session removeInput:input];
+            [self.session addInput:newInput];
+            
+            // Changes take effect once the outermost commitConfiguration is invoked.
+            [self.session commitConfiguration];
+            break;
+        }
+    } 
+}
+
 - (void) dealloc
 {
 	self.session = nil;
@@ -225,6 +281,11 @@ static CameraImageHelper *sharedInstance = nil;
 + (void)setFlashLight:(AVCaptureFlashMode)mode
 {
     [[self sharedInstance] setFlash:mode];
+}
+
++ (void)swapFrontAndBackCameras
+{
+    [[self sharedInstance] swapFrontAndBackCameras];
 }
 
 @end

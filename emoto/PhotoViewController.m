@@ -17,10 +17,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self facebooklogin];
     self.statusMessage.delegate = self;
     self.photo.image = self.photoImage;
-	// Do any additional setup after loading the view.
+    canShareAnyhow = [FBNativeDialogs canPresentShareDialogWithSession:nil];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    // Check to make sure our UI is set up appropriately, depending on if we can tweet or not.
+    //[self canTweetStatus];
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,54 +41,11 @@
     [super viewDidUnload];
 }
 
--(void)facebooklogin
-{
-    // Create Login View so that the app will be granted "status_update" permission.
-    FBLoginView *loginview = [[FBLoginView alloc] init];
-    
-    loginview.frame = CGRectOffset(loginview.frame, 5, 5);
-    loginview.delegate = self;
-    
-    [self.view addSubview:loginview];
-    
-    [loginview sizeToFit];
-}
-
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     return YES;
-}
-
-#pragma mark - FBLoginViewDelegate
-
-- (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
-    // first get the buttons set for login mode
-}
-
-- (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
-                            user:(id<FBGraphUser>)user {
-    // here we use helper properties of FBGraphUser to dot-through to first_name and
-    // id properties of the json response from the server; alternatively we could use
-    // NSDictionary methods such as objectForKey to get values from the my json object
-    // self.labelFirstName.text = [NSString stringWithFormat:@"Hello %@!", user.first_name];
-    // setting the profileID property of the FBProfilePictureView instance
-    // causes the control to fetch and display the profile picture for the user
-    // self.profilePic.profileID = user.id;
-    // self.loggedInUser = user;
-}
-
-- (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
-//    BOOL canShareAnyhow = [FBNativeDialogs canPresentShareDialogWithSession:nil];
-//    self.buttonPostPhoto.enabled = canShareAnyhow;
-//    self.buttonPostStatus.enabled = canShareAnyhow;
-//    self.buttonPickFriends.enabled = NO;
-//    self.buttonPickPlace.enabled = NO;
-//    
-//    self.profilePic.profileID = nil;
-//    self.labelFirstName.text = nil;
-//    self.loggedInUser = nil;
 }
 
 #pragma mark -
@@ -138,7 +102,13 @@
 
 - (IBAction)sharetofacebook:(id)sender {
     [self.view endEditing:YES];
-    [self sharePhotoWithMessage];
+    if (canShareAnyhow) {
+        NSLog(@"here1");
+        [self sharePhotoWithMessage];
+    }else{
+        NSLog(@"here2");
+        [self performSegueWithIdentifier:@"facebooklogin" sender:self];
+    }
 }
 
 - (UIImage *)resizePhoto
@@ -174,5 +144,70 @@
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return newImage;
+}
+
+#pragma mark - Twitter
+
+- (BOOL)canTweetStatus {
+    if ([TWTweetComposeViewController canSendTweet]) {
+        return YES;
+    } else {
+        NSString *message = @"You can't send a tweet right now, make sure your device has an internet connection and you have at least one Twitter account setup";
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"Sorry"
+                                  message:message
+                                  delegate:self
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        [alertView show];
+        return NO;
+    }
+}
+
+-(void)GoToSetting
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=TWITTER"]];
+}
+
+- (IBAction)sendEasyTweet:(id)sender {
+    [self sendToTwitter];
+}
+
+-(void)sendToTwitter
+{
+    // Set up the built-in twitter composition view controller.
+    TWTweetComposeViewController *tweetViewController = [[TWTweetComposeViewController alloc] init];
+    
+    // Set the initial tweet text. See the framework for additional properties that can be set.
+    [tweetViewController setInitialText:self.statusMessage.text];
+    [tweetViewController addImage:[self resizePhoto]];
+    
+    // Create the completion handler block.
+    [tweetViewController setCompletionHandler:^(TWTweetComposeViewControllerResult result) {
+        
+        switch (result) {
+            case TWTweetComposeViewControllerResultCancelled:
+                // The cancel button was tapped.
+                
+                break;
+            case TWTweetComposeViewControllerResultDone:
+                // The tweet was sent.
+                [SVProgressHUD dismissWithSuccess:@"Send"];
+                break;
+            default:
+                break;
+        }
+        
+        // Dismiss the tweet composition view controller.
+        [self dismissModalViewControllerAnimated:YES];
+    }];
+    
+    // Present the tweet composition view controller modally.
+    [self presentModalViewController:tweetViewController animated:YES];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
 }
 @end

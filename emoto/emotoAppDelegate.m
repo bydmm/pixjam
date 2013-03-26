@@ -26,6 +26,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [FBSession openActiveSessionWithAllowLoginUI:NO];
     return YES;
 }
 							

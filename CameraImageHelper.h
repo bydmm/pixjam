@@ -17,6 +17,7 @@
     AVCaptureVideoPreviewLayer *preview;
     UIImageOrientation g_orientation;
     AVCaptureDevice *device;
+    AVCaptureDevicePosition position;
 }
 @property (retain) AVCaptureSession *session;
 @property (retain) AVCaptureOutput *captureOutput;
@@ -33,4 +34,5 @@
 + (void)changePreviewOrientation:(UIInterfaceOrientation)interfaceOrientation;
 + (void)setFocus: (CGPoint)point;
 + (void)setFlashLight:(AVCaptureFlashMode)mode;
++ (void)swapFrontAndBackCameras;
 @end

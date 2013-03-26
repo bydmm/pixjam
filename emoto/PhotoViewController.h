@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import <Twitter/Twitter.h>
+#import <Accounts/Accounts.h>
 
 @interface PhotoViewController : UIViewController<FBLoginViewDelegate,UITextFieldDelegate>
 {
-    
+    BOOL canShareAnyhow;
 }
 @property (weak, nonatomic) IBOutlet UITextField *statusMessage;
 @property (weak, nonatomic) IBOutlet UIImageView *photo;

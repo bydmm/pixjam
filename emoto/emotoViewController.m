@@ -10,8 +10,11 @@
 #import "PhotoViewController.h"
 #import "ALAssetsLibrary+CustomPhotoAlbum.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#include <stdlib.h>
 
 @implementation emotoViewController
+@synthesize flashBTN;
+@synthesize flashsettingview;
 
 - (void)viewDidLoad
 {
@@ -21,12 +24,49 @@
     [self cameraHandle];
     [self focusHandle];
     [self initFLashLight];
+    //[self displayHint];
+    timerstatus = YES;
+    [self resetshoot];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                          selector:@selector(resetshoot)
+                                          name:UIApplicationWillResignActiveNotification
+                                          object:nil];
+    [self loadhintlist];
 }
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self resetshoot];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)resetshoot
+{
+    NSLog(@"resetshoot");
+    self.countdown.hidden = YES;
+    self.hintview.hidden =YES;
+    [countDowntimer invalidate];
+    count = 3;
+}
+
+//hint data
+-(void)loadhintlist
+{
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"action" ofType:@"plist"];
+    hintlist = [[NSArray alloc] initWithContentsOfFile:plistPath];
+}
+
+-(NSString *)randhint
+{
+    int index = arc4random() % ([hintlist count] -1);
+    NSString *hint = [[hintlist objectAtIndex:index] objectForKey:@"name"];
+    return hint;
 }
 
 //focus handle
@@ -51,7 +91,6 @@
 //init camera display
 -(void)cameraHandle
 {
-    count = 3; //Set Countdown from 3.
     timeInterval = 1 ;
     self.avView.backgroundColor = [UIColor blackColor];
     [CameraImageHelper startRunning];
@@ -90,32 +129,30 @@
 
 //shoot BTN clicked
 - (IBAction)shoot:(id)sender {
-    [self countDownStart];
     [self displayHint];
+    [self countDownStart];
 }
 
 //display hint
 -(void)displayHint
 {
-    self.hint.hidden = NO;
-    self.hint.text = @"给爷笑一个";
+    self.hintview.hidden = NO;
+    self.hint.text = @"Laugh";
 }
 
 //count down timer start
 -(void)countDownStart
 {
-    //timeInterval = 1;
-    NSTimer *countDowntimer;
-    timeInterval = [self.timeHideInput.text intValue];
+    self.hint.text = [self randhint];
+    timeInterval = (int)self.timerslider.value;
     countDowntimer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(countdownTimerHandle:) userInfo:nil repeats:YES];
     self.countdown.hidden = NO;
 }
 
 - (void)countdownTimerHandle:(NSTimer *)theTimer
 {
-    if (count > -1) {
-        [self whenTimePassAway];
-    }else{
+    [self whenTimePassAway];
+    if(count == 0){
         [self RunOutOfTime:theTimer];
     }
 }
@@ -128,17 +165,16 @@
 
 -(void)RunOutOfTime:(NSTimer *)theTimer
 {
-    count = 3;
     [theTimer invalidate];
-    self.countdown.hidden = YES;
-    self.hint.hidden = YES;
     //prepare camera
     [CameraImageHelper CaptureStillImage];
-    [self performSelector:@selector(getPhoto) withObject:nil afterDelay:1.5];
+    [self performSelector:@selector(getPhoto) withObject:nil afterDelay:timeInterval];
 }
 
 -(void)getPhoto
 {
+    [self whenTimePassAway];
+    [self resetshoot];
     photo = [CameraImageHelper image];
     [self savetoAlbum];
     [self performSegueWithIdentifier:@"showphoto" sender:self];
@@ -177,21 +213,23 @@
     // Enumerate just the photos and videos group by using ALAssetsGroupSavedPhotos.
     [library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
         
-        // Within the group enumeration block, filter to enumerate just photos.
-        [group setAssetsFilter:[ALAssetsFilter allPhotos]];
-        
-        // Chooses the photo at the last index
-        [group enumerateAssetsAtIndexes:[NSIndexSet indexSetWithIndex:([group numberOfAssets] - 1)] options:0 usingBlock:^(ALAsset *alAsset, NSUInteger index, BOOL *innerStop) {
+        if ([group numberOfAssets] >= 1) {
+            // Within the group enumeration block, filter to enumerate just photos.
+            [group setAssetsFilter:[ALAssetsFilter allPhotos]];
             
-            // The end of the enumeration is signaled by asset == nil.
-            if (alAsset) {
-                ALAssetRepresentation *representation = [alAsset defaultRepresentation];
-                UIImage *latestPhoto = [UIImage imageWithCGImage:[representation fullScreenImage]];
+            // Chooses the photo at the last index
+            [group enumerateAssetsAtIndexes:[NSIndexSet indexSetWithIndex:([group numberOfAssets] - 1)] options:0 usingBlock:^(ALAsset *alAsset, NSUInteger index, BOOL *innerStop) {
                 
-                // Do something interesting with the AV asset.
-                [self showLastPhotoAtBTN:latestPhoto];
-            }
-        }];
+                // The end of the enumeration is signaled by asset == nil.
+                if (alAsset) {
+                    ALAssetRepresentation *representation = [alAsset defaultRepresentation];
+                    UIImage *latestPhoto = [UIImage imageWithCGImage:[representation fullScreenImage]];
+                    
+                    // Do something interesting with the AV asset.
+                    [self showLastPhotoAtBTN:latestPhoto];
+                }
+            }];
+        }
     } failureBlock: ^(NSError *error) {
         // Typically you should handle an error more gracefully than this.
         NSLog(@"No groups");
@@ -239,48 +277,93 @@
     [self changeflashlight];
 }
 
--(void)changeflashlight
+-(void)changeflashMode:(AVCaptureFlashMode)mode WithImage:(NSString *)image
 {
-    switch (flashMode) {
-        case AVCaptureFlashModeAuto:
-            flashMode = AVCaptureFlashModeOn;
-            [self.flashBTN setTitle:@"ON" forState:UIControlStateNormal];
-            break;
-        case AVCaptureFlashModeOn:
-            flashMode = AVCaptureFlashModeOff;
-            [self.flashBTN setTitle:@"OFF" forState:UIControlStateNormal];
-            break;
-        case AVCaptureFlashModeOff:
-            flashMode = AVCaptureFlashModeAuto;
-            [self.flashBTN setTitle:@"AUTO" forState:UIControlStateNormal];
-            break;
-        
-        default:
-            break;
-    }
+    flashMode = mode;
+    UIImage *flashtype = [UIImage imageNamed:image];
+    [self.flashBTN setImage:flashtype forState:UIControlStateNormal];
     NSLog(@"flashMode: %d",flashMode);
     [CameraImageHelper setFlashLight:flashMode];
+    self.flashBTN.hidden = NO;
+    self.flashsettingview.hidden = YES;
 }
 
-- (IBAction)setCountDownSetter:(id)sender {
-    self.timeHideInput.delegate = self;
-    [self.timeHideInput becomeFirstResponder];
+- (IBAction)autoflash:(id)sender {
+    [self changeflashMode:AVCaptureFlashModeAuto WithImage:@"auto"];
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+- (IBAction)flashon:(id)sender {
+    [self changeflashMode:AVCaptureFlashModeOn WithImage:@"on"];
+}
+
+- (IBAction)flashoff:(id)sender {
+    [self changeflashMode:AVCaptureFlashModeOff WithImage:@"off"];
+}
+
+
+-(void)changeflashlight
 {
-    NSLog(@"string: %@",string);
-    self.timeHideInput.text = string;
-    [self.timeHideInput resignFirstResponder];
-    return YES;
+    self.flashBTN.hidden = YES;
+    self.flashsettingview.hidden = NO;
 }
 
+- (IBAction)swapFrontAndBackCameras:(id)sender {
+    [CameraImageHelper swapFrontAndBackCameras];
+}
+
+//slider
+- (IBAction)timersetting:(id)sender {
+    
+    if (self.timeroffbtn.hidden == NO || self.timeronview.hidden == NO) {
+        NSLog(@"234234");
+        self.timeronview.hidden = YES;
+        self.timeroffbtn.hidden = YES;
+    }else{
+        if (timerstatus) {
+            [self displaySlier];
+        }else{
+            [self displayTimeroffBtn];
+        }
+    }
+}
+
+-(void)displayTimeroffBtn
+{
+    self.timeronview.hidden = YES;
+    self.timeroffbtn.hidden = NO;
+}
+
+-(void)displaySlier
+{
+    self.timeronview.hidden = NO;
+    self.timeroffbtn.hidden = YES;
+    UIImage *point = [UIImage imageNamed:@"timerpoint"];
+    UIImage *tm = [UIImage imageNamed:@"tm"];
+    [self.timerslider setThumbImage:point forState:UIControlStateNormal];
+    [self.timerslider setThumbImage:point forState:UIControlStateSelected];
+    [self.timerslider setThumbImage:point forState:UIControlStateHighlighted];
+    [self.timerslider setMaximumTrackImage:tm forState:UIControlStateNormal];
+    [self.timerslider setMinimumTrackImage:tm forState:UIControlStateNormal];
+    
+}
+
+- (IBAction)timeroff:(id)sender {
+    timerstatus = NO;
+    [self displayTimeroffBtn];
+}
+- (IBAction)timeron:(id)sender {
+    timerstatus = YES;
+    [self displaySlier];
+}
 
 
 - (void)viewDidUnload {
     [self setFlashBTN:nil];
-    [self setCountdownTimeSetterBTN:nil];
-    [self setTimeHideInput:nil];
+    [self setFlashsettingview:nil];
+    [self setTimerslider:nil];
+    [self setTimeronview:nil];
+    [self setTimeroffbtn:nil];
+    [self setHintview:nil];
     [super viewDidUnload];
 }
 @end
