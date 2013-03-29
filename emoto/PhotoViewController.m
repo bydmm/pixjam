@@ -17,9 +17,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.statusMessage.delegate = self;
+    [self clickToHideKeyboard];
     self.photo.image = self.photoImage;
     canShareAnyhow = [FBNativeDialogs canPresentShareDialogWithSession:nil];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    UIViewController *c = [[UIViewController alloc]init];
+    [self.navigationController pushViewController:c animated:NO];
+    [self.navigationController popViewControllerAnimated:NO];
+    self.navigationController.navigationBarHidden=NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -38,17 +47,147 @@
 
 - (void)viewDidUnload {
     [self setPhoto:nil];
+    [self setStatusMessage:nil];
+    [self setFacebookbtn:nil];
+    [self setTwitterbtn:nil];
+    [self setEmailbtn:nil];
+    [self setTumlrbtn:nil];
     [super viewDidUnload];
 }
 
-#pragma mark - UITextFieldDelegate
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
+//textview
+-(void)clickToHideKeyboard
 {
-    [textField resignFirstResponder];
-    return YES;
+    UITapGestureRecognizer *oneclick = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(oneclick)];
+    [[self view] addGestureRecognizer:oneclick];
 }
 
-#pragma mark -
+-(void)oneclick
+{
+    [self.view endEditing:YES];
+}
+
+//sendmessage
+
+- (IBAction)sendmessage:(id)sender {
+    [self shareMessageInRightWay];
+}
+
+-(void)shareMessageInRightWay
+{
+    if ([shareWay isEqual: @"twitter"]) {
+        [self sendToTwitter];
+    }
+    if ([shareWay isEqual: @"facebook"]) {
+        [self sharetofacebook];
+    }
+    if ([shareWay isEqual: @"email"]) {
+        
+    }
+    if ([shareWay isEqual: @"tumblr"]) {
+        
+    }
+}
+
+//choserightshareway
+
+-(void)choserightshareway:(NSString *)way
+{
+    [self letBtnsNormel];
+    shareWay = way;
+    if ([way isEqual: @"twitter"]) {
+        [self.twitterbtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    }
+    if ([way isEqual: @"facebook"]) {
+        [self.facebookbtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    }
+    if ([way isEqual: @"email"]) {
+        [self.emailbtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    }
+    if ([way isEqual: @"tumblr"]) {
+        [self.emailbtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    }
+}
+
+-(void)letBtnsNormel
+{
+    [self.twitterbtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [self.facebookbtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [self.emailbtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [self.emailbtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+}
+
+#pragma mark - Twitter
+
+- (IBAction)clickTweet:(id)sender {
+    [self choserightshareway:@"twitter"];
+}
+
+- (BOOL)canTweetStatus {
+    if ([TWTweetComposeViewController canSendTweet]) {
+        return YES;
+    } else {
+        NSString *message = @"You can't send a tweet right now, make sure your device has an internet connection and you have at least one Twitter account setup";
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"Sorry"
+                                  message:message
+                                  delegate:self
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        [alertView show];
+        return NO;
+    }
+}
+
+-(void)GoToSetting
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=TWITTER"]];
+}
+
+-(void)sendToTwitter
+{
+    // Set up the built-in twitter composition view controller.
+    TWTweetComposeViewController *tweetViewController = [[TWTweetComposeViewController alloc] init];
+    
+    // Set the initial tweet text. See the framework for additional properties that can be set.
+    [tweetViewController setInitialText:self.statusMessage.text];
+    [tweetViewController addImage:[self resizePhoto]];
+    
+    // Create the completion handler block.
+    [tweetViewController setCompletionHandler:^(TWTweetComposeViewControllerResult result) {
+        
+        switch (result) {
+            case TWTweetComposeViewControllerResultCancelled:
+                // The cancel button was tapped.
+                
+                break;
+            case TWTweetComposeViewControllerResultDone:
+                // The tweet was sent.
+                [SVProgressHUD dismissWithSuccess:@"Send"];
+                break;
+            default:
+                break;
+        }
+        
+        // Dismiss the tweet composition view controller.
+        [self dismissModalViewControllerAnimated:YES];
+    }];
+    
+    // Present the tweet composition view controller modally.
+    [self presentModalViewController:tweetViewController animated:YES];
+}
+
+
+#pragma mark - facebook
+
+- (IBAction)clickfacebook:(id)sender {
+    [self choserightshareway:@"facebook"];
+    if (canShareAnyhow) {
+    }else{
+        [self performSegueWithIdentifier:@"facebooklogin" sender:self];
+    }
+    
+}
 
 // Convenience method to perform some action that requires the "publish_actions" permissions.
 - (void) performPublishAction:(void (^)(void)) action {
@@ -100,7 +239,7 @@
      }];
 }
 
-- (IBAction)sharetofacebook:(id)sender {
+-(void)sharetofacebook{
     [self.view endEditing:YES];
     if (canShareAnyhow) {
         NSLog(@"here1");
@@ -110,6 +249,7 @@
         [self performSegueWithIdentifier:@"facebooklogin" sender:self];
     }
 }
+
 
 - (UIImage *)resizePhoto
 {
@@ -146,68 +286,26 @@
     return newImage;
 }
 
-#pragma mark - Twitter
 
-- (BOOL)canTweetStatus {
-    if ([TWTweetComposeViewController canSendTweet]) {
-        return YES;
-    } else {
-        NSString *message = @"You can't send a tweet right now, make sure your device has an internet connection and you have at least one Twitter account setup";
-        UIAlertView *alertView = [[UIAlertView alloc]
-                                  initWithTitle:@"Sorry"
-                                  message:message
-                                  delegate:self
-                                  cancelButtonTitle:@"OK"
-                                  otherButtonTitles:nil];
-        [alertView show];
-        return NO;
-    }
-}
 
--(void)GoToSetting
-{
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=TWITTER"]];
-}
-
-- (IBAction)sendEasyTweet:(id)sender {
-    [self sendToTwitter];
-}
-
--(void)sendToTwitter
-{
-    // Set up the built-in twitter composition view controller.
-    TWTweetComposeViewController *tweetViewController = [[TWTweetComposeViewController alloc] init];
-    
-    // Set the initial tweet text. See the framework for additional properties that can be set.
-    [tweetViewController setInitialText:self.statusMessage.text];
-    [tweetViewController addImage:[self resizePhoto]];
-    
-    // Create the completion handler block.
-    [tweetViewController setCompletionHandler:^(TWTweetComposeViewControllerResult result) {
-        
-        switch (result) {
-            case TWTweetComposeViewControllerResultCancelled:
-                // The cancel button was tapped.
-                
-                break;
-            case TWTweetComposeViewControllerResultDone:
-                // The tweet was sent.
-                [SVProgressHUD dismissWithSuccess:@"Send"];
-                break;
-            default:
-                break;
-        }
-        
-        // Dismiss the tweet composition view controller.
-        [self dismissModalViewControllerAnimated:YES];
-    }];
-    
-    // Present the tweet composition view controller modally.
-    [self presentModalViewController:tweetViewController animated:YES];
-}
-
+//handleOrientation
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    NSLog(@"shouldAutorotateToInterfaceOrientation：%d",interfaceOrientation);
+    return YES;
+}
+
+- (BOOL)shouldAutorotate
 {
     return YES;
 }
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+
+
+
 @end

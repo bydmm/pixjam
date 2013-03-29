@@ -1,43 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="RKn-Hq-gDZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="nnM-DB-hhz">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--Emoto Start View Controller-->
-        <scene sceneID="jUV-3Q-uvX">
-            <objects>
-                <viewController id="RKn-Hq-gDZ" customClass="emotoStartViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="74l-T9-idR">
-                        <rect key="frame" x="0.0" y="20" width="568" height="300"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    </view>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    <connections>
-                        <segue destination="2" kind="modal" identifier="gotomain" id="xLx-us-OGq"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hyX-iK-fvN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-743" y="48"/>
-        </scene>
         <!--Emoto View Controller-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="emotoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tca-12-o9r">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="44" width="568" height="276"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="ahQ-Al-QWM">
-                                <rect key="frame" x="0.0" y="0.0" width="493" height="320"/>
+                                <rect key="frame" x="0.0" y="0.0" width="493" height="276"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="i3E-t4-ROp">
-                                <rect key="frame" x="191" y="10" width="111" height="30"/>
+                                <rect key="frame" x="191" y="8" width="111" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" backgroundImage="settings.png">
@@ -56,11 +37,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="album.png" id="ZaH-PM-tbF">
-                                <rect key="frame" x="501" y="254" width="57" height="57"/>
+                                <rect key="frame" x="501" y="211" width="57" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pdK-zR-AXV">
-                                <rect key="frame" x="391" y="10" width="80" height="30"/>
+                                <rect key="frame" x="391" y="8" width="80" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button" image="changecarmer.png">
@@ -75,7 +56,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Zts-F0-pvZ">
-                                <rect key="frame" x="504" y="258" width="50" height="50"/>
+                                <rect key="frame" x="504" y="216" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal">
@@ -90,13 +71,13 @@
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Count Down" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lvc-xq-S2A">
-                                <rect key="frame" x="165" y="124" width="163" height="53"/>
+                                <rect key="frame" x="165" y="103" width="163" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" id="BCc-xS-vLs">
-                                <rect key="frame" x="109" y="258" width="275" height="49"/>
+                                <rect key="frame" x="109" y="216" width="275" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="hint.png" id="DcJ-66-4zD">
@@ -113,7 +94,7 @@
                                 </subviews>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Cry-SX-Ipf">
-                                <rect key="frame" x="502" y="132" width="55" height="55"/>
+                                <rect key="frame" x="502" y="110" width="55" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal" backgroundImage="shootBTN.png">
@@ -172,7 +153,7 @@
                                 </subviews>
                             </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AJA-J1-vFu">
-                                <rect key="frame" x="190" y="57" width="112" height="30"/>
+                                <rect key="frame" x="190" y="48" width="112" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="timeroff.png">
@@ -187,7 +168,7 @@
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" id="Rml-Md-nfF">
-                                <rect key="frame" x="20" y="10" width="151" height="30"/>
+                                <rect key="frame" x="20" y="8" width="151" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="flashsettings.png" id="c4b-Hx-9h0">
@@ -245,6 +226,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ao1-Ct-sWa"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
@@ -258,38 +240,39 @@
                         <outlet property="timeroffbtn" destination="AJA-J1-vFu" id="JgU-2T-cBC"/>
                         <outlet property="timeronview" destination="eXy-jj-KJl" id="t4t-b1-nZx"/>
                         <outlet property="timerslider" destination="cjw-A4-42o" id="6Jp-1w-ggV"/>
-                        <segue destination="cV6-7P-KqE" kind="modal" identifier="showphoto" id="Nn1-aR-CC4"/>
+                        <segue destination="cV6-7P-KqE" kind="push" identifier="showphoto" id="ARA-i4-K1z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="77" y="48"/>
+            <point key="canvasLocation" x="-91" y="699"/>
+        </scene>
+        <!--Emoto Photo Navigation-->
+        <scene sceneID="5Bb-Rq-gpo">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="nnM-DB-hhz" customClass="emotoPhotoNavigation" sceneMemberID="viewController">
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Ih-iW-skr">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="2" kind="relationship" relationship="rootViewController" id="0nb-fm-gZp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X4A-Xu-pbd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-588" y="591"/>
         </scene>
         <!--Facebook Login View Controller-->
         <scene sceneID="SLC-KT-lBn">
             <objects>
                 <viewController id="R8S-KK-CK1" customClass="facebookLoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h8u-Va-sGu">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MR5-UE-fdx">
-                                <rect key="frame" x="223" y="485" width="82" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="SKIP->>">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="2" kind="modal" id="ddX-3e-xen"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" id="kSO-Zk-kbW" customClass="FBProfilePictureView">
-                                <rect key="frame" x="95" y="49" width="130" height="130"/>
+                                <rect key="frame" x="95" y="46" width="130" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -308,6 +291,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="BWw-vI-ZRh"/>
                     <connections>
                         <outlet property="labelFirstName" destination="8MP-wR-2Ga" id="Klr-de-6oD"/>
                         <outlet property="loginview" destination="Gza-Vl-g4J" id="fCE-T9-SUB"/>
@@ -316,40 +300,51 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FST-q8-ysv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="325" y="480"/>
+            <point key="canvasLocation" x="1029" y="591"/>
         </scene>
         <!--Photo View Controller-->
         <scene sceneID="vq4-4b-Fde">
             <objects>
                 <viewController id="cV6-7P-KqE" customClass="PhotoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a3k-d3-LK2">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="g4S-7L-ewh">
-                                <rect key="frame" x="129" y="70" width="419" height="224"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5Do-1N-aPT">
-                                <rect key="frame" x="20" y="237" width="51" height="44"/>
+                            <view contentMode="scaleToFill" id="moh-4E-VKY">
+                                <rect key="frame" x="10" y="20" width="300" height="152"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="g4S-7L-ewh">
+                                        <rect key="frame" x="0.0" y="10" width="132" height="132"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="4sH-ni-LZQ">
+                                        <rect key="frame" x="140" y="20" width="160" height="112"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ijC-P2-cHr">
+                                <rect key="frame" x="225" y="282" width="75" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="BACK">
+                                <state key="normal" title="Bubble">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="2" kind="modal" modalTransitionStyle="flipHorizontal" id="NyJ-MC-bmG"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Chc-ba-y3b">
-                                <rect key="frame" x="448" y="5" width="44" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="165" y="333" width="145" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="FB">
+                                <state key="normal" title="facebook">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -357,20 +352,14 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="sharetofacebook:" destination="cV6-7P-KqE" eventType="touchUpInside" id="eGF-gg-iM8"/>
+                                    <action selector="clickfacebook:" destination="cV6-7P-KqE" eventType="touchUpInside" id="PCp-3w-q0u"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="yTT-AS-dcY">
-                                <rect key="frame" x="237" y="10" width="203" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="haT-cL-UGk">
-                                <rect key="frame" x="500" y="5" width="48" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="10" y="333" width="145" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="TW">
+                                <state key="normal" title="twitter">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -378,38 +367,69 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="sendEasyTweet:" destination="cV6-7P-KqE" eventType="touchUpInside" id="8vl-3N-Rzk"/>
+                                    <action selector="clickTweet:" destination="cV6-7P-KqE" eventType="touchUpInside" id="VVn-n3-EXh"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9hT-7g-7ro">
+                                <rect key="frame" x="10" y="430" width="145" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="E-mail">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mvM-aC-Qaj">
+                                <rect key="frame" x="165" y="430" width="145" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="tumblr">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <navigationItem key="navigationItem" id="vhq-y8-vPx">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="oyE-f7-6Wk">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="BAG-xy-6Zg">
+                                <rect key="frame" x="265" y="2" width="50" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="GO">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendmessage:" destination="cV6-7P-KqE" eventType="touchUpInside" id="Kf6-oD-3Fs"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="emailbtn" destination="9hT-7g-7ro" id="zmf-IE-Nuq"/>
+                        <outlet property="facebookbtn" destination="Chc-ba-y3b" id="UY9-h5-nFk"/>
                         <outlet property="photo" destination="g4S-7L-ewh" id="zaa-pV-PA2"/>
-                        <outlet property="statusMessage" destination="yTT-AS-dcY" id="7dD-c6-rBe"/>
-                        <segue destination="dUw-8j-Mmh" kind="modal" identifier="facebooklogin" id="IWA-fg-Nqc"/>
+                        <outlet property="statusMessage" destination="4sH-ni-LZQ" id="13A-j9-Abc"/>
+                        <outlet property="tumlrbtn" destination="mvM-aC-Qaj" id="Ylw-Hw-iYl"/>
+                        <outlet property="twitterbtn" destination="haT-cL-UGk" id="gia-QV-c22"/>
+                        <segue destination="R8S-KK-CK1" kind="push" identifier="facebooklogin" id="kpL-ka-Eb0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x6E-DH-gUo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="802" y="29"/>
-        </scene>
-        <!--Fbdifferent View Controller-->
-        <scene sceneID="46y-32-jwF">
-            <objects>
-                <viewController id="dUw-8j-Mmh" customClass="fbdifferentViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="d7C-bG-g8L">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="szv-s1-FAg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="807" y="532"/>
+            <point key="canvasLocation" x="552" y="591"/>
         </scene>
     </scenes>
     <resources>
@@ -438,14 +458,19 @@
         <class className="PhotoViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoViewController.h"/>
             <relationships>
-                <relationship kind="action" name="sendEasyTweet:"/>
-                <relationship kind="action" name="sharetofacebook:"/>
+                <relationship kind="action" name="clickTweet:"/>
+                <relationship kind="action" name="clickfacebook:"/>
+                <relationship kind="action" name="sendmessage:"/>
+                <relationship kind="outlet" name="emailbtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="facebookbtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="photo" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="statusMessage" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="statusMessage" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="tumlrbtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="twitterbtn" candidateClass="UIButton"/>
             </relationships>
         </class>
-        <class className="emotoStartViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/emotoStartViewController.h"/>
+        <class className="emotoPhotoNavigation" superclassName="UINavigationController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/emotoPhotoNavigation.h"/>
         </class>
         <class className="emotoViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/emotoViewController.h"/>
@@ -480,16 +505,10 @@
                 <relationship kind="outlet" name="profilePic" candidateClass="FBProfilePictureView"/>
             </relationships>
         </class>
-        <class className="fbdifferentViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/fbdifferentViewController.h"/>
-        </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="NyJ-MC-bmG"/>
-    </inferredMetricsTieBreakers>
 </document>

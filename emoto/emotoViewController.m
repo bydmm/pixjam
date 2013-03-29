@@ -15,10 +15,46 @@
 @implementation emotoViewController
 @synthesize flashBTN;
 @synthesize flashsettingview;
+@synthesize playerView;
 
 - (void)viewDidLoad
 {
+    [self playMovieAtURL];
     [super viewDidLoad];
+    self.navigationController.delegate = self;
+}
+
+-(void)playMovieAtURL
+{
+    //路径的设置，这里要注意，不要用[NSURL urlwithstring],还要去确保路径的正确
+    //[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+    
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSString *moviePath;
+    if(iPhone5){
+        moviePath = [bundle pathForResource:@"iphone5" ofType:@"mp4"];
+    }else{
+        moviePath = [bundle pathForResource:@"iphone4" ofType:@"mp4"];
+    }
+    NSURL *movieURL = [NSURL fileURLWithPath:moviePath];
+    
+    playerView = [[DirectionMPMoviePlayerViewController alloc] initWithContentURL:movieURL];
+    playerView.view.frame = self.view.frame;//全屏播放（全屏播放不可缺）
+    playerView.moviePlayer.scalingMode = MPMovieScalingModeAspectFill;//全屏播放（全屏播放不可缺）
+    playerView.moviePlayer.controlStyle=MPMovieControlStyleNone;
+    //[self presentMoviePlayerViewControllerAnimated:playerView];
+    [self presentModalViewController:playerView animated:YES];
+    [playerView.moviePlayer play];
+    [self setNsnot];
+}
+
+-(void)setNsnot
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playVideoFinished:) name:MPMoviePlayerPlaybackDidFinishNotification object:playerView.moviePlayer];
+}
+
+- (void) playVideoFinished:(NSNotification *)theNotification//当点击Done按键或者播放完毕时调用此函数
+{
     [self displayPhotoAlbum];
     [self performSelector:@selector(cameraHandle) withObject:nil afterDelay:1];
     [self cameraHandle];
@@ -28,15 +64,25 @@
     timerstatus = YES;
     [self resetshoot];
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector(resetshoot)
-                                          name:UIApplicationWillResignActiveNotification
-                                          object:nil];
+                                             selector:@selector(resetshoot)
+                                                 name:UIApplicationWillResignActiveNotification
+                                               object:nil];
     [self loadhintlist];
 }
 
+
 -(void)viewDidAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    UIViewController *c = [[UIViewController alloc]init];
+    [self.navigationController pushViewController:c animated:NO];
+    [self.navigationController popViewControllerAnimated:NO];
     [self resetshoot];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBarHidden=YES;
 }
 
 

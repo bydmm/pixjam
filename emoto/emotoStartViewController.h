@@ -9,8 +9,9 @@
 #define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
 
 #import <UIKit/UIKit.h>
-#import <MediaPlayer/MediaPlayer.h>
-@interface emotoStartViewController : UIViewController
-@property (retain, nonatomic)  MPMoviePlayerController *player;
-
+#import "DirectionMPMoviePlayerViewController.h"
+@interface emotoStartViewController : UIViewController{
+    
+}
+@property (retain, nonatomic)  DirectionMPMoviePlayerViewController *playerView;
 @end

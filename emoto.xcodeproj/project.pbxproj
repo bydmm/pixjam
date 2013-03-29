@@ -23,6 +23,7 @@
 		C819A50C16D605FD00CA2A24 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C819A50A16D605FD00CA2A24 /* SVProgressHUD.m */; };
 		C819A52A16D61C6200CA2A24 /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C819A52916D61C6200CA2A24 /* FBUserSettingsViewResources.bundle */; };
 		C819A52D16D61E6900CA2A24 /* facebookLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C819A52C16D61E6800CA2A24 /* facebookLoginViewController.m */; };
+		C8610B3A17059CA8008462C6 /* DirectionMPMoviePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8610B3817059CA8008462C6 /* DirectionMPMoviePlayerViewController.m */; };
 		C86FD20316D3704000CB4898 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86FD20216D3704000CB4898 /* UIKit.framework */; };
 		C86FD20516D3704000CB4898 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86FD20416D3704000CB4898 /* Foundation.framework */; };
 		C86FD20716D3704000CB4898 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86FD20616D3704000CB4898 /* CoreGraphics.framework */; };
@@ -74,6 +75,8 @@
 		C8C03F2A16F8756D00EA401B /* timerpoint@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8C03F2416F8756D00EA401B /* timerpoint@2x.png */; };
 		C8C03F3416F87BD000EA401B /* tm.png in Resources */ = {isa = PBXBuildFile; fileRef = C8C03F3316F87BD000EA401B /* tm.png */; };
 		C8C0EA6B16D62CA200686530 /* fbdifferentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C0EA6A16D62CA200686530 /* fbdifferentViewController.m */; };
+		C8C73BF11704460500FF3313 /* VerticallyAlignedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C73BF01704460400FF3313 /* VerticallyAlignedLabel.m */; };
+		C8C73BF517046A0500FF3313 /* emotoPhotoNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C73BF417046A0500FF3313 /* emotoPhotoNavigation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +99,8 @@
 		C819A52916D61C6200CA2A24 /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
 		C819A52B16D61E6800CA2A24 /* facebookLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = facebookLoginViewController.h; path = ../facebookLoginViewController.h; sourceTree = "<group>"; };
 		C819A52C16D61E6800CA2A24 /* facebookLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = facebookLoginViewController.m; path = ../facebookLoginViewController.m; sourceTree = "<group>"; };
+		C8610B3817059CA8008462C6 /* DirectionMPMoviePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionMPMoviePlayerViewController.m; sourceTree = "<group>"; };
+		C8610B3917059CA8008462C6 /* DirectionMPMoviePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionMPMoviePlayerViewController.h; sourceTree = "<group>"; };
 		C86FD1FE16D3704000CB4898 /* emoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = emoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C86FD20216D3704000CB4898 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C86FD20416D3704000CB4898 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -156,6 +161,10 @@
 		C8C03F3316F87BD000EA401B /* tm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tm.png; sourceTree = "<group>"; };
 		C8C0EA6916D62CA200686530 /* fbdifferentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fbdifferentViewController.h; path = ../fbdifferentViewController.h; sourceTree = "<group>"; };
 		C8C0EA6A16D62CA200686530 /* fbdifferentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = fbdifferentViewController.m; path = ../fbdifferentViewController.m; sourceTree = "<group>"; };
+		C8C73BEF1704460400FF3313 /* VerticallyAlignedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticallyAlignedLabel.h; sourceTree = "<group>"; };
+		C8C73BF01704460400FF3313 /* VerticallyAlignedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticallyAlignedLabel.m; sourceTree = "<group>"; };
+		C8C73BF317046A0500FF3313 /* emotoPhotoNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = emotoPhotoNavigation.h; sourceTree = "<group>"; };
+		C8C73BF417046A0500FF3313 /* emotoPhotoNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = emotoPhotoNavigation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,9 +243,20 @@
 			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
+		C8610B3B17059CD1008462C6 /* DirectionMPMoviePlayerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C8610B3817059CA8008462C6 /* DirectionMPMoviePlayerViewController.m */,
+				C8610B3917059CA8008462C6 /* DirectionMPMoviePlayerViewController.h */,
+			);
+			name = DirectionMPMoviePlayerViewController;
+			sourceTree = "<group>";
+		};
 		C86FD1F316D3704000CB4898 = {
 			isa = PBXGroup;
 			children = (
+				C8610B3B17059CD1008462C6 /* DirectionMPMoviePlayerViewController */,
+				C8C73BF21704461400FF3313 /* VerticallyAlignedLabel */,
 				C807F0F916F1B69000364599 /* Source */,
 				C819A50716D605FD00CA2A24 /* SVProgressHUD */,
 				C86FD23C16D3731700CB4898 /* CameraImageHelper */,
@@ -294,6 +314,8 @@
 				C8C0EA6A16D62CA200686530 /* fbdifferentViewController.m */,
 				C86FD21D16D3704000CB4898 /* emotoViewController.h */,
 				C86FD21E16D3704000CB4898 /* emotoViewController.m */,
+				C8C73BF317046A0500FF3313 /* emotoPhotoNavigation.h */,
+				C8C73BF417046A0500FF3313 /* emotoPhotoNavigation.m */,
 				C86FD22916D3728800CB4898 /* PhotoViewController.h */,
 				C86FD22A16D3728800CB4898 /* PhotoViewController.m */,
 				C86FD20916D3704000CB4898 /* Supporting Files */,
@@ -331,6 +353,15 @@
 				C86FD23E16D3732F00CB4898 /* CameraImageHelper.m */,
 			);
 			name = CameraImageHelper;
+			sourceTree = "<group>";
+		};
+		C8C73BF21704461400FF3313 /* VerticallyAlignedLabel */ = {
+			isa = PBXGroup;
+			children = (
+				C8C73BEF1704460400FF3313 /* VerticallyAlignedLabel.h */,
+				C8C73BF01704460400FF3313 /* VerticallyAlignedLabel.m */,
+			);
+			name = VerticallyAlignedLabel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -447,6 +478,9 @@
 				C819A52D16D61E6900CA2A24 /* facebookLoginViewController.m in Sources */,
 				C8C0EA6B16D62CA200686530 /* fbdifferentViewController.m in Sources */,
 				C807F10516F1B85100364599 /* emotoStartViewController.m in Sources */,
+				C8C73BF11704460500FF3313 /* VerticallyAlignedLabel.m in Sources */,
+				C8C73BF517046A0500FF3313 /* emotoPhotoNavigation.m in Sources */,
+				C8610B3A17059CA8008462C6 /* DirectionMPMoviePlayerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
