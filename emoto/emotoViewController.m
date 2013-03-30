@@ -73,11 +73,20 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
-    UIViewController *c = [[UIViewController alloc]init];
-    [self.navigationController pushViewController:c animated:NO];
-    [self.navigationController popViewControllerAnimated:NO];
-    [self resetshoot];
+    NSLog(@"---viewDidAppear---");
+}
+
+-(void)forcerotate
+{
+    NSLog(@"---forcerotate---");
+    UIViewController *vc = [[UIViewController alloc]init];
+    [self presentModalViewController:vc animated:NO];
+    [self dismissModalViewControllerAnimated:NO];
+//    UIViewController *c = [[UIViewController alloc]init];
+//    [self :c animated:YES];
+//    [self.navigationController popViewControllerAnimated:YES];
+    
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -244,6 +253,7 @@
 {
     id photoView=segue.destinationViewController;
     [photoView setValue:photo forKey:@"photoImage"];
+    hasopened = YES;
 }
 
 //display photoAlbum btn with the last photo
@@ -305,7 +315,7 @@
     [self dismissModalViewControllerAnimated:YES];
     
     photo = originalImage;
-    [self performSelector:@selector(goshowphoto) withObject:nil afterDelay:1];
+    [self performSelector:@selector(goshowphoto) withObject:nil afterDelay:2];
 }
 
 -(void)goshowphoto
@@ -402,6 +412,15 @@
     [self displaySlier];
 }
 
+//navigationController
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    if (viewController == self) {
+        if (hasopened == YES) {
+            [self forcerotate];
+        }
+    }
+}
 
 - (void)viewDidUnload {
     [self setFlashBTN:nil];

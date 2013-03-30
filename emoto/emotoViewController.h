@@ -21,6 +21,7 @@
     BOOL timerstatus;
     NSTimer *countDowntimer;
     NSArray *hintlist;
+    BOOL hasopened;
 }
 @property (retain, nonatomic)  DirectionMPMoviePlayerViewController *playerView;
 @property (weak, nonatomic) IBOutlet UIView *flashsettingview;

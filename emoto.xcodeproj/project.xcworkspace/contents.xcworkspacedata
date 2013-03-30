@@ -3,7 +3,7 @@
    version = "1.0">
    <Group
       location = "container:"
-      name = "New Group">
+      name = "emoto">
       <FileRef
          location = "self:emoto.xcodeproj">
       </FileRef>

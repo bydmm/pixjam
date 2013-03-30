@@ -245,7 +245,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-91" y="699"/>
+            <point key="canvasLocation" x="-211" y="715"/>
         </scene>
         <!--Emoto Photo Navigation-->
         <scene sceneID="5Bb-Rq-gpo">
@@ -261,7 +261,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X4A-Xu-pbd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-588" y="591"/>
+            <point key="canvasLocation" x="-716" y="591"/>
         </scene>
         <!--Facebook Login View Controller-->
         <scene sceneID="SLC-KT-lBn">
@@ -300,7 +300,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FST-q8-ysv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1029" y="591"/>
+            <point key="canvasLocation" x="1021" y="591"/>
         </scene>
         <!--Photo View Controller-->
         <scene sceneID="vq4-4b-Fde">
@@ -381,6 +381,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="emailclick:" destination="cV6-7P-KqE" eventType="touchUpInside" id="If5-0V-iey"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mvM-aC-Qaj">
                                 <rect key="frame" x="165" y="430" width="145" height="90"/>
@@ -398,22 +401,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="vhq-y8-vPx">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="oyE-f7-6Wk">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="BAG-xy-6Zg">
-                                <rect key="frame" x="265" y="2" width="50" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="GO">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendmessage:" destination="cV6-7P-KqE" eventType="touchUpInside" id="Kf6-oD-3Fs"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" title="GO" id="TqS-2z-RUK">
+                            <connections>
+                                <action selector="sendmessage:" destination="cV6-7P-KqE" id="jEk-2t-3fq"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
@@ -429,7 +420,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x6E-DH-gUo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="552" y="591"/>
+            <point key="canvasLocation" x="548" y="591"/>
         </scene>
     </scenes>
     <resources>
@@ -460,6 +451,7 @@
             <relationships>
                 <relationship kind="action" name="clickTweet:"/>
                 <relationship kind="action" name="clickfacebook:"/>
+                <relationship kind="action" name="emailclick:"/>
                 <relationship kind="action" name="sendmessage:"/>
                 <relationship kind="outlet" name="emailbtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="facebookbtn" candidateClass="UIButton"/>

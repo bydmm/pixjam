@@ -10,11 +10,14 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import <Twitter/Twitter.h>
 #import <Accounts/Accounts.h>
-
-@interface PhotoViewController : UIViewController<FBLoginViewDelegate,UITextViewDelegate>
+#import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
+@interface PhotoViewController : UIViewController<MFMailComposeViewControllerDelegate,FBLoginViewDelegate,UITextViewDelegate>
 {
     BOOL canShareAnyhow;
     NSString *shareWay;
+    BOOL needmask;
 }
 @property (weak, nonatomic) IBOutlet UITextView *statusMessage;
 @property (weak, nonatomic) IBOutlet UIImageView *photo;
