@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/IACManager.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/IACManager</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACManager.h</DeclaredIn>
+			
+			<NodeRef refid="2"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IACManager/setDelegate:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACManager.h</DeclaredIn>			
+			
+			<Declaration>@property (weak, nonatomic) id&lt;IACDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/IACManager/delegate</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACManager.h</DeclaredIn>			
+			
+			<Declaration>@property (weak, nonatomic) id&lt;IACDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IACManager/setCallbackURLScheme:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACManager.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, nonatomic) NSString *callbackURLScheme</Declaration>
+			
+			
+			<Anchor>//api/name/callbackURLScheme</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/IACManager/callbackURLScheme</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACManager.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, nonatomic) NSString *callbackURLScheme</Declaration>
+			
+			
+			<Anchor>//api/name/callbackURLScheme</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IACManager/sharedManager</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACManager.h</DeclaredIn>			
+			
+			<Declaration>+ (IACManager *)sharedManager</Declaration>
+			
+			
+			<Anchor>//api/name/sharedManager</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IACManager/handleOpenURL:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACManager.h</DeclaredIn>			
+			
+			<Declaration>- (BOOL)handleOpenURL:(NSURL *)url</Declaration>
+			
+			
+			<Anchor>//api/name/handleOpenURL:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IACManager/handleAction:withBlock:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACManager.h</DeclaredIn>			
+			
+			<Declaration>- (void)handleAction:(NSString *)action withBlock:(IACActionHandlerBlock)handler</Declaration>
+			
+			
+			<Anchor>//api/name/handleAction:withBlock:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IACManager/sendIACRequest:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACManager.h</DeclaredIn>			
+			
+			<Declaration>- (void)sendIACRequest:(IACRequest *)request</Declaration>
+			
+			
+			<Anchor>//api/name/sendIACRequest:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/IACClient.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/IACClient</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACClient.h</DeclaredIn>
+			
+			<NodeRef refid="1"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IACClient/setURLScheme:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACClient.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, nonatomic) NSString *URLScheme</Declaration>
+			
+			
+			<Anchor>//api/name/URLScheme</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/IACClient/URLScheme</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACClient.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, nonatomic) NSString *URLScheme</Declaration>
+			
+			
+			<Anchor>//api/name/URLScheme</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IACClient/setManager:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACClient.h</DeclaredIn>			
+			
+			<Declaration>@property (weak, nonatomic) IACManager *manager</Declaration>
+			
+			
+			<Anchor>//api/name/manager</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/IACClient/manager</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACClient.h</DeclaredIn>			
+			
+			<Declaration>@property (weak, nonatomic) IACManager *manager</Declaration>
+			
+			
+			<Anchor>//api/name/manager</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IACClient/client</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACClient.h</DeclaredIn>			
+			
+			<Declaration>+ (instancetype)client</Declaration>
+			
+			
+			<Anchor>//api/name/client</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IACClient/clientWithURLScheme:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACClient.h</DeclaredIn>			
+			
+			<Declaration>+ (instancetype)clientWithURLScheme:(NSString *)scheme</Declaration>
+			
+			
+			<Anchor>//api/name/clientWithURLScheme:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IACClient/initWithURLScheme:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACClient.h</DeclaredIn>			
+			
+			<Declaration>- (instancetype)initWithURLScheme:(NSString *)scheme</Declaration>
+			
+			
+			<Anchor>//api/name/initWithURLScheme:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IACClient/isAppInstalled</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACClient.h</DeclaredIn>			
+			
+			<Declaration>- (BOOL)isAppInstalled</Declaration>
+			
+			
+			<Anchor>//api/name/isAppInstalled</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IACClient/NSErrorCodeForXCUErrorCode:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACClient.h</DeclaredIn>			
+			
+			<Declaration>- (NSInteger)NSErrorCodeForXCUErrorCode:(NSString *)code</Declaration>
+			
+			
+			<Anchor>//api/name/NSErrorCodeForXCUErrorCode:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IACClient/performAction:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACClient.h</DeclaredIn>			
+			
+			<Declaration>- (void)performAction:(NSString *)action</Declaration>
+			
+			
+			<Anchor>//api/name/performAction:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IACClient/performAction:parameters:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACClient.h</DeclaredIn>			
+			
+			<Declaration>- (void)performAction:(NSString *)action parameters:(NSDictionary *)params</Declaration>
+			
+			
+			<Anchor>//api/name/performAction:parameters:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IACClient/performAction:parameters:onSuccess:onFailure:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACClient.h</DeclaredIn>			
+			
+			<Declaration>- (void)performAction:(NSString *)action parameters:(NSDictionary *)params onSuccess:(void ( ^ ) ( NSDictionary *result ))success onFailure:(void ( ^ ) ( NSError *))failure</Declaration>
+			
+			
+			<Anchor>//api/name/performAction:parameters:onSuccess:onFailure:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

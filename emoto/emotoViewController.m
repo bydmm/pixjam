@@ -251,8 +251,11 @@
 //we need pass the photo to next view
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    
+    
     id photoView=segue.destinationViewController;
     [photoView setValue:photo forKey:@"photoImage"];
+    [photoView setValue:self.hint.text forKey:@"hint"];
     hasopened = YES;
 }
 

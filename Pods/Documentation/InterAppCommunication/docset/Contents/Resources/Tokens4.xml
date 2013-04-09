@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Categories/NSString+IACExtensions.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cat/NSString(IACExtensions)</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSString+IACExtensions.h</DeclaredIn>
+			
+			<NodeRef refid="4"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSString(IACExtensions)/stringWithUUID</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSString+IACExtensions.h</DeclaredIn>			
+			
+			<Declaration>+ (NSString *)stringWithUUID</Declaration>
+			
+			
+			<Anchor>//api/name/stringWithUUID</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSString(IACExtensions)/stringByAppendingURLParams:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSString+IACExtensions.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)stringByAppendingURLParams:(NSDictionary *)params</Declaration>
+			
+			
+			<Anchor>//api/name/stringByAppendingURLParams:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSString(IACExtensions)/parseURLParams</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSString+IACExtensions.h</DeclaredIn>			
+			
+			<Declaration>- (NSDictionary *)parseURLParams</Declaration>
+			
+			
+			<Anchor>//api/name/parseURLParams</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

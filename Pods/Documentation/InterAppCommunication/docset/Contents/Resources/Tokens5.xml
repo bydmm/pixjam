@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/IACDelegate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/IACDelegate</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACDelegate.h</DeclaredIn>
+			
+			<NodeRef refid="5"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IACDelegate/supportsIACAction:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACDelegate.h</DeclaredIn>			
+			
+			<Declaration>- (BOOL)supportsIACAction:(NSString *)action</Declaration>
+			
+			
+			<Anchor>//api/name/supportsIACAction:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IACDelegate/performIACAction:parameters:onSuccess:onFailure:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACDelegate.h</DeclaredIn>			
+			
+			<Declaration>- (void)performIACAction:(NSString *)action parameters:(NSDictionary *)parameters onSuccess:(IACSuccessBlock)success onFailure:(IACFailureBlock)failure</Declaration>
+			
+			
+			<Anchor>//api/name/performIACAction:parameters:onSuccess:onFailure:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

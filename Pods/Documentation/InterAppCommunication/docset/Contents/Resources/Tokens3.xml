@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/IACRequest.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/IACRequest</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACRequest.h</DeclaredIn>
+			
+			<NodeRef refid="3"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IACRequest/setRequestID:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, readonly, nonatomic) NSString *requestID</Declaration>
+			
+			
+			<Anchor>//api/name/requestID</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/IACRequest/requestID</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, readonly, nonatomic) NSString *requestID</Declaration>
+			
+			
+			<Anchor>//api/name/requestID</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IACRequest/setClient:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IACClient *client</Declaration>
+			
+			
+			<Anchor>//api/name/client</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/IACRequest/client</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IACClient *client</Declaration>
+			
+			
+			<Anchor>//api/name/client</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IACRequest/setAction:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, nonatomic) NSString *action</Declaration>
+			
+			
+			<Anchor>//api/name/action</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/IACRequest/action</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, nonatomic) NSString *action</Declaration>
+			
+			
+			<Anchor>//api/name/action</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IACRequest/setParameters:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSDictionary *parameters</Declaration>
+			
+			
+			<Anchor>//api/name/parameters</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/IACRequest/parameters</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSDictionary *parameters</Declaration>
+			
+			
+			<Anchor>//api/name/parameters</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IACRequest/setSuccessCalback:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, nonatomic) void ( ^ ) ( NSDictionary *) successCalback</Declaration>
+			
+			
+			<Anchor>//api/name/successCalback</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/IACRequest/successCalback</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, nonatomic) void ( ^ ) ( NSDictionary *) successCalback</Declaration>
+			
+			
+			<Anchor>//api/name/successCalback</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IACRequest/setErrorCalback:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, nonatomic) void ( ^ ) ( NSError *) errorCalback</Declaration>
+			
+			
+			<Anchor>//api/name/errorCalback</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/IACRequest/errorCalback</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>IACRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, nonatomic) void ( ^ ) ( NSError *) errorCalback</Declaration>
+			
+			
+			<Anchor>//api/name/errorCalback</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

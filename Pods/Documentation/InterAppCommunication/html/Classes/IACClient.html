@@ -1,0 +1,492 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>IACClient Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">InterAppCommunication 1.0 </a></h1>
+				<a id="developerHome" href="../index.html">Antonio Cabezuelo Vivo</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">IACClient Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/URLScheme">&nbsp;&nbsp;&nbsp;&nbsp;URLScheme</option>
+	
+	<option value="//api/name/manager">&nbsp;&nbsp;&nbsp;&nbsp;manager</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/client">&nbsp;&nbsp;&nbsp;&nbsp;+ client</option>
+	
+	<option value="//api/name/clientWithURLScheme:">&nbsp;&nbsp;&nbsp;&nbsp;+ clientWithURLScheme:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/NSErrorCodeForXCUErrorCode:">&nbsp;&nbsp;&nbsp;&nbsp;- NSErrorCodeForXCUErrorCode:</option>
+	
+	<option value="//api/name/initWithURLScheme:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithURLScheme:</option>
+	
+	<option value="//api/name/isAppInstalled">&nbsp;&nbsp;&nbsp;&nbsp;- isAppInstalled</option>
+	
+	<option value="//api/name/performAction:">&nbsp;&nbsp;&nbsp;&nbsp;- performAction:</option>
+	
+	<option value="//api/name/performAction:parameters:">&nbsp;&nbsp;&nbsp;&nbsp;- performAction:parameters:</option>
+	
+	<option value="//api/name/performAction:parameters:onSuccess:onFailure:">&nbsp;&nbsp;&nbsp;&nbsp;- performAction:parameters:onSuccess:onFailure:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/URLScheme">URLScheme</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/manager">manager</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/client">client</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/clientWithURLScheme:">clientWithURLScheme:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/NSErrorCodeForXCUErrorCode:">NSErrorCodeForXCUErrorCode:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithURLScheme:">initWithURLScheme:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isAppInstalled">isAppInstalled</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/performAction:">performAction:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/performAction:parameters:">performAction:parameters:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/performAction:parameters:onSuccess:onFailure:">performAction:parameters:onSuccess:onFailure:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="IACClient Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">IACClient Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">IACClient.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/URLScheme">&nbsp;&nbsp;URLScheme</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/manager">&nbsp;&nbsp;manager</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/client">+&nbsp;client</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/clientWithURLScheme:">+&nbsp;clientWithURLScheme:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithURLScheme:">&ndash;&nbsp;initWithURLScheme:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isAppInstalled">&ndash;&nbsp;isAppInstalled</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/NSErrorCodeForXCUErrorCode:">&ndash;&nbsp;NSErrorCodeForXCUErrorCode:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/performAction:">&ndash;&nbsp;performAction:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/performAction:parameters:">&ndash;&nbsp;performAction:parameters:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/performAction:parameters:onSuccess:onFailure:">&ndash;&nbsp;performAction:parameters:onSuccess:onFailure:</a></code>
+		
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/URLScheme" title="URLScheme"></a>
+	<h3 class="subsubtitle method-title">URLScheme</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *URLScheme</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/manager" title="manager"></a>
+	<h3 class="subsubtitle method-title">manager</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (weak, nonatomic) IACManager *manager</code></div>
+
+    
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/client" title="client"></a>
+	<h3 class="subsubtitle method-title">client</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (instancetype)client</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/clientWithURLScheme:" title="clientWithURLScheme:"></a>
+	<h3 class="subsubtitle method-title">clientWithURLScheme:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (instancetype)clientWithURLScheme:(NSString *)<em>scheme</em></code></div>
+
+    
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/NSErrorCodeForXCUErrorCode:" title="NSErrorCodeForXCUErrorCode:"></a>
+	<h3 class="subsubtitle method-title">NSErrorCodeForXCUErrorCode:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSInteger)NSErrorCodeForXCUErrorCode:(NSString *)<em>code</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithURLScheme:" title="initWithURLScheme:"></a>
+	<h3 class="subsubtitle method-title">initWithURLScheme:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (instancetype)initWithURLScheme:(NSString *)<em>scheme</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isAppInstalled" title="isAppInstalled"></a>
+	<h3 class="subsubtitle method-title">isAppInstalled</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)isAppInstalled</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/performAction:" title="performAction:"></a>
+	<h3 class="subsubtitle method-title">performAction:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)performAction:(NSString *)<em>action</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/performAction:parameters:" title="performAction:parameters:"></a>
+	<h3 class="subsubtitle method-title">performAction:parameters:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)performAction:(NSString *)<em>action</em> parameters:(NSDictionary *)<em>params</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/performAction:parameters:onSuccess:onFailure:" title="performAction:parameters:onSuccess:onFailure:"></a>
+	<h3 class="subsubtitle method-title">performAction:parameters:onSuccess:onFailure:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)performAction:(NSString *)<em>action</em> parameters:(NSDictionary *)<em>params</em> onSuccess:(void ( ^ ) ( NSDictionary *result ))<em>success</em> onFailure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
+
+    
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 Antonio Cabezuelo Vivo. All rights reserved. (Last updated: 2013-03-30)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

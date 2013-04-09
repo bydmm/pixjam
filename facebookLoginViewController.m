@@ -13,10 +13,20 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    [self facebooklogin];
-    canShareAnyhow = [FBNativeDialogs canPresentShareDialogWithSession:nil];
+    //[super viewDidLoad];
+    //[self facebooklogin];
+    //canShareAnyhow = [FBNativeDialogs canPresentShareDialogWithSession:nil];
 	// Do any additional setup after loading the view.
+}
+
+- (IBAction)pop:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    
+    self.navigationController.navigationBarHidden=YES;
 }
 
 -(void)facebooklogin

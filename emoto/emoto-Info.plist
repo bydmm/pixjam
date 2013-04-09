@@ -20,7 +20,7 @@
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>com.hmi.emoto</string>
+	<string>com.hmi.emoto.party</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -37,6 +37,14 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb424702730947276</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>tumblremoto</string>
 			</array>
 		</dict>
 	</array>

@@ -13,6 +13,7 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
+
 @interface PhotoViewController : UIViewController<MFMailComposeViewControllerDelegate,FBLoginViewDelegate,UITextViewDelegate>
 {
     BOOL canShareAnyhow;
@@ -22,8 +23,10 @@
 @property (weak, nonatomic) IBOutlet UITextView *statusMessage;
 @property (weak, nonatomic) IBOutlet UIImageView *photo;
 @property (retain, nonatomic) UIImage *photoImage;
+@property (retain, nonatomic) NSString *hint;
 @property (strong, nonatomic) id<FBGraphUser> loggedInUser;
 
+@property (weak, nonatomic) IBOutlet UIButton *bubblebtn;
 @property (weak, nonatomic) IBOutlet UIButton *twitterbtn;
 @property (weak, nonatomic) IBOutlet UIButton *facebookbtn;
 @property (weak, nonatomic) IBOutlet UIButton *emailbtn;

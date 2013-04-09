@@ -9,7 +9,8 @@
 #import "PhotoViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "SVProgressHUD.h"
-
+#import "TMTumblrAppClient.h"
+#import "TMAPIClient.h"
 @implementation PhotoViewController
 @synthesize photo;
 @synthesize photoImage;
@@ -19,15 +20,16 @@
     needmask = YES;
     [super viewDidLoad];
     [self clickToHideKeyboard];
-    self.photo.image = [self resizePhoto:self.photoImage];
+    self.photo.image = self.photoImage;
     canShareAnyhow = [FBNativeDialogs canPresentShareDialogWithSession:nil];
+    [self performSelector:@selector(doHighlight:) withObject:self.bubblebtn afterDelay:0];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [self forcerotate];
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden=NO;
+    self.navigationController.navigationBarHidden=YES;
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -49,6 +51,7 @@
     [self setTwitterbtn:nil];
     [self setEmailbtn:nil];
     [self setTumlrbtn:nil];
+    [self setBubblebtn:nil];
     [super viewDidUnload];
 }
 
@@ -64,9 +67,31 @@
     [self.view endEditing:YES];
 }
 
+//checkbulle
+- (IBAction)bulle:(id)sender {
+    if (needmask == YES) {
+        needmask = NO;
+        [self.bubblebtn setTitle:@"Bubble - NO" forState:UIControlStateNormal];
+    }else{
+        [self performSelector:@selector(doHighlight:) withObject:sender afterDelay:0];
+        needmask = YES;
+        [self.bubblebtn setTitle:@"Bubble - YES" forState:UIControlStateNormal];
+    }
+}
+
+
+- (void)doHighlight:(UIButton*)b {
+    [b setHighlighted:YES];
+}
+
+- (IBAction)pop:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 //sendmessage
 
 - (IBAction)sendmessage:(id)sender {
+    self.photo.image = [self resizePhoto:self.photoImage];
     NSLog(@"%@",shareWay);
     [self shareMessageInRightWay];
 }
@@ -94,26 +119,26 @@
     [self letBtnsNormel];
     shareWay = way;
     if ([way isEqual: @"twitter"]) {
-        [self.twitterbtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        [self performSelector:@selector(doHighlight:) withObject:self.twitterbtn afterDelay:0];
     }
     if ([way isEqual: @"facebook"]) {
-        [self.facebookbtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        [self performSelector:@selector(doHighlight:) withObject:self.facebookbtn afterDelay:0];
     }
     if ([way isEqual: @"email"]) {
-        [self.emailbtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        [self performSelector:@selector(doHighlight:) withObject:self.emailbtn afterDelay:0];
     }
     if ([way isEqual: @"tumblr"]) {
-        [self.emailbtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        [self performSelector:@selector(doHighlight:) withObject:self.tumlrbtn afterDelay:0];
     }
 }
 
 
 -(void)letBtnsNormel
 {
-    [self.twitterbtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-    [self.facebookbtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-    [self.emailbtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-    [self.emailbtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [self.twitterbtn setHighlighted:NO];
+    [self.facebookbtn setHighlighted:NO];
+    [self.emailbtn setHighlighted:NO];
+    [self.tumlrbtn setHighlighted:NO];
 }
 
 #pragma mark - email
@@ -204,6 +229,24 @@
     
     // Present the tweet composition view controller modally.
     [self presentModalViewController:tweetViewController animated:YES];
+}
+
+#pragma mark - tumblr
+
+- (IBAction)clicktumblr:(id)sender {
+    // `void` methods for immediate requests, preferable when the caller does not need a reference to an actual request object:
+    
+    [[TMAPIClient sharedInstance] userInfo:^(id result, NSError *error) {
+        if (!error)
+            NSLog(@"Got some user info");
+    }];
+    
+    // Methods that return configured, signed `JXHTTPOperation` instances and require the client to explicitly send the request separately.
+    
+    JXHTTPOperation *likesRequest = [[TMAPIClient sharedInstance] likesRequest:@"bryan" parameters:nil];
+    [likesRequest startAndWaitUntilFinished];
+    
+    NSLog(@"%@", likesRequest.responseString);
 }
 
 
@@ -308,6 +351,11 @@
         NSLog(@"maskpoint x,y : %f,%f",maskpoint.x,maskpoint.y);
         NSLog(@"resize width,height : %f,%f",img.size.width,img.size.height);
         img = [self addImage:img toImage:mask at:maskpoint];
+        CGPoint messagepoint = CGPointMake(maskpoint.x + 30, maskpoint.y+ 25);
+        // note: replace "ImageUtils" with the class where you pasted the method above
+        img = [self drawText:self.hint
+                                    inImage:img
+                                    atPoint:messagepoint];
     }
     
     return img;
@@ -368,6 +416,26 @@
     return newImage;
 }
 
+-(UIImage*) drawText:(NSString*) text
+             inImage:(UIImage*)  image
+             atPoint:(CGPoint)   point
+{
+    
+    UIFont *font = [UIFont fontWithName:@"Noteworthy-Light" size:30];
+    UIGraphicsBeginImageContext(image.size);
+    [image drawInRect:CGRectMake(0,0,image.size.width,image.size.height)];
+    
+    CGRect rect = CGRectMake(0, point.y, image.size.width, image.size.height);
+    
+    [[UIColor blackColor] set];
+    
+    [text drawInRect:CGRectIntegral(rect) withFont:font lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentCenter];
+    
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
 
 
 //handleOrientation
