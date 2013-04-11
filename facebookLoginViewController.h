@@ -14,7 +14,7 @@
 {
     BOOL canShareAnyhow;
 }
-@property (weak, nonatomic) IBOutlet FBLoginView *loginview;
+@property (retain, nonatomic) FBLoginView *loginview;
 @property (strong, nonatomic) id<FBGraphUser> loggedInUser;
 @property (strong, nonatomic) IBOutlet FBProfilePictureView *profilePic;
 @property (strong, nonatomic) IBOutlet UILabel *labelFirstName;

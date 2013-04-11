@@ -10,13 +10,31 @@
 
 @implementation facebookLoginViewController
 @synthesize loginview;
+@synthesize loggedInUser;
+@synthesize profilePic;
 
 - (void)viewDidLoad
 {
-    //[super viewDidLoad];
-    //[self facebooklogin];
-    //canShareAnyhow = [FBNativeDialogs canPresentShareDialogWithSession:nil];
+    [super viewDidLoad];
+    [self facebooklogin];
+    canShareAnyhow = [FBNativeDialogs canPresentShareDialogWithSession:nil];
 	// Do any additional setup after loading the view.
+    //[self login];
+    
+    
+}
+
+
+-(void)login
+{
+    if (!FBSession.activeSession.isOpen) {
+        loginview = [[FBLoginView alloc] init];
+        loginview.frame = CGRectMake(80, 216, 160, 47);
+        [self.view addSubview:loginview];
+        loginview.delegate = self;
+        [self.view addSubview:loginview];
+        [loginview sizeToFit];
+    }
 }
 
 - (IBAction)pop:(id)sender {
@@ -25,27 +43,28 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    
     self.navigationController.navigationBarHidden=YES;
 }
 
 -(void)facebooklogin
 {
-    // Create Login View so that the app will be granted "status_update" permission.
-    
-    loginview.frame = CGRectOffset(loginview.frame, 5, 5);
-    loginview.delegate = self;
-    
+    loginview = [[FBLoginView alloc] init];
+    loginview.frame = CGRectMake(80, 216, 160, 47);
     [self.view addSubview:loginview];
-    
+    loginview.delegate = self;
+    [self.view addSubview:loginview];
     [loginview sizeToFit];
 }
 
 #pragma mark - FBLoginViewDelegate
 
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
-    NSLog(@"LOGINED");
+    [self performSelector:@selector(popout) withObject:nil afterDelay:1.0];
     // first get the buttons set for login mode
+}
+
+-(void)popout{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
@@ -70,8 +89,6 @@
 
 
 - (void)viewDidUnload {
-    self.loginview.delegate = nil;
-    [self setLoginview:nil];
     [super viewDidUnload];
 }
 @end

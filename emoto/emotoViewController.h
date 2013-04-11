@@ -6,13 +6,18 @@
 //  Copyright (c) 2013年 emoto. All rights reserved.
 //
 #define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
-
+#define flashtime 1.0f
 #import <UIKit/UIKit.h>
 #import "DirectionMPMoviePlayerViewController.h"
 #import "CameraImageHelper.h"
 
+#include <sys/sysctl.h>
+#include <mach/mach.h>
+#import <AudioToolbox/AudioToolbox.h>
+
 @interface emotoViewController : UIViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIGestureRecognizerDelegate,UITextFieldDelegate>
 {
+    SystemSoundID                 soundID;
     int count;
     NSTimeInterval timeInterval;
     UIImage *photo;

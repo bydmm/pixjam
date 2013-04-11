@@ -46,6 +46,11 @@
 		C86FD23B16D372FE00CB4898 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = C86FD23A16D372FE00CB4898 /* ALAssetsLibrary+CustomPhotoAlbum.m */; };
 		C86FD23F16D3732F00CB4898 /* CameraImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C86FD23E16D3732F00CB4898 /* CameraImageHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C8722AEF16FC6A6B000FD6F1 /* action.plist in Resources */ = {isa = PBXBuildFile; fileRef = C8722AEE16FC6A6B000FD6F1 /* action.plist */; };
+		C88187EE1715229E000FB522 /* hint.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C88187ED1715229E000FB522 /* hint.ttf */; };
+		C88187F317152B73000FB522 /* goback.png in Resources */ = {isa = PBXBuildFile; fileRef = C88187EF17152B73000FB522 /* goback.png */; };
+		C88187F417152B73000FB522 /* goback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C88187F017152B73000FB522 /* goback@2x.png */; };
+		C88187F517152B73000FB522 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = C88187F117152B73000FB522 /* play.png */; };
+		C88187F617152B73000FB522 /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C88187F217152B73000FB522 /* play@2x.png */; };
 		C8AE391E1713FD09000D62E8 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = C8AE39041713FD09000D62E8 /* back.png */; };
 		C8AE391F1713FD09000D62E8 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8AE39051713FD09000D62E8 /* back@2x.png */; };
 		C8AE39201713FD09000D62E8 /* email-h.png in Resources */ = {isa = PBXBuildFile; fileRef = C8AE39061713FD09000D62E8 /* email-h.png */; };
@@ -72,6 +77,7 @@
 		C8AE39351713FD09000D62E8 /* twitter-h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8AE391B1713FD09000D62E8 /* twitter-h@2x.png */; };
 		C8AE39361713FD09000D62E8 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = C8AE391C1713FD09000D62E8 /* twitter.png */; };
 		C8AE39371713FD09000D62E8 /* twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8AE391D1713FD09000D62E8 /* twitter@2x.png */; };
+		C8AE393A1714436F000D62E8 /* PreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8AE39391714436E000D62E8 /* PreViewController.m */; };
 		C8C0383E16F33C23009A1E80 /* album.png in Resources */ = {isa = PBXBuildFile; fileRef = C8C0383016F33C23009A1E80 /* album.png */; };
 		C8C0383F16F33C23009A1E80 /* album@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8C0383116F33C23009A1E80 /* album@2x.png */; };
 		C8C0384016F33C23009A1E80 /* changecarmer.png in Resources */ = {isa = PBXBuildFile; fileRef = C8C0383216F33C23009A1E80 /* changecarmer.png */; };
@@ -103,6 +109,11 @@
 		C8C03F3416F87BD000EA401B /* tm.png in Resources */ = {isa = PBXBuildFile; fileRef = C8C03F3316F87BD000EA401B /* tm.png */; };
 		C8C73BF11704460500FF3313 /* VerticallyAlignedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C73BF01704460400FF3313 /* VerticallyAlignedLabel.m */; };
 		C8C73BF517046A0500FF3313 /* emotoPhotoNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C73BF417046A0500FF3313 /* emotoPhotoNavigation.m */; };
+		C8F86EC217156AD100C8DB65 /* shake.wav in Resources */ = {isa = PBXBuildFile; fileRef = C8F86EC117156AD100C8DB65 /* shake.wav */; };
+		C8F86EC417156BDA00C8DB65 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8F86EC317156BDA00C8DB65 /* AudioToolbox.framework */; };
+		C8F86EC71715889D00C8DB65 /* TumblrUploadr.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F86EC61715889D00C8DB65 /* TumblrUploadr.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C8F86ECD17158A7600C8DB65 /* NSString+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F86ECC17158A7600C8DB65 /* NSString+URLEncode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C8F86ED017158B0D00C8DB65 /* NSData+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F86ECF17158B0D00C8DB65 /* NSData+URLEncode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -157,6 +168,11 @@
 		C86FD23D16D3732F00CB4898 /* CameraImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraImageHelper.h; sourceTree = "<group>"; };
 		C86FD23E16D3732F00CB4898 /* CameraImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraImageHelper.m; sourceTree = "<group>"; };
 		C8722AEE16FC6A6B000FD6F1 /* action.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = action.plist; sourceTree = "<group>"; };
+		C88187ED1715229E000FB522 /* hint.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = hint.ttf; sourceTree = "<group>"; };
+		C88187EF17152B73000FB522 /* goback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goback.png; sourceTree = "<group>"; };
+		C88187F017152B73000FB522 /* goback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "goback@2x.png"; sourceTree = "<group>"; };
+		C88187F117152B73000FB522 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		C88187F217152B73000FB522 /* play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play@2x.png"; sourceTree = "<group>"; };
 		C8AE39041713FD09000D62E8 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		C8AE39051713FD09000D62E8 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
 		C8AE39061713FD09000D62E8 /* email-h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "email-h.png"; sourceTree = "<group>"; };
@@ -183,6 +199,8 @@
 		C8AE391B1713FD09000D62E8 /* twitter-h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-h@2x.png"; sourceTree = "<group>"; };
 		C8AE391C1713FD09000D62E8 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
 		C8AE391D1713FD09000D62E8 /* twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter@2x.png"; sourceTree = "<group>"; };
+		C8AE39381714436E000D62E8 /* PreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreViewController.h; sourceTree = "<group>"; };
+		C8AE39391714436E000D62E8 /* PreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreViewController.m; sourceTree = "<group>"; };
 		C8C0383016F33C23009A1E80 /* album.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = album.png; sourceTree = "<group>"; };
 		C8C0383116F33C23009A1E80 /* album@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "album@2x.png"; sourceTree = "<group>"; };
 		C8C0383216F33C23009A1E80 /* changecarmer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = changecarmer.png; sourceTree = "<group>"; };
@@ -216,6 +234,14 @@
 		C8C73BF01704460400FF3313 /* VerticallyAlignedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticallyAlignedLabel.m; sourceTree = "<group>"; };
 		C8C73BF317046A0500FF3313 /* emotoPhotoNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = emotoPhotoNavigation.h; sourceTree = "<group>"; };
 		C8C73BF417046A0500FF3313 /* emotoPhotoNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = emotoPhotoNavigation.m; sourceTree = "<group>"; };
+		C8F86EC117156AD100C8DB65 /* shake.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shake.wav; sourceTree = "<group>"; };
+		C8F86EC317156BDA00C8DB65 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		C8F86EC51715889C00C8DB65 /* TumblrUploadr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TumblrUploadr.h; sourceTree = "<group>"; };
+		C8F86EC61715889D00C8DB65 /* TumblrUploadr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TumblrUploadr.m; sourceTree = "<group>"; };
+		C8F86ECB17158A7600C8DB65 /* NSString+URLEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncode.h"; sourceTree = "<group>"; };
+		C8F86ECC17158A7600C8DB65 /* NSString+URLEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncode.m"; sourceTree = "<group>"; };
+		C8F86ECE17158B0D00C8DB65 /* NSData+URLEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+URLEncode.h"; sourceTree = "<group>"; };
+		C8F86ECF17158B0D00C8DB65 /* NSData+URLEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+URLEncode.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +249,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8F86EC417156BDA00C8DB65 /* AudioToolbox.framework in Frameworks */,
 				C84B4A0D1706C5640041C979 /* MessageUI.framework in Frameworks */,
 				C807F10B16F1B8B100364599 /* MediaPlayer.framework in Frameworks */,
 				C819A50216D5F4FB00CA2A24 /* Social.framework in Frameworks */,
@@ -249,6 +276,12 @@
 		C807F0F916F1B69000364599 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				C8F86EC117156AD100C8DB65 /* shake.wav */,
+				C88187EF17152B73000FB522 /* goback.png */,
+				C88187F017152B73000FB522 /* goback@2x.png */,
+				C88187F117152B73000FB522 /* play.png */,
+				C88187F217152B73000FB522 /* play@2x.png */,
+				C88187ED1715229E000FB522 /* hint.ttf */,
 				C8AE39041713FD09000D62E8 /* back.png */,
 				C8AE39051713FD09000D62E8 /* back@2x.png */,
 				C8AE39061713FD09000D62E8 /* email-h.png */,
@@ -334,6 +367,12 @@
 		C86FD1F316D3704000CB4898 = {
 			isa = PBXGroup;
 			children = (
+				C8F86ECE17158B0D00C8DB65 /* NSData+URLEncode.h */,
+				C8F86ECF17158B0D00C8DB65 /* NSData+URLEncode.m */,
+				C8F86ECB17158A7600C8DB65 /* NSString+URLEncode.h */,
+				C8F86ECC17158A7600C8DB65 /* NSString+URLEncode.m */,
+				C8F86EC51715889C00C8DB65 /* TumblrUploadr.h */,
+				C8F86EC61715889D00C8DB65 /* TumblrUploadr.m */,
 				C8610B3B17059CD1008462C6 /* DirectionMPMoviePlayerViewController */,
 				C8C73BF21704461400FF3313 /* VerticallyAlignedLabel */,
 				C807F0F916F1B69000364599 /* Source */,
@@ -358,6 +397,7 @@
 		C86FD20116D3704000CB4898 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C8F86EC317156BDA00C8DB65 /* AudioToolbox.framework */,
 				C84B4A0C1706C5640041C979 /* MessageUI.framework */,
 				C807F10A16F1B8B100364599 /* MediaPlayer.framework */,
 				C819A52916D61C6200CA2A24 /* FBUserSettingsViewResources.bundle */,
@@ -396,6 +436,8 @@
 				C86FD21E16D3704000CB4898 /* emotoViewController.m */,
 				C86FD22916D3728800CB4898 /* PhotoViewController.h */,
 				C86FD22A16D3728800CB4898 /* PhotoViewController.m */,
+				C8AE39381714436E000D62E8 /* PreViewController.h */,
+				C8AE39391714436E000D62E8 /* PreViewController.m */,
 				C86FD20916D3704000CB4898 /* Supporting Files */,
 			);
 			path = emoto;
@@ -445,9 +487,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C86FD1FD16D3704000CB4898 /* emoto */ = {
+		C86FD1FD16D3704000CB4898 /* pixjam */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C86FD22216D3704000CB4898 /* Build configuration list for PBXNativeTarget "emoto" */;
+			buildConfigurationList = C86FD22216D3704000CB4898 /* Build configuration list for PBXNativeTarget "pixjam" */;
 			buildPhases = (
 				C86FD1FA16D3704000CB4898 /* Sources */,
 				C86FD1FB16D3704000CB4898 /* Frameworks */,
@@ -458,7 +500,7 @@
 			);
 			dependencies = (
 			);
-			name = emoto;
+			name = pixjam;
 			productName = emoto;
 			productReference = C86FD1FE16D3704000CB4898 /* emoto.app */;
 			productType = "com.apple.product-type.application";
@@ -485,7 +527,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C86FD1FD16D3704000CB4898 /* emoto */,
+				C86FD1FD16D3704000CB4898 /* pixjam */,
 			);
 		};
 /* End PBXProject section */
@@ -563,6 +605,12 @@
 				C8AE39351713FD09000D62E8 /* twitter-h@2x.png in Resources */,
 				C8AE39361713FD09000D62E8 /* twitter.png in Resources */,
 				C8AE39371713FD09000D62E8 /* twitter@2x.png in Resources */,
+				C88187EE1715229E000FB522 /* hint.ttf in Resources */,
+				C88187F317152B73000FB522 /* goback.png in Resources */,
+				C88187F417152B73000FB522 /* goback@2x.png in Resources */,
+				C88187F517152B73000FB522 /* play.png in Resources */,
+				C88187F617152B73000FB522 /* play@2x.png in Resources */,
+				C8F86EC217156AD100C8DB65 /* shake.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,6 +649,10 @@
 				C8C73BF11704460500FF3313 /* VerticallyAlignedLabel.m in Sources */,
 				C8C73BF517046A0500FF3313 /* emotoPhotoNavigation.m in Sources */,
 				C8610B3A17059CA8008462C6 /* DirectionMPMoviePlayerViewController.m in Sources */,
+				C8AE393A1714436F000D62E8 /* PreViewController.m in Sources */,
+				C8F86EC71715889D00C8DB65 /* TumblrUploadr.m in Sources */,
+				C8F86ECD17158A7600C8DB65 /* NSString+URLEncode.m in Sources */,
+				C8F86ED017158B0D00C8DB65 /* NSData+URLEncode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -695,8 +747,8 @@
 					"-lsqlite3.0",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3A702FFB-161B-40E2-A828-12C316A909E9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3A702FFB-161B-40E2-A828-12C316A909E9";
+				PROVISIONING_PROFILE = "D2ED830B-A654-4077-AEE6-6CB935AF8BFC";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D2ED830B-A654-4077-AEE6-6CB935AF8BFC";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -720,8 +772,8 @@
 					"-lsqlite3.0",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3A702FFB-161B-40E2-A828-12C316A909E9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3A702FFB-161B-40E2-A828-12C316A909E9";
+				PROVISIONING_PROFILE = "D2ED830B-A654-4077-AEE6-6CB935AF8BFC";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D2ED830B-A654-4077-AEE6-6CB935AF8BFC";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -738,7 +790,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C86FD22216D3704000CB4898 /* Build configuration list for PBXNativeTarget "emoto" */ = {
+		C86FD22216D3704000CB4898 /* Build configuration list for PBXNativeTarget "pixjam" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C86FD22316D3704000CB4898 /* Debug */,

@@ -28,6 +28,7 @@
 + (void) startRunning;
 + (void) stopRunning;
 + (UIImage *) image;
++ (void) releaseimage;
 
 + (void)embedPreviewInView: (UIView *) aView;
 +(void)CaptureStillImage;
@@ -35,4 +36,5 @@
 + (void)setFocus: (CGPoint)point;
 + (void)setFlashLight:(AVCaptureFlashMode)mode;
 + (void)swapFrontAndBackCameras;
+
 @end

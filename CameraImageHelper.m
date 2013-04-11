@@ -162,7 +162,9 @@ static CameraImageHelper *sharedInstance = nil;
          [t_image release];
 #else
          image = [t_image resizedImage:CGSizeMake(image.size.width, image.size.height) interpolationQuality:kCGInterpolationDefault];
-#endif     
+#endif
+         [[NSNotificationCenter defaultCenter]
+          postNotificationName:@"imageget" object:nil];
      }];
 }
 
@@ -228,6 +230,11 @@ static CameraImageHelper *sharedInstance = nil;
     } 
 }
 
+-(void)releaseimage
+{
+    [image release];
+}
+
 - (void) dealloc
 {
 	self.session = nil;
@@ -256,6 +263,11 @@ static CameraImageHelper *sharedInstance = nil;
 + (UIImage *) image
 {
 	return [[self sharedInstance] image];
+}
+
++ (void) releaseimage
+{
+    [[self sharedInstance] releaseimage];
 }
 
 +(void)CaptureStillImage

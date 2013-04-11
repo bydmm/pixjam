@@ -11,6 +11,15 @@
 #import "SVProgressHUD.h"
 #import "TMTumblrAppClient.h"
 #import "TMAPIClient.h"
+#import "TMTumblrAppClient.h"
+
+
+@interface PhotoViewController()
+
+@property (nonatomic, strong) UIDocumentInteractionController *interactionController;
+
+@end
+
 @implementation PhotoViewController
 @synthesize photo;
 @synthesize photoImage;
@@ -21,7 +30,6 @@
     [super viewDidLoad];
     [self clickToHideKeyboard];
     self.photo.image = self.photoImage;
-    canShareAnyhow = [FBNativeDialogs canPresentShareDialogWithSession:nil];
     [self performSelector:@selector(doHighlight:) withObject:self.bubblebtn afterDelay:0];
 }
 
@@ -39,9 +47,10 @@
 
 -(void)forcerotate
 {
-    UIViewController *c = [[UIViewController alloc]init];
-    [self.navigationController pushViewController:c animated:NO];
-    [self.navigationController popViewControllerAnimated:NO];
+    NSLog(@"---forcerotate---");
+    UIViewController *vc = [[UIViewController alloc]init];
+    [self presentModalViewController:vc animated:NO];
+    [self dismissModalViewControllerAnimated:NO];
 }
 
 - (void)viewDidUnload {
@@ -85,19 +94,18 @@
 }
 
 - (IBAction)pop:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 //sendmessage
 
 - (IBAction)sendmessage:(id)sender {
-    self.photo.image = [self resizePhoto:self.photoImage];
-    NSLog(@"%@",shareWay);
     [self shareMessageInRightWay];
 }
 
 -(void)shareMessageInRightWay
 {
+    NSLog(@"%@",shareWay);
     if ([shareWay isEqual: @"twitter"]) {
         [self sendToTwitter];
     }
@@ -144,6 +152,7 @@
 #pragma mark - email
 - (IBAction)emailclick:(id)sender {
     [self choserightshareway:@"email"];
+    [self shareMessageInRightWay];
 }
 
 
@@ -175,6 +184,7 @@
 
 - (IBAction)clickTweet:(id)sender {
     [self choserightshareway:@"twitter"];
+    [self shareMessageInRightWay];
 }
 
 - (BOOL)canTweetStatus {
@@ -234,19 +244,31 @@
 #pragma mark - tumblr
 
 - (IBAction)clicktumblr:(id)sender {
-    // `void` methods for immediate requests, preferable when the caller does not need a reference to an actual request object:
     
-    [[TMAPIClient sharedInstance] userInfo:^(id result, NSError *error) {
-        if (!error)
-            NSLog(@"Got some user info");
+    [TMAPIClient sharedInstance].OAuthConsumerKey = @"ADISJdadsoj2dj38dj29dj38jd9238jdk92djasdjASDaoijsd";
+    [TMAPIClient sharedInstance].OAuthConsumerSecret = @"MGI39kdasdoka3240989ASFjoiajsfomdasd39129ASDAPDOJa";
+    
+    [[TMAPIClient sharedInstance] authenticate:@"tumblremoto" callback:^(NSError *error) {
+        NSLog(@"%@",error);
     }];
-    
-    // Methods that return configured, signed `JXHTTPOperation` instances and require the client to explicitly send the request separately.
-    
-    JXHTTPOperation *likesRequest = [[TMAPIClient sharedInstance] likesRequest:@"bryan" parameters:nil];
-    [likesRequest startAndWaitUntilFinished];
-    
-    NSLog(@"%@", likesRequest.responseString);
+}
+
+- (void) uploadFiles {
+    NSData *data1 = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"goback" ofType:@"png"]];
+    NSArray *array = [NSArray arrayWithObjects:data1, nil];
+    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        TumblrUploadr *tu = [[TumblrUploadr alloc] initWithNSDataForPhotos:array andBlogName:@"supergreatblog.tumblr.com" andDelegate:self andCaption:@"Great Photos!"];
+        dispatch_async( dispatch_get_main_queue(), ^{
+            [tu signAndSendWithTokenKey:@"ADISJdadsoj2dj38dj29dj38jd9238jdk92djasdjASDaoijsd" andSecret:@"MGI39kdasdoka3240989ASFjoiajsfomdasd39129ASDAPDOJa"];
+        });
+    });
+}
+
+- (void) tumblrUploadr:(TumblrUploadr *)tu didFailWithError:(NSError *)error {
+    NSLog(@"connection failed with error %@",[error localizedDescription]);
+}
+- (void) tumblrUploadrDidSucceed:(TumblrUploadr *)tu withResponse:(NSString *)response {
+    NSLog(@"connection succeeded with response: %@", response);
 }
 
 
@@ -254,11 +276,12 @@
 
 - (IBAction)clickfacebook:(id)sender {
     [self choserightshareway:@"facebook"];
-    if (canShareAnyhow) {
+    if (FBSession.activeSession.state == 513)
+    {
+        [self shareMessageInRightWay];
     }else{
         [self performSegueWithIdentifier:@"facebooklogin" sender:self];
     }
-    
 }
 
 // Convenience method to perform some action that requires the "publish_actions" permissions.
@@ -313,136 +336,20 @@
 
 -(void)sharetofacebook{
     [self.view endEditing:YES];
-    if (canShareAnyhow) {
-        NSLog(@"here1");
+    [self sharePhotoWithMessage];
+    if (FBSession.activeSession.state == 513)
+    {
         [self sharePhotoWithMessage];
     }else{
-        NSLog(@"here2");
         [self performSegueWithIdentifier:@"facebooklogin" sender:self];
     }
-}
-
-
-- (UIImage *)resizePhoto:(UIImage *)image
-{
-    float max = 1136;
-    float newwidth;
-    float newheight;
-    
-    NSData *imagedata = UIImageJPEGRepresentation(image, 0.5);
-    NSLog(@"%d",imagedata.length);
-    image = [UIImage imageWithData:imagedata];
-    
-    CGSize size = image.size;
-    if (size.height > size.width) {
-        newheight = max;
-        newwidth = (size.width/size.height)*newheight;
-    }else{
-        newwidth = max;
-        newheight = (size.height/size.width)*newwidth;
-    }
-    CGSize resize = CGSizeMake(newwidth, newheight);
-    
-    UIImage *img =[self imageWithImage:image scaledToSize:resize];
-    
-    if (needmask == YES) {
-        UIImage *mask = [UIImage imageNamed:@"hint@2x.png"];
-        CGPoint maskpoint = CGPointMake((newwidth/2 - (594/2)), newheight*0.8);
-        NSLog(@"maskpoint x,y : %f,%f",maskpoint.x,maskpoint.y);
-        NSLog(@"resize width,height : %f,%f",img.size.width,img.size.height);
-        img = [self addImage:img toImage:mask at:maskpoint];
-        CGPoint messagepoint = CGPointMake(maskpoint.x + 30, maskpoint.y+ 25);
-        // note: replace "ImageUtils" with the class where you pasted the method above
-        img = [self drawText:self.hint
-                                    inImage:img
-                                    atPoint:messagepoint];
-    }
-    
-    return img;
-}
-
-
-- (UIImage *)addImage:(UIImage *)image1 toImage:(UIImage *)image2 at:(CGPoint)point {
-    UIGraphicsBeginImageContext(image1.size);
-    
-    // Draw image1
-    [image1 drawInRect:CGRectMake(0, 0, image1.size.width, image1.size.height)];
-    
-    // Draw image2
-    [image2 drawInRect:CGRectMake(point.x, point.y, image2.size.width, image2.size.height)];
-    
-    UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    UIGraphicsEndImageContext();
-    
-    return resultingImage;
-}
-
--(UIImage*)CopyImageAndAddAlphaChannel:(UIImage *)image
-{
-    CGImageRef imageRef = image.CGImage;
-    size_t width = CGImageGetWidth(imageRef);
-    size_t height = CGImageGetHeight(imageRef);
-    
-    
-    CGContextRef offscreenContext = CGBitmapContextCreate(NULL,
-                                                          width,
-                                                          height,
-                                                          8,
-                                                          0,
-                                                          CGImageGetColorSpace(imageRef),
-                                                          kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedFirst);
-    
-    
-    CGContextDrawImage(offscreenContext, CGRectMake(0, 0, width, height), imageRef);
-    CGImageRef imageRefWithAlpha = CGBitmapContextCreateImage(offscreenContext);
-    UIImage *imageWithAlpha = [UIImage imageWithCGImage:imageRefWithAlpha];
-    
-    
-    CGContextRelease(offscreenContext);
-    CGImageRelease(imageRefWithAlpha);
-    
-    return imageWithAlpha;
-}
-
-
-- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
-    //UIGraphicsBeginImageContext(newSize);
-    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
-    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    NSLog(@"resize width,height : %f,%f",newImage.size.width,newImage.size.height);
-    return newImage;
-}
-
--(UIImage*) drawText:(NSString*) text
-             inImage:(UIImage*)  image
-             atPoint:(CGPoint)   point
-{
-    
-    UIFont *font = [UIFont fontWithName:@"Noteworthy-Light" size:30];
-    UIGraphicsBeginImageContext(image.size);
-    [image drawInRect:CGRectMake(0,0,image.size.width,image.size.height)];
-    
-    CGRect rect = CGRectMake(0, point.y, image.size.width, image.size.height);
-    
-    [[UIColor blackColor] set];
-    
-    [text drawInRect:CGRectIntegral(rect) withFont:font lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentCenter];
-    
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newImage;
 }
 
 
 //handleOrientation
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    NSLog(@"shouldAutorotateToInterfaceOrientation：%d",interfaceOrientation);
-    return YES;
+    return UIDeviceOrientationIsPortrait(interfaceOrientation);
 }
 
 - (BOOL)shouldAutorotate
