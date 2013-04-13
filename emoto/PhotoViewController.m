@@ -26,6 +26,9 @@
 
 - (void)viewDidLoad
 {
+    twitter = NO;
+    facebook = NO;
+    email = NO;
     needmask = YES;
     [super viewDidLoad];
     [self clickToHideKeyboard];
@@ -94,7 +97,7 @@
 }
 
 - (IBAction)pop:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 //sendmessage
@@ -103,61 +106,60 @@
     [self shareMessageInRightWay];
 }
 
+-(void)lightornot:(UIButton *)button
+{
+    if (button == self.twitterbtn) {
+        if (twitter == YES) {
+            twitter = NO;
+            button.highlighted = NO;
+        }else{
+            twitter = YES;
+            [self performSelector:@selector(doHighlight:) withObject:button afterDelay:0];
+        }
+    }
+    if (button == self.facebookbtn) {
+        if (facebook == YES) {
+            facebook = NO;
+            button.highlighted = NO;
+        }else{
+            facebook = YES;
+            [self performSelector:@selector(doHighlight:) withObject:button afterDelay:0];
+        }
+    }
+    if (button == self.emailbtn) {
+        if (email == YES) {
+            email = NO;
+            button.highlighted = NO;
+        }else{
+            email = YES;
+            [self performSelector:@selector(doHighlight:) withObject:button afterDelay:0];
+        }
+    }
+
+}
+
 -(void)shareMessageInRightWay
 {
-    NSLog(@"%@",shareWay);
-    if ([shareWay isEqual: @"twitter"]) {
-        [self sendToTwitter];
-    }
-    if ([shareWay isEqual: @"facebook"]) {
+    if (self.facebookbtn.highlighted == YES) {
         [self sharetofacebook];
     }
-    if ([shareWay isEqual: @"email"]) {
-        [self sharetoemail];
+    else if(self.twitterbtn.highlighted == YES) {
+        [self sendToTwitter];
     }
-    if ([shareWay isEqual: @"tumblr"]) {
-        
+    else if(self.emailbtn.highlighted == YES) {
+        [self performSelector:@selector(sharetoemail) withObject:nil afterDelay:0.5];
     }
-}
-
-//choserightshareway
-
--(void)choserightshareway:(NSString *)way
-{
-    [self letBtnsNormel];
-    shareWay = way;
-    if ([way isEqual: @"twitter"]) {
-        [self performSelector:@selector(doHighlight:) withObject:self.twitterbtn afterDelay:0];
-    }
-    if ([way isEqual: @"facebook"]) {
-        [self performSelector:@selector(doHighlight:) withObject:self.facebookbtn afterDelay:0];
-    }
-    if ([way isEqual: @"email"]) {
-        [self performSelector:@selector(doHighlight:) withObject:self.emailbtn afterDelay:0];
-    }
-    if ([way isEqual: @"tumblr"]) {
-        [self performSelector:@selector(doHighlight:) withObject:self.tumlrbtn afterDelay:0];
-    }
-}
-
-
--(void)letBtnsNormel
-{
-    [self.twitterbtn setHighlighted:NO];
-    [self.facebookbtn setHighlighted:NO];
-    [self.emailbtn setHighlighted:NO];
-    [self.tumlrbtn setHighlighted:NO];
 }
 
 #pragma mark - email
-- (IBAction)emailclick:(id)sender {
-    [self choserightshareway:@"email"];
-    [self shareMessageInRightWay];
+- (IBAction)clickemail:(UIButton *)sender {
+    [self lightornot:sender];
 }
-
 
 -(void)sharetoemail
 {
+    email = NO;
+    self.emailbtn.highlighted = NO;
     NSLog(@"email");
     if ([MFMailComposeViewController canSendMail]) {
         
@@ -183,8 +185,9 @@
 #pragma mark - Twitter
 
 - (IBAction)clickTweet:(id)sender {
-    [self choserightshareway:@"twitter"];
-    [self shareMessageInRightWay];
+    if ([self canTweetStatus] == YES) {
+        [self lightornot:sender];
+    }
 }
 
 - (BOOL)canTweetStatus {
@@ -210,6 +213,8 @@
 
 -(void)sendToTwitter
 {
+    self.twitterbtn.highlighted = NO;
+    twitter = NO;
     // Set up the built-in twitter composition view controller.
     TWTweetComposeViewController *tweetViewController = [[TWTweetComposeViewController alloc] init];
     
@@ -235,6 +240,8 @@
         
         // Dismiss the tweet composition view controller.
         [self dismissModalViewControllerAnimated:YES];
+        
+        [self shareMessageInRightWay];
     }];
     
     // Present the tweet composition view controller modally.
@@ -275,10 +282,9 @@
 #pragma mark - facebook
 
 - (IBAction)clickfacebook:(id)sender {
-    [self choserightshareway:@"facebook"];
     if (FBSession.activeSession.state == 513)
     {
-        [self shareMessageInRightWay];
+        [self lightornot:sender];
     }else{
         [self performSegueWithIdentifier:@"facebooklogin" sender:self];
     }
@@ -320,6 +326,7 @@
      {
          if (error)
          {
+             NSLog(@"error: %@",error);
              [SVProgressHUD dismissWithError:@"error"];
              //showing an alert for failure
              //[self alertWithTitle:@"Facebook" message:@"Unable to share the photo please try later."];
@@ -331,10 +338,13 @@
              //[UIUtils alertWithTitle:@"Facebook" message:@"Shared the photo successfully"];
          }
          //_shareToFbBtn.enabled = YES;
+         [self shareMessageInRightWay];
      }];
 }
 
 -(void)sharetofacebook{
+    facebook = NO;
+    self.facebookbtn.highlighted = NO;
     [self.view endEditing:YES];
     [self sharePhotoWithMessage];
     if (FBSession.activeSession.state == 513)

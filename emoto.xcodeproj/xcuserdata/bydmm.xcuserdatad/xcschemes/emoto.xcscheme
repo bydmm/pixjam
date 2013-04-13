@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C86FD1FD16D3704000CB4898"
-               BuildableName = "emoto.app"
+               BuildableName = "pixjam.app"
                BlueprintName = "pixjam"
                ReferencedContainer = "container:emoto.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C86FD1FD16D3704000CB4898"
-            BuildableName = "emoto.app"
+            BuildableName = "pixjam.app"
             BlueprintName = "pixjam"
             ReferencedContainer = "container:emoto.xcodeproj">
          </BuildableReference>
@@ -52,7 +52,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C86FD1FD16D3704000CB4898"
-            BuildableName = "emoto.app"
+            BuildableName = "pixjam.app"
             BlueprintName = "pixjam"
             ReferencedContainer = "container:emoto.xcodeproj">
          </BuildableReference>
@@ -70,7 +70,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C86FD1FD16D3704000CB4898"
-            BuildableName = "emoto.app"
+            BuildableName = "pixjam.app"
             BlueprintName = "pixjam"
             ReferencedContainer = "container:emoto.xcodeproj">
          </BuildableReference>

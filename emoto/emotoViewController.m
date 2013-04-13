@@ -25,6 +25,8 @@
     [self playMovieAtURL];
     [super viewDidLoad];
     self.navigationController.delegate = self;
+    self.albumbg.hidden = YES;
+    self.photoBTN.hidden = YES;
 }
 
 -(void)playMovieAtURL
@@ -208,7 +210,10 @@
 
 //shoot BTN clicked
 - (IBAction)shoot:(id)sender {
-    [self countDownStart];
+    if (self.countdown.hidden == YES) {
+        [self countDownStart];
+        self.timeronview.hidden = YES;
+    }
 }
 
 //display hint
@@ -221,29 +226,64 @@
     [self loadhintlist];
     self.hint.font = [UIFont fontWithName:@"That's not what I meant..." size:20];
     self.hint.text = [self randhint];
+    [self.hint sizeToFit];
+    
+    CGRect frame =  self.hint.frame;
+    frame = CGRectMake(15, -9, frame.size.width, 50);
+    self.hint.frame = frame;
+    
+    frame = self.hintbg.frame;
+    frame.size = CGSizeMake(self.hint.frame.size.width + 25 , 50);
+    self.hintbg.frame = frame;
+    
+    frame = self.hintview.frame;
+    frame.size = self.hintbg.frame.size;
+    frame.origin.x = (self.avView.frame.size.width - self.hintbg.frame.size.width)/2;
+    self.hintview.frame = frame;
+    
     NSLog(@"hint: %@",self.hint.text);
 }
 
 //count down timer start
 -(void)countDownStart
 {
-    timeInterval = (int)self.timerslider.value;
-    countDowntimer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(countdownTimerHandle:) userInfo:nil repeats:YES];
+    self.countdown.text = @"Count Down";
+    count = (int)self.timerslider.value;
+    self.countdown.hidden = NO;
+    countDowntimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countdownTimerHandle:) userInfo:nil repeats:YES];
 }
 
 - (void)countdownTimerHandle:(NSTimer *)theTimer
 {
-    self.countdown.hidden = NO;
-    [self whenTimePassAway];
-    if(count == 0){
+    if (count == 6) {
+        self.countdown.text = [[NSString alloc]initWithFormat:@"%d",count];
+        count--;
+    }
+    else if (count == 5) {
+        self.countdown.text = [[NSString alloc]initWithFormat:@"%d",count];
+        count--;
+    }
+    else if (count == 4) {
+        self.countdown.text = [[NSString alloc]initWithFormat:@"%d",count];
+        count--;
+    }
+    else if (count == 3) {
+        self.countdown.text = [[NSString alloc]initWithFormat:@"%d",count];
+        count--;
+    }
+    else if (count == 2) {
+        self.countdown.text = [[NSString alloc]initWithFormat:@"%d",count];
+        count--;
+    }
+    else if (count == 1) {
+        self.countdown.text = [[NSString alloc]initWithFormat:@"%d",count];
+        count--;
+    }
+    else if(count == 0){
+        self.countdown.text = @"Shoot";
         [self RunOutOfTime:theTimer];
     }
-}
-
--(void)whenTimePassAway
-{
-    self.countdown.text = [[NSString alloc]initWithFormat:@"%d",count];
-    count--;
+    
 }
 
 
@@ -260,25 +300,21 @@
 
 -(void)getPhoto
 {
+    [CameraImageHelper stopRunning];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"imageget" object:nil];
-    [self whenTimePassAway];
     [self resetshoot];
     photo = [CameraImageHelper image];
     [CameraImageHelper releaseimage];
     photo = [self resizePhoto:photo];
+    [CameraImageHelper startRunning];
     [self savetoAlbum];
-    //[self performSegueWithIdentifier:@"showphoto" sender:self];
 }
-
 
 
 //Segue Delegate
 //we need pass the photo to next view
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    id photoView=segue.destinationViewController;
-    [photoView setValue:photo forKey:@"photoImage"];
-    [photoView setValue:self.hint.text forKey:@"hint"];
     hasopened = YES;
 }
 
@@ -293,24 +329,25 @@
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
     
     // Enumerate just the photos and videos group by using ALAssetsGroupSavedPhotos.
-    [library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
-        
-        if ([group numberOfAssets] >= 1) {
-            // Within the group enumeration block, filter to enumerate just photos.
-            [group setAssetsFilter:[ALAssetsFilter allPhotos]];
-            
-            // Chooses the photo at the last index
-            [group enumerateAssetsAtIndexes:[NSIndexSet indexSetWithIndex:([group numberOfAssets] - 1)] options:0 usingBlock:^(ALAsset *alAsset, NSUInteger index, BOOL *innerStop) {
+    [library enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+        if ([@"pixjam" compare:[group valueForProperty:ALAssetsGroupPropertyName]] == NSOrderedSame) {
+            if ([group numberOfAssets] >= 1) {
+                // Within the group enumeration block, filter to enumerate just photos.
+                [group setAssetsFilter:[ALAssetsFilter allPhotos]];
                 
-                // The end of the enumeration is signaled by asset == nil.
-                if (alAsset) {
-                    ALAssetRepresentation *representation = [alAsset defaultRepresentation];
-                    UIImage *latestPhoto = [UIImage imageWithCGImage:[representation fullScreenImage]];
+                // Chooses the photo at the last index
+                [group enumerateAssetsAtIndexes:[NSIndexSet indexSetWithIndex:([group numberOfAssets] - 1)] options:0 usingBlock:^(ALAsset *alAsset, NSUInteger index, BOOL *innerStop) {
                     
-                    // Do something interesting with the AV asset.
-                    [self showLastPhotoAtBTN:latestPhoto];
-                }
-            }];
+                    // The end of the enumeration is signaled by asset == nil.
+                    if (alAsset) {
+                        ALAssetRepresentation *representation = [alAsset defaultRepresentation];
+                        UIImage *latestPhoto = [UIImage imageWithCGImage:[representation fullScreenImage]];
+                        
+                        // Do something interesting with the AV asset.
+                        [self showLastPhotoAtBTN:latestPhoto];
+                    }
+                }];
+            }
         }
     } failureBlock: ^(NSError *error) {
         // Typically you should handle an error more gracefully than this.
@@ -320,29 +357,82 @@
 
 -(void)showLastPhotoAtBTN:(UIImage *)lastPhoto
 {
-    [self.photoBTN setImage:lastPhoto forState:UIControlStateNormal];
+    self.albumbg.hidden = NO;
+    self.photoBTN.hidden = NO;
+    [self viewAnimation:self.albumbg];
+    [self viewAnimation:self.photoBTN];
+    thelastPhoto = lastPhoto;
     self.photoBTN.imageView.contentMode = UIViewContentModeScaleAspectFill;
+}
+
+-(void)viewAnimation:(UIView *)view
+{
+    CGRect frame = view.frame;
+    [self animateout:view setFrame:frame];
+}
+
+-(void)animateout:(UIView *)view setFrame:(CGRect)frame
+{
+    [UIView animateWithDuration:0.2
+                          delay:0.5
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         
+                         view.frame = [self holdcenter:view.frame setZoom:1.3];
+                         view.alpha = 0.5;
+                     }
+                     completion:^(BOOL finished){
+                         [self animatein:view setFrame:frame];
+                     }];
+}
+
+-(void)animatein:(UIView *)view setFrame:(CGRect)frame
+{
+    [UIView animateWithDuration:0.2
+                          delay:0
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         view.frame = [self holdcenter:frame setZoom:0.2];
+                         view.alpha = 0.8;
+                     }
+                     completion:^(BOOL finished){
+                        [self.photoBTN setImage:thelastPhoto forState:UIControlStateNormal];
+                        [self animateback:view setFrame:frame];
+                     }];
+}
+
+-(void)animateback:(UIView *)view setFrame:(CGRect)frame
+{
+    [UIView animateWithDuration:0.2
+                          delay:0
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         view.frame = frame;
+                         view.alpha = 1;
+                     }
+                     completion:^(BOOL finished){
+
+                     }];
+}
+
+-(CGRect)holdcenter:(CGRect)frame setZoom:(float)zoom
+{
+
+    float cx = frame.origin.x + frame.size.width/2.0;
+    float cy = frame.origin.y + frame.size.height/2.0;
+    
+    frame.size.height = frame.size.height * zoom;
+    frame.size.width = frame.size.width * zoom;
+    
+    frame.origin.x = cx - frame.size.width/2.0;
+    frame.origin.y = cy - frame.size.height/2.0;
+    
+    return frame;
 }
 
 //when photoBTN click
 - (IBAction)gophotolib:(id)sender {
-    imagepicker = [[UIImagePickerController alloc] init];
-    imagepicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    imagepicker.delegate = self;
-    imagepicker.allowsEditing = NO;
-    [self presentModalViewController:imagepicker animated:YES];
-}
-
-//imagePickerController Delegate
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    UIImage *originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-    
-    [self dismissModalViewControllerAnimated:YES];
-    
-    photo = originalImage;
     [self goshowphoto];
-    //[self performSelector:@selector(goshowphoto) withObject:nil afterDelay:1];
 }
 
 -(void)goshowphoto
@@ -398,29 +488,16 @@
 //slider
 - (IBAction)timersetting:(id)sender {
     
-    if (self.timeroffbtn.hidden == NO || self.timeronview.hidden == NO) {
-        NSLog(@"234234");
+    if (self.timeronview.hidden == NO) {
         self.timeronview.hidden = YES;
-        self.timeroffbtn.hidden = YES;
     }else{
-        if (timerstatus) {
-            [self displaySlier];
-        }else{
-            [self displayTimeroffBtn];
-        }
+        [self displaySlier];
     }
-}
-
--(void)displayTimeroffBtn
-{
-    self.timeronview.hidden = YES;
-    self.timeroffbtn.hidden = NO;
 }
 
 -(void)displaySlier
 {
     self.timeronview.hidden = NO;
-    self.timeroffbtn.hidden = YES;
     UIImage *point = [UIImage imageNamed:@"timerpoint"];
     UIImage *tm = [UIImage imageNamed:@"tm"];
     [self.timerslider setThumbImage:point forState:UIControlStateNormal];
@@ -431,26 +508,37 @@
     
 }
 
-- (IBAction)timeroff:(id)sender {
-    timerstatus = NO;
-    [self displayTimeroffBtn];
-}
-- (IBAction)timeron:(id)sender {
-    timerstatus = YES;
-    [self displaySlier];
-}
-
 //save photo to Album
 -(void)savetoAlbum
 {
+    NSLog(@"savetoAlbum");
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-    [library saveImage:photo toAlbum:@"emoto"
+    [library saveImage:photo toAlbum:@"pixjam"
        completionBlock:^(NSURL *assetURL, NSError *error) {
-           NSLog(@"success");
+           NSString *errormsg = [[error userInfo] objectForKey:@"NSLocalizedDescription"];
+           if ([@"User denied access" isEqualToString:errormsg]) {
+               [self requestRight];
+           }else{
+               [self performSelector:@selector(getLastPhoto) withObject:nil afterDelay:0.5];
+           }
        } failureBlock:^(NSError *error) {
-           NSLog(@"%@",error);
+           NSLog(@"failureBlock error: %@",error);
+           [self requestRight];
        }];
 }
+
+-(void)requestRight
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"opps!" message:@"We need you permit to access album!\n Please set it at Setting -> Privacy -> Photos" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+}
+
+
 
 - (UIImage *)resizePhoto:(UIImage *)image
 {
@@ -475,11 +563,22 @@
     UIImage *img =[self imageWithImage:image scaledToSize:resize];
     
     UIImage *mask = [UIImage imageNamed:@"hint@2x.png"];
-    CGPoint maskpoint = CGPointMake((newwidth/2 - (594/2)), newheight*0.8);
+    
+    UIFont *font = [UIFont fontWithName:@"That's not what I meant..." size:50];
+    
+    CGSize hintsize = [self.hint.text sizeWithFont:font];
+    
+    CGSize masksize = mask.size;
+    masksize.width = hintsize.width + 100;
+    mask =[self imageWithImage:mask scaledToSize:masksize];
+    
+    
+    CGPoint maskpoint = CGPointMake((newwidth/2 - (masksize.width/2)), newheight*0.8);
     NSLog(@"maskpoint x,y : %f,%f",maskpoint.x,maskpoint.y);
     NSLog(@"resize width,height : %f,%f",img.size.width,img.size.height);
+    
     img = [self addImage:img toImage:mask at:maskpoint];
-    CGPoint messagepoint = CGPointMake(maskpoint.x + 30, maskpoint.y+ 25);
+    CGPoint messagepoint = CGPointMake(maskpoint.x + 30, maskpoint.y+ 10);
     // note: replace "ImageUtils" with the class where you pasted the method above
     img = [self drawText:self.hint.text
                  inImage:img
@@ -548,7 +647,7 @@
              atPoint:(CGPoint)   point
 {
     
-    UIFont *font = [UIFont fontWithName:@"That's not what I meant..." size:30];
+    UIFont *font = [UIFont fontWithName:@"That's not what I meant..." size:50];
     UIGraphicsBeginImageContext(image.size);
     [image drawInRect:CGRectMake(0,0,image.size.width,image.size.height)];
     
@@ -601,6 +700,8 @@
     [self setTimeronview:nil];
     [self setTimeroffbtn:nil];
     [self setHintview:nil];
+    [self setAlbumbg:nil];
+    [self setHintbg:nil];
     [super viewDidUnload];
 }
 

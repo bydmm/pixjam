@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface PreViewController : UIViewController
+#import "CycleScrollView.h"
+@interface PreViewController : UIViewController<UIScrollViewDelegate,CycleScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *photo;
-@property (retain, nonatomic) UIImage *photoImage;
-@property (retain, nonatomic) NSString *hint;
+@property (retain) NSMutableArray *photos;
+@property (retain, nonatomic) CycleScrollView  *photoScroll;
 @end

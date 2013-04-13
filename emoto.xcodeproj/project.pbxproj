@@ -114,6 +114,7 @@
 		C8F86EC71715889D00C8DB65 /* TumblrUploadr.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F86EC61715889D00C8DB65 /* TumblrUploadr.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C8F86ECD17158A7600C8DB65 /* NSString+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F86ECC17158A7600C8DB65 /* NSString+URLEncode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C8F86ED017158B0D00C8DB65 /* NSData+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F86ECF17158B0D00C8DB65 /* NSData+URLEncode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C8F86ED31716B70C00C8DB65 /* CycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F86ED21716B70B00C8DB65 /* CycleScrollView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -139,7 +140,7 @@
 		C84B4A0C1706C5640041C979 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		C8610B3817059CA8008462C6 /* DirectionMPMoviePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionMPMoviePlayerViewController.m; sourceTree = "<group>"; };
 		C8610B3917059CA8008462C6 /* DirectionMPMoviePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionMPMoviePlayerViewController.h; sourceTree = "<group>"; };
-		C86FD1FE16D3704000CB4898 /* emoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = emoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C86FD1FE16D3704000CB4898 /* pixjam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pixjam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C86FD20216D3704000CB4898 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C86FD20416D3704000CB4898 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C86FD20616D3704000CB4898 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -242,6 +243,8 @@
 		C8F86ECC17158A7600C8DB65 /* NSString+URLEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncode.m"; sourceTree = "<group>"; };
 		C8F86ECE17158B0D00C8DB65 /* NSData+URLEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+URLEncode.h"; sourceTree = "<group>"; };
 		C8F86ECF17158B0D00C8DB65 /* NSData+URLEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+URLEncode.m"; sourceTree = "<group>"; };
+		C8F86ED11716B70B00C8DB65 /* CycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollView.h; sourceTree = "<group>"; };
+		C8F86ED21716B70B00C8DB65 /* CycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleScrollView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -389,7 +392,7 @@
 		C86FD1FF16D3704000CB4898 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C86FD1FE16D3704000CB4898 /* emoto.app */,
+				C86FD1FE16D3704000CB4898 /* pixjam.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -424,6 +427,8 @@
 		C86FD20816D3704000CB4898 /* emoto */ = {
 			isa = PBXGroup;
 			children = (
+				C8F86ED11716B70B00C8DB65 /* CycleScrollView.h */,
+				C8F86ED21716B70B00C8DB65 /* CycleScrollView.m */,
 				C8722AEE16FC6A6B000FD6F1 /* action.plist */,
 				C86FD21116D3704000CB4898 /* emotoAppDelegate.h */,
 				C86FD21216D3704000CB4898 /* emotoAppDelegate.m */,
@@ -502,7 +507,7 @@
 			);
 			name = pixjam;
 			productName = emoto;
-			productReference = C86FD1FE16D3704000CB4898 /* emoto.app */;
+			productReference = C86FD1FE16D3704000CB4898 /* pixjam.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -653,6 +658,7 @@
 				C8F86EC71715889D00C8DB65 /* TumblrUploadr.m in Sources */,
 				C8F86ECD17158A7600C8DB65 /* NSString+URLEncode.m in Sources */,
 				C8F86ED017158B0D00C8DB65 /* NSData+URLEncode.m in Sources */,
+				C8F86ED31716B70C00C8DB65 /* CycleScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,8 +753,8 @@
 					"-lsqlite3.0",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D2ED830B-A654-4077-AEE6-6CB935AF8BFC";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D2ED830B-A654-4077-AEE6-6CB935AF8BFC";
+				PROVISIONING_PROFILE = "3A702FFB-161B-40E2-A828-12C316A909E9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3A702FFB-161B-40E2-A828-12C316A909E9";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -772,8 +778,8 @@
 					"-lsqlite3.0",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D2ED830B-A654-4077-AEE6-6CB935AF8BFC";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D2ED830B-A654-4077-AEE6-6CB935AF8BFC";
+				PROVISIONING_PROFILE = "3A702FFB-161B-40E2-A828-12C316A909E9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3A702FFB-161B-40E2-A828-12C316A909E9";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

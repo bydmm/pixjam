@@ -14,8 +14,9 @@
 #include <sys/sysctl.h>
 #include <mach/mach.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import <QuartzCore/QuartzCore.h>
 
-@interface emotoViewController : UIViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIGestureRecognizerDelegate,UITextFieldDelegate>
+@interface emotoViewController : UIViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIGestureRecognizerDelegate,UITextFieldDelegate,UIAlertViewDelegate>
 {
     SystemSoundID                 soundID;
     int count;
@@ -27,6 +28,7 @@
     NSTimer *countDowntimer;
     NSArray *hintlist;
     BOOL hasopened;
+    UIImage *thelastPhoto;
 }
 @property (retain, nonatomic)  DirectionMPMoviePlayerViewController *playerView;
 @property (weak, nonatomic) IBOutlet UIView *flashsettingview;
@@ -39,5 +41,7 @@
 @property (weak, nonatomic) IBOutlet UIView *timeronview;
 @property (weak, nonatomic) IBOutlet UIButton *timeroffbtn;
 @property (weak, nonatomic) IBOutlet UIView *hintview;
+@property (weak, nonatomic) IBOutlet UIImageView *albumbg;
+@property (weak, nonatomic) IBOutlet UIImageView *hintbg;
 
 @end

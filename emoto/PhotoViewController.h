@@ -20,6 +20,9 @@
     BOOL canShareAnyhow;
     NSString *shareWay;
     BOOL needmask;
+    BOOL twitter;
+    BOOL facebook;
+    BOOL email;
 }
 @property (weak, nonatomic) IBOutlet UITextView *statusMessage;
 @property (weak, nonatomic) IBOutlet UIImageView *photo;

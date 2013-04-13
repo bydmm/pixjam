@@ -16,10 +16,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self facebooklogin];
     canShareAnyhow = [FBNativeDialogs canPresentShareDialogWithSession:nil];
 	// Do any additional setup after loading the view.
-    //[self login];
+    [self login];
     
     
 }
@@ -44,16 +43,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     self.navigationController.navigationBarHidden=YES;
-}
-
--(void)facebooklogin
-{
-    loginview = [[FBLoginView alloc] init];
-    loginview.frame = CGRectMake(80, 216, 160, 47);
-    [self.view addSubview:loginview];
-    loginview.delegate = self;
-    [self.view addSubview:loginview];
-    [loginview sizeToFit];
 }
 
 #pragma mark - FBLoginViewDelegate
