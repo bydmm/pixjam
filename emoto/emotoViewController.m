@@ -5,6 +5,7 @@
 //  Created by Kyoma Houohin on 13-2-19.
 //  Copyright (c) 2013年 emoto. All rights reserved.
 //
+#define DEGREES_TO_RADIANS(x) (M_PI * x / 180.0)
 
 #import "emotoViewController.h"
 #import "PhotoViewController.h"
@@ -27,7 +28,11 @@
     self.navigationController.delegate = self;
     self.albumbg.hidden = YES;
     self.photoBTN.hidden = YES;
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
+    [self playVideoFinished:nil];
 }
+
 
 -(void)playMovieAtURL
 {
@@ -184,7 +189,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     [CameraImageHelper changePreviewOrientation:(UIInterfaceOrientation)interfaceOrientation];
-    return UIDeviceOrientationIsLandscape(interfaceOrientation);
+    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
 - (BOOL)shouldAutorotate
@@ -199,8 +204,70 @@
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
+    NSLog(@"interfaceOrientation:%d",self.interfaceOrientation);
     [CameraImageHelper changePreviewOrientation:(UIInterfaceOrientation)self.interfaceOrientation];
 }
+
+- (void)orientationChanged:(NSNotification *)notification
+{
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    double rotation = 0;
+    if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
+        switch (orientation) {
+            case UIDeviceOrientationPortrait:
+                rotation = M_PI_2;
+                break;
+            case UIDeviceOrientationPortraitUpsideDown:
+                rotation = -M_PI_2;
+                break;
+            case UIDeviceOrientationLandscapeLeft:
+                rotation = M_PI;
+                break;
+            case UIDeviceOrientationLandscapeRight:
+                rotation = 0;
+                break;
+            case UIDeviceOrientationFaceDown:
+            case UIDeviceOrientationFaceUp:
+            case UIDeviceOrientationUnknown:
+            default:
+                return;
+        }
+    }else if (self.interfaceOrientation == UIInterfaceOrientationLandscapeRight)
+    {
+        switch (orientation) {
+            case UIDeviceOrientationPortrait:
+                rotation = -M_PI_2;
+                break;
+            case UIDeviceOrientationPortraitUpsideDown:
+                rotation = M_PI_2;
+                break;
+            case UIDeviceOrientationLandscapeLeft:
+                rotation = 0;
+                break;
+            case UIDeviceOrientationLandscapeRight:
+                rotation = M_PI;
+                break;
+            case UIDeviceOrientationFaceDown:
+            case UIDeviceOrientationFaceUp:
+            case UIDeviceOrientationUnknown:
+            default:
+                return;
+        }
+    }
+    CGAffineTransform transform = CGAffineTransformMakeRotation(rotation);
+    //[self cameraHandle];
+    //[CameraImageHelper changePreviewOrientation:(UIInterfaceOrientation)orientation];
+    NSLog(@"orientation: %d",orientation);
+    [UIView beginAnimations:nil context:NULL]; {
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        [UIView setAnimationDuration:0.5];
+        [UIView setAnimationDelegate:self];
+        self.camerabtn.transform = transform;
+        self.photoBTN.transform = transform;
+        self.albumbg.transform = transform;
+    } [UIView commitAnimations];
+}
+
 
 //camera preview full fullscreen
 -(void)fullscreen
@@ -702,6 +769,8 @@
     [self setHintview:nil];
     [self setAlbumbg:nil];
     [self setHintbg:nil];
+    [self setRightbg:nil];
+    [self setCamerabtn:nil];
     [super viewDidUnload];
 }
 

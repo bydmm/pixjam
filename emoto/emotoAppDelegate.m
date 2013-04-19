@@ -25,6 +25,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // send notification on rotation
+    [[UIDevice currentDevice]beginGeneratingDeviceOrientationNotifications];
+    
     [self tumblr];
     // Override point for customization after application launch.
     [FBSession openActiveSessionWithAllowLoginUI:NO];

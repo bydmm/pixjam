@@ -116,7 +116,7 @@
 //handleOrientation
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return UIDeviceOrientationIsLandscape(interfaceOrientation);
+    return YES;
 }
 
 - (BOOL)shouldAutorotate
@@ -126,7 +126,47 @@
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    return UIInterfaceOrientationMaskLandscape;
+    return UIInterfaceOrientationMaskAll;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    //[self.photoScroll removeFromSuperview];
+}
+
+- (void)willAnimateFirstHalfOfRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duratio
+{
+    [UIView animateWithDuration:1 //持续时间
+                          delay:0 //等待几秒开始动画
+                        options:UIViewAnimationOptionCurveEaseIn //各种动画选项
+                     animations:^{
+                         self.photoScroll.alpha = 0;
+                     }
+                     completion:^(BOOL finished){
+                         //类似Jquery动画的回调函数，当动画播放完成后你想干啥写在这里，这是很重要的部分。
+                         //动画播放往往有一步的问题，靠这里解决。OC的在这一块的处理还是很函数语言的。
+                     }];
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [self.photoScroll removeFromSuperview];
+    self.photoScroll=[[CycleScrollView alloc] initWithFrame:self.view.frame pictures:photos];
+    self.photoScroll.delegate=self;
+    self.photoScroll.alpha = 0;
+    [self.view insertSubview:self.photoScroll atIndex:0];
+    [UIView animateWithDuration:1 //持续时间
+                          delay:0 //等待几秒开始动画
+                        options:UIViewAnimationOptionCurveEaseIn //各种动画选项
+                     animations:^{
+                         self.photoScroll.alpha = 1;
+                     }
+                     completion:^(BOOL finished){
+                         //类似Jquery动画的回调函数，当动画播放完成后你想干啥写在这里，这是很重要的部分。
+                         //动画播放往往有一步的问题，靠这里解决。OC的在这一块的处理还是很函数语言的。
+                     }];
+    
+
 }
 
 - (IBAction)pop:(UIButton *)sender {
