@@ -26,7 +26,6 @@
     self.navigationController.delegate = self;
     self.albumbg.hidden = YES;
     self.photoBTN.hidden = YES;
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
 
@@ -72,6 +71,7 @@
                                              selector:@selector(resetshoot)
                                                  name:UIApplicationWillResignActiveNotification
                                                object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -151,7 +151,6 @@
     NSLog(@"resetshoot");
     self.countdown.hidden = YES;
     [countDowntimer invalidate];
-    count = 3;
 }
 
 //hint data
@@ -333,6 +332,8 @@
 //count down timer start
 -(void)countDownStart
 {
+    self.countdown.alpha = 1;
+    self.countdown.transform = CGAffineTransformMakeScale(1,1);
     self.countdown.text = @"Count Down";
     count = (int)self.timerslider.value;
     self.countdown.hidden = NO;
@@ -341,27 +342,7 @@
 
 - (void)countdownTimerHandle:(NSTimer *)theTimer
 {
-    if (count == 6) {
-        self.countdown.text = [[NSString alloc]initWithFormat:@"%d",count];
-        count--;
-    }
-    else if (count == 5) {
-        self.countdown.text = [[NSString alloc]initWithFormat:@"%d",count];
-        count--;
-    }
-    else if (count == 4) {
-        self.countdown.text = [[NSString alloc]initWithFormat:@"%d",count];
-        count--;
-    }
-    else if (count == 3) {
-        self.countdown.text = [[NSString alloc]initWithFormat:@"%d",count];
-        count--;
-    }
-    else if (count == 2) {
-        self.countdown.text = [[NSString alloc]initWithFormat:@"%d",count];
-        count--;
-    }
-    else if (count == 1) {
+    if (count > 0) {
         self.countdown.text = [[NSString alloc]initWithFormat:@"%d",count];
         count--;
     }
@@ -377,12 +358,12 @@
 {
     view.alpha = 1;
     view.transform = CGAffineTransformMakeScale(1,1);
-    [UIView animateWithDuration:0.5 //持续时间
+    [UIView animateWithDuration:1 //持续时间
                           delay:0 //等待几秒开始动画
                         options:UIViewAnimationOptionCurveEaseIn //各种动画选项
                      animations:^{
                          view.transform = CGAffineTransformMakeScale(10,10);
-                         view.alpha = 0;
+                         view.alpha = 0.1;
 
                      }
                      completion:^(BOOL finished){
@@ -467,7 +448,8 @@
     self.albumbg.hidden = NO;
     self.photoBTN.hidden = NO;
     thelastPhoto = lastPhoto;
-    if (animation == YES) {
+    NSLog(@"animation:%d",animation);
+    if (animation > 0) {
         [self viewAnimation:self.albumbg];
         [self viewAnimation:self.photoBTN];
     }else{

@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
-#import <Twitter/Twitter.h>
 #import <Accounts/Accounts.h>
+#import <Twitter/Twitter.h>
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
@@ -34,7 +34,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *twitterbtn;
 @property (weak, nonatomic) IBOutlet UIButton *facebookbtn;
 @property (weak, nonatomic) IBOutlet UIButton *emailbtn;
-@property (weak, nonatomic) IBOutlet UIButton *tumlrbtn;
+@property (weak, nonatomic) IBOutlet UIButton *competitonbtn;
 
 
 @end

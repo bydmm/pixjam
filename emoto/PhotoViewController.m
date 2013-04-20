@@ -63,7 +63,6 @@
     [self setFacebookbtn:nil];
     [self setTwitterbtn:nil];
     [self setEmailbtn:nil];
-    [self setTumlrbtn:nil];
     [self setBubblebtn:nil];
     [self setStatusMessage:nil];
     [super viewDidUnload];
@@ -221,7 +220,12 @@
     TWTweetComposeViewController *tweetViewController = [[TWTweetComposeViewController alloc] init];
     
     // Set the initial tweet text. See the framework for additional properties that can be set.
-    [tweetViewController setInitialText:self.statusMessage.text];
+    
+    NSMutableString *message = [[NSMutableString alloc] initWithString:self.statusMessage.text];
+    if (self.bubblebtn.highlighted == YES) {
+        [message appendString:@"@pixjam #pixjam"];
+    }
+    [tweetViewController setInitialText:message];
     [tweetViewController addImage:self.photo.image];
     
     // Create the completion handler block.
@@ -251,71 +255,65 @@
 }
 
 #pragma mark - tumblr
+- (IBAction)competiton:(UIButton *)sender {
+    if (self.twitterbtn.highlighted == NO && self.twitterbtn.highlighted == NO ) {
+        [SVProgressHUD dismissWithError:@"You should select Twitter or Facebook at least one for join competiton" afterDelay:3];
+    }else{
+        [self lightornot:sender];
+    }
+}
+
 
 - (IBAction)clicktumblr:(id)sender {
     
-    [TMAPIClient sharedInstance].OAuthConsumerKey = @"ADISJdadsoj2dj38dj29dj38jd9238jdk92djasdjASDaoijsd";
-    [TMAPIClient sharedInstance].OAuthConsumerSecret = @"MGI39kdasdoka3240989ASFjoiajsfomdasd39129ASDAPDOJa";
-    
-    [[TMAPIClient sharedInstance] authenticate:@"tumblremoto" callback:^(NSError *error) {
-        NSLog(@"%@",error);
-    }];
+//    [TMAPIClient sharedInstance].OAuthConsumerKey = @"ADISJdadsoj2dj38dj29dj38jd9238jdk92djasdjASDaoijsd";
+//    [TMAPIClient sharedInstance].OAuthConsumerSecret = @"MGI39kdasdoka3240989ASFjoiajsfomdasd39129ASDAPDOJa";
+//    
+//    [[TMAPIClient sharedInstance] authenticate:@"tumblremoto" callback:^(NSError *error) {
+//        NSLog(@"%@",error);
+//    }];
 }
 
-- (void) uploadFiles {
-    NSData *data1 = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"goback" ofType:@"png"]];
-    NSArray *array = [NSArray arrayWithObjects:data1, nil];
-    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        TumblrUploadr *tu = [[TumblrUploadr alloc] initWithNSDataForPhotos:array andBlogName:@"supergreatblog.tumblr.com" andDelegate:self andCaption:@"Great Photos!"];
-        dispatch_async( dispatch_get_main_queue(), ^{
-            [tu signAndSendWithTokenKey:@"ADISJdadsoj2dj38dj29dj38jd9238jdk92djasdjASDaoijsd" andSecret:@"MGI39kdasdoka3240989ASFjoiajsfomdasd39129ASDAPDOJa"];
-        });
-    });
-}
-
-- (void) tumblrUploadr:(TumblrUploadr *)tu didFailWithError:(NSError *)error {
-    NSLog(@"connection failed with error %@",[error localizedDescription]);
-}
-- (void) tumblrUploadrDidSucceed:(TumblrUploadr *)tu withResponse:(NSString *)response {
-    NSLog(@"connection succeeded with response: %@", response);
-}
+//- (void) uploadFiles {
+//    NSData *data1 = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"goback" ofType:@"png"]];
+//    NSArray *array = [NSArray arrayWithObjects:data1, nil];
+//    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        TumblrUploadr *tu = [[TumblrUploadr alloc] initWithNSDataForPhotos:array andBlogName:@"supergreatblog.tumblr.com" andDelegate:self andCaption:@"Great Photos!"];
+//        dispatch_async( dispatch_get_main_queue(), ^{
+//            [tu signAndSendWithTokenKey:@"ADISJdadsoj2dj38dj29dj38jd9238jdk92djasdjASDaoijsd" andSecret:@"MGI39kdasdoka3240989ASFjoiajsfomdasd39129ASDAPDOJa"];
+//        });
+//    });
+//}
+//
+//- (void) tumblrUploadr:(TumblrUploadr *)tu didFailWithError:(NSError *)error {
+//    NSLog(@"connection failed with error %@",[error localizedDescription]);
+//}
+//- (void) tumblrUploadrDidSucceed:(TumblrUploadr *)tu withResponse:(NSString *)response {
+//    NSLog(@"connection succeeded with response: %@", response);
+//}
 
 
 #pragma mark - facebook
 
 - (IBAction)clickfacebook:(id)sender {
-    if (FBSession.activeSession.state == 513)
+    NSLog(@"FBSession.activeSession.state : %d",FBSession.activeSession.state);
+    if (FBSession.activeSession.state > 10)
     {
         [self lightornot:sender];
     }else{
-        [self performSegueWithIdentifier:@"facebooklogin" sender:self];
+        [self openSession];
     }
-}
-
-// Convenience method to perform some action that requires the "publish_actions" permissions.
-- (void) performPublishAction:(void (^)(void)) action {
-    // we defer request for permission to post to the moment of post, then we check for the permission
-    if ([FBSession.activeSession.permissions indexOfObject:@"publish_actions"] == NSNotFound) {
-        // if we don't already have the permission, then we request it now
-        [FBSession.activeSession reauthorizeWithPublishPermissions:[NSArray arrayWithObject:@"publish_actions"]
-                                                   defaultAudience:FBSessionDefaultAudienceFriends
-                                                 completionHandler:^(FBSession *session, NSError *error) {
-                                                     if (!error) {
-                                                         action();
-                                                     }
-                                                     //For this example, ignore errors (such as if user cancels).
-                                                 }];
-    } else {
-        action();
-    }
-    
 }
 
 -(void)sharePhotoWithMessage
 {
     [SVProgressHUD showWithStatus:@"Share to facebook"];
+    NSMutableString *message = [[NSMutableString alloc] initWithString:self.statusMessage.text];
+    if (self.bubblebtn.highlighted == YES) {
+        [message appendString:@"@pixjam #pixjam"];
+    }
     NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
-    [params setObject:self.statusMessage.text forKey:@"message"];
+    [params setObject:message forKey:@"message"];
     [params setObject:UIImagePNGRepresentation(self.photo.image) forKey:@"picture"];
     //_shareToFbBtn.enabled = NO; //for not allowing multiple hits
     
@@ -348,11 +346,19 @@
     facebook = NO;
     self.facebookbtn.highlighted = NO;
     [self.view endEditing:YES];
-    [self sharePhotoWithMessage];
-    if (FBSession.activeSession.state == 513)
+    if ([FBSession.activeSession.permissions indexOfObject:@"publish_stream"] == NSNotFound) {
+        NSArray *permissions = [NSArray arrayWithObjects:@"publish_stream",nil];
+        [[FBSession activeSession] reauthorizeWithPublishPermissions:permissions
+                                                     defaultAudience:FBSessionDefaultAudienceEveryone
+                                                   completionHandler:^(FBSession *session, NSError *error) {
+                                                       [self sharePhotoWithMessage];
+                                                   }];
+    }
+    else if (FBSession.activeSession.state > 512 )
     {
         [self sharePhotoWithMessage];
-    }else{
+    }
+    else{
         [self performSegueWithIdentifier:@"facebooklogin" sender:self];
     }
 }
@@ -374,7 +380,52 @@
     return UIInterfaceOrientationMaskPortrait;
 }
 
+//
+- (void)sessionStateChanged:(FBSession *)session
+                      state:(FBSessionState) state
+                      error:(NSError *)error
+{
+    switch (state) {
+        case FBSessionStateOpen: {
+            NSArray *permissions = [NSArray arrayWithObjects:@"publish_stream",nil];
+            [[FBSession activeSession] reauthorizeWithPublishPermissions:permissions
+                                                         defaultAudience:FBSessionDefaultAudienceEveryone
+                                                       completionHandler:^(FBSession *session, NSError *error) {
+                                                           [self lightornot:self.facebookbtn];
+                                                       }];
+        }
+            break;
+        case FBSessionStateClosed:
+        case FBSessionStateClosedLoginFailed:
+            // Once the user has logged in, we want them to
+            // be looking at the root view.
+            [FBSession.activeSession closeAndClearTokenInformation];
+            break;
+        default:
+            break;
+    }
+    
+    if (error) {
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"Error"
+                                  message:error.localizedDescription
+                                  delegate:nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        [alertView show];
+    }
+}
 
+- (void)openSession
+{
+    [FBSession openActiveSessionWithReadPermissions:nil
+                                       allowLoginUI:YES
+                                  completionHandler:
+     ^(FBSession *session,
+       FBSessionState state, NSError *error) {
+         [self sessionStateChanged:session state:state error:error];
+     }];
+}
 
 
 @end

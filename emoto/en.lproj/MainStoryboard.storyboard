@@ -428,7 +428,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="clicktumblr:" destination="cV6-7P-KqE" eventType="touchUpInside" id="iSb-dV-ovJ"/>
+                                    <action selector="competiton:" destination="cV6-7P-KqE" eventType="touchUpInside" id="zEv-5y-dr8"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="sharelogo.png" id="FEC-Cu-VDQ">
@@ -491,11 +491,11 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="competitonbtn" destination="mvM-aC-Qaj" id="NzA-yT-f8U"/>
                         <outlet property="emailbtn" destination="9hT-7g-7ro" id="zmf-IE-Nuq"/>
                         <outlet property="facebookbtn" destination="Chc-ba-y3b" id="UY9-h5-nFk"/>
                         <outlet property="photo" destination="g4S-7L-ewh" id="zaa-pV-PA2"/>
                         <outlet property="statusMessage" destination="4sH-ni-LZQ" id="bcM-Fc-D2f"/>
-                        <outlet property="tumlrbtn" destination="mvM-aC-Qaj" id="Ylw-Hw-iYl"/>
                         <outlet property="twitterbtn" destination="haT-cL-UGk" id="gia-QV-c22"/>
                         <segue destination="R8S-KK-CK1" kind="push" identifier="facebooklogin" id="kpL-ka-Eb0"/>
                     </connections>
@@ -539,18 +539,28 @@
         <class className="PhotoViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoViewController.h"/>
             <relationships>
+                <relationship kind="action" name="bulle:"/>
+                <relationship kind="action" name="clickTweet:"/>
+                <relationship kind="action" name="clickemail:" candidateClass="UIButton"/>
+                <relationship kind="action" name="clickfacebook:"/>
+                <relationship kind="action" name="clicktumblr:"/>
+                <relationship kind="action" name="competiton:" candidateClass="UIButton"/>
+                <relationship kind="action" name="pop:"/>
+                <relationship kind="action" name="sendmessage:"/>
                 <relationship kind="outlet" name="bubblebtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="competitonbtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="emailbtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="facebookbtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="photo" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="statusMessage" candidateClass="UIPlaceHolderTextView"/>
-                <relationship kind="outlet" name="tumlrbtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="twitterbtn" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="PreViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PreViewController.h"/>
             <relationships>
+                <relationship kind="action" name="gotoshare:"/>
+                <relationship kind="action" name="pop:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="photo" candidateClass="UIImageView"/>
             </relationships>
         </class>

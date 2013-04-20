@@ -38,7 +38,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb424702730947276</string>
+				<string>fb181120685370705</string>
 			</array>
 		</dict>
 		<dict>
@@ -53,7 +53,7 @@
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>FacebookAppID</key>
-	<string>424702730947276</string>
+	<string>181120685370705</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIAppFonts</key>
