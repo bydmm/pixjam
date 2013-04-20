@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "CycleScrollView.h"
 @interface PreViewController : UIViewController<UIScrollViewDelegate,CycleScrollViewDelegate>
+{
+    BOOL showed;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *photo;
 @property (retain) NSMutableArray *photos;
 @property (retain, nonatomic) CycleScrollView  *photoScroll;

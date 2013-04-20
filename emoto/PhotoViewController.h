@@ -14,7 +14,7 @@
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
 #import "TumblrUploadr.h"
-
+#import "UIPlaceHolderTextView.h"
 @interface PhotoViewController : UIViewController<MFMailComposeViewControllerDelegate,FBLoginViewDelegate,UITextViewDelegate,TumblrUploadrDelegate>
 {
     BOOL canShareAnyhow;
@@ -24,7 +24,7 @@
     BOOL facebook;
     BOOL email;
 }
-@property (weak, nonatomic) IBOutlet UITextView *statusMessage;
+@property (weak, nonatomic) IBOutlet UIPlaceHolderTextView *statusMessage;
 @property (weak, nonatomic) IBOutlet UIImageView *photo;
 @property (retain, nonatomic) UIImage *photoImage;
 @property (retain, nonatomic) NSString *hint;

@@ -12,7 +12,7 @@
 #import "ALAssetsLibrary+CustomPhotoAlbum.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #include <stdlib.h>
-
+#import "SVProgressHUD.h"
 @implementation emotoViewController
 @synthesize flashBTN;
 @synthesize flashsettingview;
@@ -20,17 +20,13 @@
 
 - (void)viewDidLoad
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"shake" ofType:@"wav"];
-    AudioServicesCreateSystemSoundID((CFURLRef)CFBridgingRetain([NSURL fileURLWithPath:path]), &soundID);
     
     [self playMovieAtURL];
     [super viewDidLoad];
     self.navigationController.delegate = self;
     self.albumbg.hidden = YES;
     self.photoBTN.hidden = YES;
-    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
-    [self playVideoFinished:nil];
 }
 
 
@@ -53,7 +49,7 @@
     playerView.moviePlayer.scalingMode = MPMovieScalingModeAspectFill;//全屏播放（全屏播放不可缺）
     playerView.moviePlayer.controlStyle=MPMovieControlStyleNone;
     //[self presentMoviePlayerViewControllerAnimated:playerView];
-    [self presentModalViewController:playerView animated:YES];
+    [self presentModalViewController:playerView animated:NO];
     [playerView.moviePlayer play];
     [self setNsnot];
 }
@@ -65,7 +61,7 @@
 
 - (void) playVideoFinished:(NSNotification *)theNotification//当点击Done按键或者播放完毕时调用此函数
 {
-    [self displayPhotoAlbum];
+    [self displayPhotoAlbumWithAnimation:NO];
     [self performSelector:@selector(cameraHandle) withObject:nil afterDelay:0.1];
     [self focusHandle];
     [self initFLashLight];
@@ -90,9 +86,12 @@
         if (hasopened == YES) {
             [self forcerotate];
             [self cameraHandle];
-            [self displayPhotoAlbum];
+            [self displayPhotoAlbumWithAnimation:NO];
             [self displayHint];
+            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
         }
+    }else{
+        self.view.alpha = 0;
     }
 }
 
@@ -116,10 +115,23 @@
 
 -(void)forcerotate
 {
+    [UIView animateWithDuration:0.5 //持续时间
+                          delay:0 //等待几秒开始动画
+                        options:UIViewAnimationOptionCurveEaseIn //各种动画选项
+                     animations:^{
+                         //重点来了！这一块完全类似Jquery动画，你只要把你想要的结果放在这里就行了！
+                         self.view.alpha = 1;
+                     }
+                     completion:^(BOOL finished){
+                         //类似Jquery动画的回调函数，当动画播放完成后你想干啥写在这里，这是很重要的部分。
+                         //动画播放往往有一步的问题，靠这里解决。OC的在这一块的处理还是很函数语言的。
+                     }];
+    
     NSLog(@"---forcerotate---");
     UIViewController *vc = [[UIViewController alloc]init];
     [self presentModalViewController:vc animated:NO];
     [self dismissModalViewControllerAnimated:NO];
+
 }
 
 - (double)usedMemory
@@ -151,7 +163,14 @@
 
 -(NSString *)randhint
 {
-    int index = arc4random() % ([hintlist count] -1);
+    int index = arc4random() % 3;
+    NSString *shake = [[NSString alloc]initWithFormat:@"shake%d",index];
+    shake = [[NSBundle mainBundle] pathForResource:shake ofType:@"mp3"];
+    AudioServicesCreateSystemSoundID((CFURLRef)CFBridgingRetain([NSURL fileURLWithPath:shake]), &soundID);
+    // User was shaking the device. Post a notification named "shake".
+    AudioServicesPlaySystemSound (soundID);
+    
+    index = arc4random() % ([hintlist count] -1);
     NSString *hint = [[hintlist objectAtIndex:index] objectForKey:@"name"];
     return hint;
 }
@@ -347,10 +366,28 @@
         count--;
     }
     else if(count == 0){
-        self.countdown.text = @"Shoot";
+        self.countdown.text = @"";
         [self RunOutOfTime:theTimer];
     }
+    [self countdownanimate:self.countdown];
     
+}
+
+-(void)countdownanimate:(UIView *)view
+{
+    view.alpha = 1;
+    view.transform = CGAffineTransformMakeScale(1,1);
+    [UIView animateWithDuration:0.5 //持续时间
+                          delay:0 //等待几秒开始动画
+                        options:UIViewAnimationOptionCurveEaseIn //各种动画选项
+                     animations:^{
+                         view.transform = CGAffineTransformMakeScale(10,10);
+                         view.alpha = 0;
+
+                     }
+                     completion:^(BOOL finished){
+                         
+                     }];
 }
 
 
@@ -359,6 +396,7 @@
     [theTimer invalidate];
     //prepare camera
     [CameraImageHelper CaptureStillImage];
+    [SVProgressHUD showWithStatus:@"Saving"];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(getPhoto)
                                                  name:@"imageget"
@@ -382,16 +420,18 @@
 //we need pass the photo to next view
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [CameraImageHelper stopRunning];
     hasopened = YES;
 }
 
 //display photoAlbum btn with the last photo
--(void)displayPhotoAlbum
+-(void)displayPhotoAlbumWithAnimation:(BOOL)animation
 {
-    [self getLastPhoto];
+    [self getLastPhotoWithAnimation:animation];
 }
 
--(void)getLastPhoto
+-(void)getLastPhotoWithAnimation:(BOOL)animation
 {
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
     
@@ -411,7 +451,7 @@
                         UIImage *latestPhoto = [UIImage imageWithCGImage:[representation fullScreenImage]];
                         
                         // Do something interesting with the AV asset.
-                        [self showLastPhotoAtBTN:latestPhoto];
+                        [self showLastPhotoAtBTN:latestPhoto withAnimation:animation];
                     }
                 }];
             }
@@ -422,13 +462,17 @@
     }];
 }
 
--(void)showLastPhotoAtBTN:(UIImage *)lastPhoto
+-(void)showLastPhotoAtBTN:(UIImage *)lastPhoto withAnimation:(BOOL)animation
 {
     self.albumbg.hidden = NO;
     self.photoBTN.hidden = NO;
-    [self viewAnimation:self.albumbg];
-    [self viewAnimation:self.photoBTN];
     thelastPhoto = lastPhoto;
+    if (animation == YES) {
+        [self viewAnimation:self.albumbg];
+        [self viewAnimation:self.photoBTN];
+    }else{
+        [self.photoBTN setImage:thelastPhoto forState:UIControlStateNormal];
+    }
     self.photoBTN.imageView.contentMode = UIViewContentModeScaleAspectFill;
 }
 
@@ -586,7 +630,8 @@
            if ([@"User denied access" isEqualToString:errormsg]) {
                [self requestRight];
            }else{
-               [self performSelector:@selector(getLastPhoto) withObject:nil afterDelay:0.5];
+               [self performSelector:@selector(getLastPhotoWithAnimation:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
+               [SVProgressHUD dismissWithSuccess:@"Success!"];
            }
        } failureBlock:^(NSError *error) {
            NSLog(@"failureBlock error: %@",error);
@@ -596,6 +641,7 @@
 
 -(void)requestRight
 {
+    [SVProgressHUD dismissWithError:@"Error!"];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"opps!" message:@"We need you permit to access album!\n Please set it at Setting -> Privacy -> Photos" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
 }
@@ -745,8 +791,6 @@
 {
 	if (motion == UIEventSubtypeMotionShake )
 	{
-		// User was shaking the device. Post a notification named "shake".
-        AudioServicesPlaySystemSound (soundID);
         [self displayHint];
 	}
 }

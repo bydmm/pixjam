@@ -37,11 +37,29 @@
 {
     [self forcerotate];
     self.navigationController.navigationBarHidden=YES;
+    if (showed) {
+        [self.photoScroll removeFromSuperview];
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    
+    if (showed) {
+        self.photoScroll=[[CycleScrollView alloc] initWithFrame:self.view.frame pictures:photos];
+        self.photoScroll.delegate=self;
+        self.photoScroll.alpha = 0;
+        [self.view insertSubview:self.photoScroll atIndex:0];
+        [UIView animateWithDuration:1 //持续时间
+                              delay:0 //等待几秒开始动画
+                            options:UIViewAnimationOptionCurveEaseIn //各种动画选项
+                         animations:^{
+                             self.photoScroll.alpha = 1;
+                         }
+                         completion:^(BOOL finished){
+                             //类似Jquery动画的回调函数，当动画播放完成后你想干啥写在这里，这是很重要的部分。
+                             //动画播放往往有一步的问题，靠这里解决。OC的在这一块的处理还是很函数语言的。
+                         }];
+    }
 }
 
 -(void)forcerotate
@@ -109,6 +127,7 @@
 //we need pass the photo to next view
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    showed = YES;
     id photoView=segue.destinationViewController;
     [photoView setValue:[self.photos objectAtIndex:[self.photoScroll getCurPageIndex]]forKey:@"photoImage"];
 }

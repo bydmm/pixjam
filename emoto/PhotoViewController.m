@@ -34,6 +34,7 @@
     [self clickToHideKeyboard];
     self.photo.image = self.photoImage;
     [self performSelector:@selector(doHighlight:) withObject:self.bubblebtn afterDelay:0];
+    self.statusMessage.placeholder = @"Write a Caption...";
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -64,6 +65,7 @@
     [self setEmailbtn:nil];
     [self setTumlrbtn:nil];
     [self setBubblebtn:nil];
+    [self setStatusMessage:nil];
     [super viewDidUnload];
 }
 

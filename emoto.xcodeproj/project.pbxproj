@@ -107,9 +107,12 @@
 		C8C03F2916F8756D00EA401B /* timerpoint.png in Resources */ = {isa = PBXBuildFile; fileRef = C8C03F2316F8756D00EA401B /* timerpoint.png */; };
 		C8C03F2A16F8756D00EA401B /* timerpoint@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8C03F2416F8756D00EA401B /* timerpoint@2x.png */; };
 		C8C03F3416F87BD000EA401B /* tm.png in Resources */ = {isa = PBXBuildFile; fileRef = C8C03F3316F87BD000EA401B /* tm.png */; };
+		C8C1A20D1721665500D113BC /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C1A20C1721665500D113BC /* UIPlaceHolderTextView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C8C1A211172168E600D113BC /* shake2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C8C1A20E172168E600D113BC /* shake2.mp3 */; };
+		C8C1A212172168E600D113BC /* shake1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C8C1A20F172168E600D113BC /* shake1.mp3 */; };
+		C8C1A213172168E600D113BC /* shake0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C8C1A210172168E600D113BC /* shake0.mp3 */; };
 		C8C73BF11704460500FF3313 /* VerticallyAlignedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C73BF01704460400FF3313 /* VerticallyAlignedLabel.m */; };
 		C8C73BF517046A0500FF3313 /* emotoPhotoNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C73BF417046A0500FF3313 /* emotoPhotoNavigation.m */; };
-		C8F86EC217156AD100C8DB65 /* shake.wav in Resources */ = {isa = PBXBuildFile; fileRef = C8F86EC117156AD100C8DB65 /* shake.wav */; };
 		C8F86EC417156BDA00C8DB65 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8F86EC317156BDA00C8DB65 /* AudioToolbox.framework */; };
 		C8F86EC71715889D00C8DB65 /* TumblrUploadr.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F86EC61715889D00C8DB65 /* TumblrUploadr.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C8F86ECD17158A7600C8DB65 /* NSString+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F86ECC17158A7600C8DB65 /* NSString+URLEncode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -231,11 +234,15 @@
 		C8C03F2316F8756D00EA401B /* timerpoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timerpoint.png; sourceTree = "<group>"; };
 		C8C03F2416F8756D00EA401B /* timerpoint@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timerpoint@2x.png"; sourceTree = "<group>"; };
 		C8C03F3316F87BD000EA401B /* tm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tm.png; sourceTree = "<group>"; };
+		C8C1A20B1721665500D113BC /* UIPlaceHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPlaceHolderTextView.h; sourceTree = "<group>"; };
+		C8C1A20C1721665500D113BC /* UIPlaceHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPlaceHolderTextView.m; sourceTree = "<group>"; };
+		C8C1A20E172168E600D113BC /* shake2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shake2.mp3; sourceTree = "<group>"; };
+		C8C1A20F172168E600D113BC /* shake1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shake1.mp3; sourceTree = "<group>"; };
+		C8C1A210172168E600D113BC /* shake0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shake0.mp3; sourceTree = "<group>"; };
 		C8C73BEF1704460400FF3313 /* VerticallyAlignedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticallyAlignedLabel.h; sourceTree = "<group>"; };
 		C8C73BF01704460400FF3313 /* VerticallyAlignedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticallyAlignedLabel.m; sourceTree = "<group>"; };
 		C8C73BF317046A0500FF3313 /* emotoPhotoNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = emotoPhotoNavigation.h; sourceTree = "<group>"; };
 		C8C73BF417046A0500FF3313 /* emotoPhotoNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = emotoPhotoNavigation.m; sourceTree = "<group>"; };
-		C8F86EC117156AD100C8DB65 /* shake.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shake.wav; sourceTree = "<group>"; };
 		C8F86EC317156BDA00C8DB65 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C8F86EC51715889C00C8DB65 /* TumblrUploadr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TumblrUploadr.h; sourceTree = "<group>"; };
 		C8F86EC61715889D00C8DB65 /* TumblrUploadr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TumblrUploadr.m; sourceTree = "<group>"; };
@@ -279,7 +286,9 @@
 		C807F0F916F1B69000364599 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				C8F86EC117156AD100C8DB65 /* shake.wav */,
+				C8C1A20E172168E600D113BC /* shake2.mp3 */,
+				C8C1A20F172168E600D113BC /* shake1.mp3 */,
+				C8C1A210172168E600D113BC /* shake0.mp3 */,
 				C88187EF17152B73000FB522 /* goback.png */,
 				C88187F017152B73000FB522 /* goback@2x.png */,
 				C88187F117152B73000FB522 /* play.png */,
@@ -370,6 +379,8 @@
 		C86FD1F316D3704000CB4898 = {
 			isa = PBXGroup;
 			children = (
+				C8C1A20B1721665500D113BC /* UIPlaceHolderTextView.h */,
+				C8C1A20C1721665500D113BC /* UIPlaceHolderTextView.m */,
 				C8F86ECE17158B0D00C8DB65 /* NSData+URLEncode.h */,
 				C8F86ECF17158B0D00C8DB65 /* NSData+URLEncode.m */,
 				C8F86ECB17158A7600C8DB65 /* NSString+URLEncode.h */,
@@ -615,7 +626,9 @@
 				C88187F417152B73000FB522 /* goback@2x.png in Resources */,
 				C88187F517152B73000FB522 /* play.png in Resources */,
 				C88187F617152B73000FB522 /* play@2x.png in Resources */,
-				C8F86EC217156AD100C8DB65 /* shake.wav in Resources */,
+				C8C1A211172168E600D113BC /* shake2.mp3 in Resources */,
+				C8C1A212172168E600D113BC /* shake1.mp3 in Resources */,
+				C8C1A213172168E600D113BC /* shake0.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,6 +672,7 @@
 				C8F86ECD17158A7600C8DB65 /* NSString+URLEncode.m in Sources */,
 				C8F86ED017158B0D00C8DB65 /* NSData+URLEncode.m in Sources */,
 				C8F86ED31716B70C00C8DB65 /* CycleScrollView.m in Sources */,
+				C8C1A20D1721665500D113BC /* UIPlaceHolderTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
