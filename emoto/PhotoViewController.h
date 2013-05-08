@@ -15,7 +15,8 @@
 #import <MessageUI/MFMailComposeViewController.h>
 #import "TumblrUploadr.h"
 #import "UIPlaceHolderTextView.h"
-@interface PhotoViewController : UIViewController<MFMailComposeViewControllerDelegate,FBLoginViewDelegate,UITextViewDelegate,TumblrUploadrDelegate>
+#define IOS6_OR_LATER   ( [[[UIDevice currentDevice] systemVersion] compare:@"6.0"] != NSOrderedAscending )  
+@interface PhotoViewController : UIViewController<MFMailComposeViewControllerDelegate,FBLoginViewDelegate,UITextViewDelegate,UIDocumentInteractionControllerDelegate>
 {
     BOOL canShareAnyhow;
     NSString *shareWay;
@@ -23,6 +24,8 @@
     BOOL twitter;
     BOOL facebook;
     BOOL email;
+    BOOL instagram;
+    UIDocumentInteractionController *documentInteractionController;
 }
 @property (weak, nonatomic) IBOutlet UIPlaceHolderTextView *statusMessage;
 @property (weak, nonatomic) IBOutlet UIImageView *photo;
@@ -34,7 +37,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *twitterbtn;
 @property (weak, nonatomic) IBOutlet UIButton *facebookbtn;
 @property (weak, nonatomic) IBOutlet UIButton *emailbtn;
-@property (weak, nonatomic) IBOutlet UIButton *competitonbtn;
+@property (weak, nonatomic) IBOutlet UIButton *instagrambtn;
 
 
 @end

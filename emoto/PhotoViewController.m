@@ -136,6 +136,15 @@
             [self performSelector:@selector(doHighlight:) withObject:button afterDelay:0];
         }
     }
+    if (button == self.instagrambtn) {
+        if (instagram == YES) {
+            instagram = NO;
+            button.highlighted = NO;
+        }else{
+            instagram = YES;
+            [self performSelector:@selector(doHighlight:) withObject:button afterDelay:0];
+        }
+    }
 
 }
 
@@ -149,6 +158,9 @@
     }
     else if(self.emailbtn.highlighted == YES) {
         [self performSelector:@selector(sharetoemail) withObject:nil afterDelay:0.5];
+    }
+    else if(self.instagrambtn.highlighted == YES) {
+        [self performSelector:@selector(sharetoinstagram) withObject:nil afterDelay:0.5];
     }
 }
 
@@ -181,6 +193,7 @@
 
 -(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error{
     [self dismissModalViewControllerAnimated:YES];
+    [self shareMessageInRightWay];
 }
 
 #pragma mark - Twitter
@@ -222,9 +235,8 @@
     // Set the initial tweet text. See the framework for additional properties that can be set.
     
     NSMutableString *message = [[NSMutableString alloc] initWithString:self.statusMessage.text];
-    if (self.bubblebtn.highlighted == YES) {
-        [message appendString:@"@pixjam #pixjam"];
-    }
+    [message appendString:@" @pixjam #pixjam"];
+    NSLog(@"message:%@",message);
     [tweetViewController setInitialText:message];
     [tweetViewController addImage:self.photo.image];
     
@@ -253,44 +265,6 @@
     // Present the tweet composition view controller modally.
     [self presentModalViewController:tweetViewController animated:YES];
 }
-
-#pragma mark - tumblr
-- (IBAction)competiton:(UIButton *)sender {
-    if (self.twitterbtn.highlighted == NO && self.twitterbtn.highlighted == NO ) {
-        [SVProgressHUD dismissWithError:@"You should select Twitter or Facebook at least one for join competiton" afterDelay:3];
-    }else{
-        [self lightornot:sender];
-    }
-}
-
-
-- (IBAction)clicktumblr:(id)sender {
-    
-//    [TMAPIClient sharedInstance].OAuthConsumerKey = @"ADISJdadsoj2dj38dj29dj38jd9238jdk92djasdjASDaoijsd";
-//    [TMAPIClient sharedInstance].OAuthConsumerSecret = @"MGI39kdasdoka3240989ASFjoiajsfomdasd39129ASDAPDOJa";
-//    
-//    [[TMAPIClient sharedInstance] authenticate:@"tumblremoto" callback:^(NSError *error) {
-//        NSLog(@"%@",error);
-//    }];
-}
-
-//- (void) uploadFiles {
-//    NSData *data1 = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"goback" ofType:@"png"]];
-//    NSArray *array = [NSArray arrayWithObjects:data1, nil];
-//    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//        TumblrUploadr *tu = [[TumblrUploadr alloc] initWithNSDataForPhotos:array andBlogName:@"supergreatblog.tumblr.com" andDelegate:self andCaption:@"Great Photos!"];
-//        dispatch_async( dispatch_get_main_queue(), ^{
-//            [tu signAndSendWithTokenKey:@"ADISJdadsoj2dj38dj29dj38jd9238jdk92djasdjASDaoijsd" andSecret:@"MGI39kdasdoka3240989ASFjoiajsfomdasd39129ASDAPDOJa"];
-//        });
-//    });
-//}
-//
-//- (void) tumblrUploadr:(TumblrUploadr *)tu didFailWithError:(NSError *)error {
-//    NSLog(@"connection failed with error %@",[error localizedDescription]);
-//}
-//- (void) tumblrUploadrDidSucceed:(TumblrUploadr *)tu withResponse:(NSString *)response {
-//    NSLog(@"connection succeeded with response: %@", response);
-//}
 
 
 #pragma mark - facebook
@@ -364,6 +338,43 @@
 }
 
 
+#pragma mark - instagram
+
+- (IBAction)instagram:(id)sender {
+    [self lightornot:sender];
+}
+
+-(void)sharetoinstagram
+{
+    self.instagrambtn.highlighted = NO;
+    UIImage * screenshot = self.photoImage;
+    
+    NSString *savePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Screenshot.igo"];
+    
+    // Write image to PNG
+    [UIImageJPEGRepresentation(screenshot, 1.0) writeToFile:savePath atomically:YES];
+    
+    NSURL *instagramURL = [NSURL URLWithString:@"instagram://app"];
+    
+    if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
+        //imageToUpload is a file path with .ig file extension
+        documentInteractionController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:savePath]];
+        documentInteractionController.UTI = @"com.instagram.exclusivegram";
+        documentInteractionController.delegate = self;
+        
+        documentInteractionController.annotation = [NSDictionary dictionaryWithObject:@"Insert Caption here" forKey:@"InstagramCaption"];
+        if(IOS6_OR_LATER)
+        {
+            [documentInteractionController presentOpenInMenuFromRect:CGRectZero inView:self.view animated:YES];
+        }
+        else
+        {
+            [documentInteractionController presentOpenInMenuFromRect:CGRectZero inView:self.view.window animated:YES];
+        }
+    }
+}
+
+
 //handleOrientation
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -426,6 +437,9 @@
          [self sessionStateChanged:session state:state error:error];
      }];
 }
+
+
+
 
 
 @end

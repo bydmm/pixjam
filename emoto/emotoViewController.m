@@ -17,7 +17,8 @@
 @synthesize flashBTN;
 @synthesize flashsettingview;
 @synthesize playerView;
-
+@synthesize audioPlayer;
+@synthesize countdown;
 - (void)viewDidLoad
 {
     
@@ -162,13 +163,24 @@
 
 -(NSString *)randhint
 {
-    int index = arc4random() % 3;
-    NSString *shake = [[NSString alloc]initWithFormat:@"shake%d",index];
-    shake = [[NSBundle mainBundle] pathForResource:shake ofType:@"mp3"];
-    AudioServicesCreateSystemSoundID((CFURLRef)CFBridgingRetain([NSURL fileURLWithPath:shake]), &soundID);
-    // User was shaking the device. Post a notification named "shake".
-    AudioServicesPlaySystemSound (soundID);
+    int index = arc4random() % 25;
     
+    
+    NSString *shake = [[NSString alloc]initWithFormat:@"shake%d",index];
+    //shake = [[NSBundle mainBundle] pathForResource:shake ofType:@"mp3"];
+    shake = [[NSBundle mainBundle]pathForResource:shake ofType:@"mp3"  inDirectory:@"/"];
+    NSData *music = [[NSData alloc]initWithContentsOfURL:[NSURL fileURLWithPath:shake]];
+    NSError *error;
+     audioPlayer = [[AVAudioPlayer alloc] initWithData:music error:&error];
+    if (error)  {
+        NSLog(@"Error creating audio player: %@", [error userInfo]);
+    } else {
+        
+    }
+    //audioPlayer.volume=0.8;//0.0~1.0之间
+    [audioPlayer prepareToPlay];
+    [audioPlayer play];
+
     index = arc4random() % ([hintlist count] -1);
     NSString *hint = [[hintlist objectAtIndex:index] objectForKey:@"name"];
     return hint;
@@ -228,62 +240,62 @@
 
 - (void)orientationChanged:(NSNotification *)notification
 {
-    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-    double rotation = 0;
-    if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
-        switch (orientation) {
-            case UIDeviceOrientationPortrait:
-                rotation = M_PI_2;
-                break;
-            case UIDeviceOrientationPortraitUpsideDown:
-                rotation = -M_PI_2;
-                break;
-            case UIDeviceOrientationLandscapeLeft:
-                rotation = M_PI;
-                break;
-            case UIDeviceOrientationLandscapeRight:
-                rotation = 0;
-                break;
-            case UIDeviceOrientationFaceDown:
-            case UIDeviceOrientationFaceUp:
-            case UIDeviceOrientationUnknown:
-            default:
-                return;
-        }
-    }else if (self.interfaceOrientation == UIInterfaceOrientationLandscapeRight)
-    {
-        switch (orientation) {
-            case UIDeviceOrientationPortrait:
-                rotation = -M_PI_2;
-                break;
-            case UIDeviceOrientationPortraitUpsideDown:
-                rotation = M_PI_2;
-                break;
-            case UIDeviceOrientationLandscapeLeft:
-                rotation = 0;
-                break;
-            case UIDeviceOrientationLandscapeRight:
-                rotation = M_PI;
-                break;
-            case UIDeviceOrientationFaceDown:
-            case UIDeviceOrientationFaceUp:
-            case UIDeviceOrientationUnknown:
-            default:
-                return;
-        }
-    }
-    CGAffineTransform transform = CGAffineTransformMakeRotation(rotation);
-    //[self cameraHandle];
-    //[CameraImageHelper changePreviewOrientation:(UIInterfaceOrientation)orientation];
-    NSLog(@"orientation: %d",orientation);
-    [UIView beginAnimations:nil context:NULL]; {
-        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-        [UIView setAnimationDuration:0.5];
-        [UIView setAnimationDelegate:self];
-        self.camerabtn.transform = transform;
-        self.photoBTN.transform = transform;
-        self.albumbg.transform = transform;
-    } [UIView commitAnimations];
+//    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+//    double rotation = 0;
+//    if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
+//        switch (orientation) {
+//            case UIDeviceOrientationPortrait:
+//                rotation = M_PI_2;
+//                break;
+//            case UIDeviceOrientationPortraitUpsideDown:
+//                rotation = -M_PI_2;
+//                break;
+//            case UIDeviceOrientationLandscapeLeft:
+//                rotation = M_PI;
+//                break;
+//            case UIDeviceOrientationLandscapeRight:
+//                rotation = 0;
+//                break;
+//            case UIDeviceOrientationFaceDown:
+//            case UIDeviceOrientationFaceUp:
+//            case UIDeviceOrientationUnknown:
+//            default:
+//                return;
+//        }
+//    }else if (self.interfaceOrientation == UIInterfaceOrientationLandscapeRight)
+//    {
+//        switch (orientation) {
+//            case UIDeviceOrientationPortrait:
+//                rotation = -M_PI_2;
+//                break;
+//            case UIDeviceOrientationPortraitUpsideDown:
+//                rotation = M_PI_2;
+//                break;
+//            case UIDeviceOrientationLandscapeLeft:
+//                rotation = 0;
+//                break;
+//            case UIDeviceOrientationLandscapeRight:
+//                rotation = M_PI;
+//                break;
+//            case UIDeviceOrientationFaceDown:
+//            case UIDeviceOrientationFaceUp:
+//            case UIDeviceOrientationUnknown:
+//            default:
+//                return;
+//        }
+//    }
+//    CGAffineTransform transform = CGAffineTransformMakeRotation(rotation);
+//    //[self cameraHandle];
+//    //[CameraImageHelper changePreviewOrientation:(UIInterfaceOrientation)orientation];
+//    NSLog(@"orientation: %d",orientation);
+//    [UIView beginAnimations:nil context:NULL]; {
+//        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+//        [UIView setAnimationDuration:0.5];
+//        [UIView setAnimationDelegate:self];
+//        self.camerabtn.transform = transform;
+//        self.photoBTN.transform = transform;
+//        self.albumbg.transform = transform;
+//    } [UIView commitAnimations];
 }
 
 
@@ -332,10 +344,18 @@
 //count down timer start
 -(void)countDownStart
 {
-    self.countdown.alpha = 1;
-    self.countdown.transform = CGAffineTransformMakeScale(1,1);
-    self.countdown.text = @"Count Down";
-    count = (int)self.timerslider.value;
+//    countdown.font = [UIFont fontWithName:@"orange juice" size:50];
+//    NSLog(@"self.countdown.font: %@",self.countdown.font);
+        
+    if (timerstatus == YES) {
+        count = 3;
+        self.countdown.alpha = 1;
+        self.countdown.transform = CGAffineTransformMakeScale(1,1);
+        self.countdown.text = @"Count Down";
+    }else{
+        count = 0;
+    }
+    
     self.countdown.hidden = NO;
     countDowntimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countdownTimerHandle:) userInfo:nil repeats:YES];
 }
@@ -578,28 +598,35 @@
     [CameraImageHelper swapFrontAndBackCameras];
 }
 
-//slider
-- (IBAction)timersetting:(id)sender {
-    
-    if (self.timeronview.hidden == NO) {
-        self.timeronview.hidden = YES;
+- (IBAction)timerswitch:(UIButton *)sender {
+    if (timerstatus == YES) {
+        [sender setBackgroundImage:[UIImage imageNamed:@"timer_done_iphone5.png"] forState:UIControlStateNormal];
+        timerstatus = NO;
     }else{
-        [self displaySlier];
+        [sender setBackgroundImage:[UIImage imageNamed:@"timer_done_iphone5_on.png"] forState:UIControlStateNormal];
+        timerstatus = YES;
     }
+//    
+//    if (self.timeronview.hidden == NO) {
+//        self.timeronview.hidden = YES;
+//    }else{
+//        [self displaySlier];
+//    }
 }
+//slider
 
--(void)displaySlier
-{
-    self.timeronview.hidden = NO;
-    UIImage *point = [UIImage imageNamed:@"timerpoint"];
-    UIImage *tm = [UIImage imageNamed:@"tm"];
-    [self.timerslider setThumbImage:point forState:UIControlStateNormal];
-    [self.timerslider setThumbImage:point forState:UIControlStateSelected];
-    [self.timerslider setThumbImage:point forState:UIControlStateHighlighted];
-    [self.timerslider setMaximumTrackImage:tm forState:UIControlStateNormal];
-    [self.timerslider setMinimumTrackImage:tm forState:UIControlStateNormal];
-    
-}
+//-(void)displaySlier
+//{
+//    self.timeronview.hidden = NO;
+//    UIImage *point = [UIImage imageNamed:@"timerpoint"];
+//    UIImage *tm = [UIImage imageNamed:@"tm"];
+//    [self.timerslider setThumbImage:point forState:UIControlStateNormal];
+//    [self.timerslider setThumbImage:point forState:UIControlStateSelected];
+//    [self.timerslider setThumbImage:point forState:UIControlStateHighlighted];
+//    [self.timerslider setMaximumTrackImage:tm forState:UIControlStateNormal];
+//    [self.timerslider setMinimumTrackImage:tm forState:UIControlStateNormal];
+//    
+//}
 
 //save photo to Album
 -(void)savetoAlbum

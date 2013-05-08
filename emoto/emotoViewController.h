@@ -31,6 +31,7 @@
     UIImage *thelastPhoto;
 }
 @property (retain, nonatomic)  DirectionMPMoviePlayerViewController *playerView;
+@property (retain, nonatomic)  AVAudioPlayer *audioPlayer;
 @property (weak, nonatomic) IBOutlet UIView *flashsettingview;
 @property (weak, nonatomic) IBOutlet UIView *avView;
 @property (weak, nonatomic) IBOutlet UILabel *countdown;
