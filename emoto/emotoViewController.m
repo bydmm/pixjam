@@ -706,6 +706,12 @@
                  inImage:img
                  atPoint:messagepoint];
     
+    UIImage *logo = [UIImage imageNamed:@"djlogo.png"];
+    maskpoint.x = newwidth * 0.05;
+    
+    img = [self addImage:img toImage:logo at:maskpoint];
+
+    
     return img;
 }
 

@@ -35,6 +35,11 @@
     self.photo.image = self.photoImage;
     [self performSelector:@selector(doHighlight:) withObject:self.bubblebtn afterDelay:0];
     self.statusMessage.placeholder = @"Write a Caption...";
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [btn setFrame:CGRectMake(0, 0, 320, 45)];
+    [btn setTitle:@"Close" forState:UIControlStateNormal];
+    self.statusMessage.inputAccessoryView = btn;
+    [btn addTarget:self action:@selector(close:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -77,6 +82,11 @@
 
 -(void)oneclick
 {
+    [self.view endEditing:YES];
+}
+
+//checkbulle
+- (IBAction)close:(id)sender {
     [self.view endEditing:YES];
 }
 
@@ -283,9 +293,8 @@
 {
     [SVProgressHUD showWithStatus:@"Share to facebook"];
     NSMutableString *message = [[NSMutableString alloc] initWithString:self.statusMessage.text];
-    if (self.bubblebtn.highlighted == YES) {
-        [message appendString:@"@pixjam #pixjam"];
-    }
+    [message appendString:@"@pixjam #pixjam"];
+
     NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
     [params setObject:message forKey:@"message"];
     [params setObject:UIImagePNGRepresentation(self.photo.image) forKey:@"picture"];
@@ -347,7 +356,14 @@
 -(void)sharetoinstagram
 {
     self.instagrambtn.highlighted = NO;
-    UIImage * screenshot = self.photoImage;
+    NSMutableString *message = [[NSMutableString alloc] initWithString:self.statusMessage.text];
+    [message appendString:@"@pixjam #pixjam"];
+    [self sharetoinstagram:self.photoImage withMessage:message];
+}
+
+-(void)sharetoinstagram:(UIImage *)image withMessage:(NSString *)message
+{
+    UIImage * screenshot = image;
     
     NSString *savePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Screenshot.igo"];
     
@@ -362,7 +378,7 @@
         documentInteractionController.UTI = @"com.instagram.exclusivegram";
         documentInteractionController.delegate = self;
         
-        documentInteractionController.annotation = [NSDictionary dictionaryWithObject:@"Insert Caption here" forKey:@"InstagramCaption"];
+        documentInteractionController.annotation = [NSDictionary dictionaryWithObject:message forKey:@"InstagramCaption"];
         if(IOS6_OR_LATER)
         {
             [documentInteractionController presentOpenInMenuFromRect:CGRectZero inView:self.view animated:YES];
