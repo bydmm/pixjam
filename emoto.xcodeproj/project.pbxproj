@@ -61,6 +61,7 @@
 		C839E485173A4F4200CB0FF0 /* instagram_on.png in Resources */ = {isa = PBXBuildFile; fileRef = C839E481173A4F4000CB0FF0 /* instagram_on.png */; };
 		C839E486173A4F4200CB0FF0 /* instagram_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C839E482173A4F4100CB0FF0 /* instagram_on@2x.png */; };
 		C84B4A0D1706C5640041C979 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C84B4A0C1706C5640041C979 /* MessageUI.framework */; };
+		C84E0B091747342B0081B56F /* kg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C84E0B081747342B0081B56F /* kg.ttf */; };
 		C8610B3A17059CA8008462C6 /* DirectionMPMoviePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8610B3817059CA8008462C6 /* DirectionMPMoviePlayerViewController.m */; };
 		C86FD20316D3704000CB4898 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86FD20216D3704000CB4898 /* UIKit.framework */; };
 		C86FD20516D3704000CB4898 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86FD20416D3704000CB4898 /* Foundation.framework */; };
@@ -215,6 +216,7 @@
 		C839E481173A4F4000CB0FF0 /* instagram_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instagram_on.png; sourceTree = "<group>"; };
 		C839E482173A4F4100CB0FF0 /* instagram_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagram_on@2x.png"; sourceTree = "<group>"; };
 		C84B4A0C1706C5640041C979 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		C84E0B081747342B0081B56F /* kg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kg.ttf; sourceTree = "<group>"; };
 		C8610B3817059CA8008462C6 /* DirectionMPMoviePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionMPMoviePlayerViewController.m; sourceTree = "<group>"; };
 		C8610B3917059CA8008462C6 /* DirectionMPMoviePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionMPMoviePlayerViewController.h; sourceTree = "<group>"; };
 		C86FD1FE16D3704000CB4898 /* pixjam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pixjam.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -360,6 +362,7 @@
 		C807F0F916F1B69000364599 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				C84E0B081747342B0081B56F /* kg.ttf */,
 				C839E477173A3AB000CB0FF0 /* share_iphone4.png */,
 				C839E478173A3AB100CB0FF0 /* share_iphone4@2x.png */,
 				C839E479173A3AB200CB0FF0 /* share_back_iphone4@2x.png */,
@@ -777,6 +780,7 @@
 				C839E485173A4F4200CB0FF0 /* instagram_on.png in Resources */,
 				C839E486173A4F4200CB0FF0 /* instagram_on@2x.png in Resources */,
 				C80D5263173CB39C008C2FB1 /* djlogo.png in Resources */,
+				C84E0B091747342B0081B56F /* kg.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

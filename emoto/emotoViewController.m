@@ -344,19 +344,18 @@
 //count down timer start
 -(void)countDownStart
 {
-//    countdown.font = [UIFont fontWithName:@"orange juice" size:50];
-//    NSLog(@"self.countdown.font: %@",self.countdown.font);
-        
+    countdown.font = [UIFont fontWithName:@"KG Party on the Rooftop" size:50];
+    NSLog(@"self.countdown.font: %@",self.countdown.font);
+    
     if (timerstatus == YES) {
         count = 3;
         self.countdown.alpha = 1;
         self.countdown.transform = CGAffineTransformMakeScale(1,1);
         self.countdown.text = @"Count Down";
+        self.countdown.hidden = NO;
     }else{
         count = 0;
     }
-    
-    self.countdown.hidden = NO;
     countDowntimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countdownTimerHandle:) userInfo:nil repeats:YES];
 }
 
