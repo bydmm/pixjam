@@ -6,6 +6,8 @@
 //  Copyright (c) 2013年 emoto. All rights reserved.
 //
 #define DEGREES_TO_RADIANS(x) (M_PI * x / 180.0)
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+static inline double radians (double degrees) {return degrees * M_PI/180;}
 
 #import "emotoViewController.h"
 #import "PhotoViewController.h"
@@ -13,6 +15,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #include <stdlib.h>
 #import "SVProgressHUD.h"
+#import "UIImage-Extensions.h"
 @implementation emotoViewController
 @synthesize flashBTN;
 @synthesize flashsettingview;
@@ -27,6 +30,7 @@
     self.navigationController.delegate = self;
     self.albumbg.hidden = YES;
     self.photoBTN.hidden = YES;
+    devicePosition = AVCaptureDevicePositionBack;
 }
 
 
@@ -167,7 +171,6 @@
     
     
     NSString *shake = [[NSString alloc]initWithFormat:@"shake%d",index];
-    //shake = [[NSBundle mainBundle] pathForResource:shake ofType:@"mp3"];
     shake = [[NSBundle mainBundle]pathForResource:shake ofType:@"mp3"  inDirectory:@"/"];
     NSData *music = [[NSData alloc]initWithContentsOfURL:[NSURL fileURLWithPath:shake]];
     NSError *error;
@@ -361,11 +364,21 @@
 
 - (void)countdownTimerHandle:(NSTimer *)theTimer
 {
-    if (count > 0) {
+    if(count == 3){
+        self.countdown.textColor = UIColorFromRGB(0x2babe3);
+        self.countdown.text = [[NSString alloc]initWithFormat:@"%d",count];
+        count--;
+    }else if(count == 2){
+        self.countdown.textColor = UIColorFromRGB(0xeb5d34);
+        self.countdown.text = [[NSString alloc]initWithFormat:@"%d",count];
+        count--;
+    }else if(count == 1){
+        self.countdown.textColor = UIColorFromRGB(0xaecc4b);
         self.countdown.text = [[NSString alloc]initWithFormat:@"%d",count];
         count--;
     }
     else if(count == 0){
+        self.countdown.textColor = [UIColor blackColor];
         self.countdown.text = @"";
         [self RunOutOfTime:theTimer];
     }
@@ -433,6 +446,7 @@
 
 -(void)getLastPhotoWithAnimation:(BOOL)animation
 {
+    animation = NO;
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
     
     // Enumerate just the photos and videos group by using ALAssetsGroupSavedPhotos.
@@ -595,6 +609,11 @@
 
 - (IBAction)swapFrontAndBackCameras:(id)sender {
     [CameraImageHelper swapFrontAndBackCameras];
+    if (devicePosition == AVCaptureDevicePositionBack) {
+        devicePosition = AVCaptureDevicePositionFront;
+    }else if (devicePosition == AVCaptureDevicePositionFront) {
+        devicePosition = AVCaptureDevicePositionBack;
+    }
 }
 
 - (IBAction)timerswitch:(UIButton *)sender {
@@ -638,7 +657,7 @@
            if ([@"User denied access" isEqualToString:errormsg]) {
                [self requestRight];
            }else{
-               [self performSelector:@selector(getLastPhotoWithAnimation:) withObject:[NSNumber numberWithBool:YES] afterDelay:0.5];
+               [self performSelector:@selector(getLastPhotoWithAnimation:) withObject:[NSNumber numberWithBool:NO] afterDelay:0.5];
                [SVProgressHUD dismissWithSuccess:@"Success!"];
            }
        } failureBlock:^(NSError *error) {
@@ -660,12 +679,43 @@
 }
 
 
+- (UIImage*)unrotateImage:(UIImage*)image {
+    CGSize size = image.size;
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0,0,size.width ,size.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
+
 
 - (UIImage *)resizePhoto:(UIImage *)image
 {
     float max = 1136;
     float newwidth;
     float newheight;
+    
+    
+    if (devicePosition == AVCaptureDevicePositionFront) {
+        if (self.interfaceOrientation == UIDeviceOrientationLandscapeRight)
+        {
+            //assume that the image is loaded in landscape mode from disk
+            image = [[UIImage alloc] initWithCGImage: image.CGImage
+                                               scale: 1.0
+                                         orientation: UIImageOrientationUp];
+        }else if (self.interfaceOrientation == UIDeviceOrientationLandscapeLeft)
+        {
+            //assume that the image is loaded in landscape mode from disk
+            image = [[UIImage alloc] initWithCGImage: image.CGImage
+                                               scale: 1.0
+                                         orientation: UIImageOrientationDown];
+        }
+    }
+    
+
+    
     
     NSData *imagedata = UIImageJPEGRepresentation(image, 0.5);
     NSLog(@"%d",imagedata.length);

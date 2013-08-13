@@ -188,7 +188,7 @@
         
         MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
         mailViewController.mailComposeDelegate = self;
-        [mailViewController setSubject:@"Hi"];
+        [mailViewController setSubject:@"Having a party with pixjam!"];
         [mailViewController setMessageBody:self.statusMessage.text isHTML:NO];
         NSData *data = UIImageJPEGRepresentation(self.photo.image, 1);
         [mailViewController addAttachmentData:data mimeType:@"image/jpeg" fileName:@"photo.jpg"];
@@ -293,7 +293,7 @@
 {
     [SVProgressHUD showWithStatus:@"Share to facebook"];
     NSMutableString *message = [[NSMutableString alloc] initWithString:self.statusMessage.text];
-    [message appendString:@"@pixjam #pixjam"];
+    [message appendString:@"@pixjam"];
 
     NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
     [params setObject:message forKey:@"message"];

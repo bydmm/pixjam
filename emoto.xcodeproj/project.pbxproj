@@ -151,6 +151,7 @@
 		C8C1A213172168E600D113BC /* shake0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C8C1A210172168E600D113BC /* shake0.mp3 */; };
 		C8C73BF11704460500FF3313 /* VerticallyAlignedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C73BF01704460400FF3313 /* VerticallyAlignedLabel.m */; };
 		C8C73BF517046A0500FF3313 /* emotoPhotoNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C73BF417046A0500FF3313 /* emotoPhotoNavigation.m */; };
+		C8DB55671755BDBF00B09EAD /* UIImage-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DB55661755BDBF00B09EAD /* UIImage-Extensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C8F86EC417156BDA00C8DB65 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8F86EC317156BDA00C8DB65 /* AudioToolbox.framework */; };
 		C8F86EC71715889D00C8DB65 /* TumblrUploadr.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F86EC61715889D00C8DB65 /* TumblrUploadr.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C8F86ECD17158A7600C8DB65 /* NSString+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F86ECC17158A7600C8DB65 /* NSString+URLEncode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -319,6 +320,8 @@
 		C8C73BF01704460400FF3313 /* VerticallyAlignedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticallyAlignedLabel.m; sourceTree = "<group>"; };
 		C8C73BF317046A0500FF3313 /* emotoPhotoNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = emotoPhotoNavigation.h; sourceTree = "<group>"; };
 		C8C73BF417046A0500FF3313 /* emotoPhotoNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = emotoPhotoNavigation.m; sourceTree = "<group>"; };
+		C8DB55651755BDBF00B09EAD /* UIImage-Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage-Extensions.h"; sourceTree = "<group>"; };
+		C8DB55661755BDBF00B09EAD /* UIImage-Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-Extensions.m"; sourceTree = "<group>"; };
 		C8F86EC317156BDA00C8DB65 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C8F86EC51715889C00C8DB65 /* TumblrUploadr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TumblrUploadr.h; sourceTree = "<group>"; };
 		C8F86EC61715889D00C8DB65 /* TumblrUploadr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TumblrUploadr.m; sourceTree = "<group>"; };
@@ -493,6 +496,8 @@
 		C86FD1F316D3704000CB4898 = {
 			isa = PBXGroup;
 			children = (
+				C8DB55651755BDBF00B09EAD /* UIImage-Extensions.h */,
+				C8DB55661755BDBF00B09EAD /* UIImage-Extensions.m */,
 				C8C1A20B1721665500D113BC /* UIPlaceHolderTextView.h */,
 				C8C1A20C1721665500D113BC /* UIPlaceHolderTextView.m */,
 				C8F86ECE17158B0D00C8DB65 /* NSData+URLEncode.h */,
@@ -825,6 +830,7 @@
 				C8F86ED017158B0D00C8DB65 /* NSData+URLEncode.m in Sources */,
 				C8F86ED31716B70C00C8DB65 /* CycleScrollView.m in Sources */,
 				C8C1A20D1721665500D113BC /* UIPlaceHolderTextView.m in Sources */,
+				C8DB55671755BDBF00B09EAD /* UIImage-Extensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

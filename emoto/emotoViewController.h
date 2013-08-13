@@ -29,6 +29,7 @@
     NSArray *hintlist;
     BOOL hasopened;
     UIImage *thelastPhoto;
+    AVCaptureDevicePosition devicePosition;
 }
 @property (retain, nonatomic)  DirectionMPMoviePlayerViewController *playerView;
 @property (retain, nonatomic)  AVAudioPlayer *audioPlayer;
