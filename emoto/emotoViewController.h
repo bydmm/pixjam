@@ -47,5 +47,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *hintbg;
 @property (weak, nonatomic) IBOutlet UIImageView *rightbg;
 @property (weak, nonatomic) IBOutlet UIButton *camerabtn;
+@property (weak, nonatomic) IBOutlet UIButton *opbtn;
 
 @end

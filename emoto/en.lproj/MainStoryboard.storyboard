@@ -244,6 +244,21 @@
                                     </button>
                                 </subviews>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="t6O-L0-KQC">
+                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="start:" destination="2" eventType="touchUpInside" id="9vR-Sd-mTw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -262,6 +277,7 @@
                         <outlet property="hint" destination="qkW-xm-zES" id="dCT-Qc-02h"/>
                         <outlet property="hintbg" destination="DcJ-66-4zD" id="MMT-Hu-wRW"/>
                         <outlet property="hintview" destination="BCc-xS-vLs" id="w4j-Ok-flq"/>
+                        <outlet property="opbtn" destination="t6O-L0-KQC" id="7kG-Ym-wUe"/>
                         <outlet property="photoBTN" destination="Zts-F0-pvZ" id="GHe-Ez-Li9"/>
                         <outlet property="rightbg" destination="3CU-UG-iEz" id="dmA-e4-yFL"/>
                         <outlet property="timeronview" destination="eXy-jj-KJl" id="t4t-b1-nZx"/>
@@ -551,14 +567,6 @@
         <class className="PhotoViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoViewController.h"/>
             <relationships>
-                <relationship kind="action" name="bulle:"/>
-                <relationship kind="action" name="clickTweet:"/>
-                <relationship kind="action" name="clickemail:" candidateClass="UIButton"/>
-                <relationship kind="action" name="clickfacebook:"/>
-                <relationship kind="action" name="close:"/>
-                <relationship kind="action" name="instagram:"/>
-                <relationship kind="action" name="pop:"/>
-                <relationship kind="action" name="sendmessage:"/>
                 <relationship kind="outlet" name="bubblebtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="emailbtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="facebookbtn" candidateClass="UIButton"/>
@@ -571,8 +579,6 @@
         <class className="PreViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PreViewController.h"/>
             <relationships>
-                <relationship kind="action" name="gotoshare:"/>
-                <relationship kind="action" name="pop:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="photo" candidateClass="UIImageView"/>
             </relationships>
         </class>
@@ -585,14 +591,6 @@
         <class className="emotoViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/emotoViewController.h"/>
             <relationships>
-                <relationship kind="action" name="autoflash:"/>
-                <relationship kind="action" name="flashBTNclick:"/>
-                <relationship kind="action" name="flashoff:"/>
-                <relationship kind="action" name="flashon:"/>
-                <relationship kind="action" name="gophotolib:"/>
-                <relationship kind="action" name="shoot:"/>
-                <relationship kind="action" name="swapFrontAndBackCameras:"/>
-                <relationship kind="action" name="timerswitch:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="albumbg" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="avView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="camerabtn" candidateClass="UIButton"/>
@@ -602,6 +600,7 @@
                 <relationship kind="outlet" name="hint" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="hintbg" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="hintview" candidateClass="UIView"/>
+                <relationship kind="outlet" name="opbtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="photoBTN" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="rightbg" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="timeroffbtn" candidateClass="UIButton"/>
@@ -612,7 +611,6 @@
         <class className="facebookLoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/facebookLoginViewController.h"/>
             <relationships>
-                <relationship kind="action" name="pop:"/>
                 <relationship kind="outlet" name="labelFirstName" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="profilePic" candidateClass="FBProfilePictureView"/>
             </relationships>

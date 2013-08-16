@@ -62,6 +62,8 @@
 		C839E486173A4F4200CB0FF0 /* instagram_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C839E482173A4F4100CB0FF0 /* instagram_on@2x.png */; };
 		C84B4A0D1706C5640041C979 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C84B4A0C1706C5640041C979 /* MessageUI.framework */; };
 		C84E0B091747342B0081B56F /* kg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C84E0B081747342B0081B56F /* kg.ttf */; };
+		C85C1A4E17BBA3CD00F7AF58 /* ip4op.png in Resources */ = {isa = PBXBuildFile; fileRef = C85C1A4D17BBA3CD00F7AF58 /* ip4op.png */; };
+		C85C1A5017BBA3D400F7AF58 /* ip5op.png in Resources */ = {isa = PBXBuildFile; fileRef = C85C1A4F17BBA3D400F7AF58 /* ip5op.png */; };
 		C8610B3A17059CA8008462C6 /* DirectionMPMoviePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8610B3817059CA8008462C6 /* DirectionMPMoviePlayerViewController.m */; };
 		C86FD20316D3704000CB4898 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86FD20216D3704000CB4898 /* UIKit.framework */; };
 		C86FD20516D3704000CB4898 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86FD20416D3704000CB4898 /* Foundation.framework */; };
@@ -218,6 +220,8 @@
 		C839E482173A4F4100CB0FF0 /* instagram_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagram_on@2x.png"; sourceTree = "<group>"; };
 		C84B4A0C1706C5640041C979 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		C84E0B081747342B0081B56F /* kg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kg.ttf; sourceTree = "<group>"; };
+		C85C1A4D17BBA3CD00F7AF58 /* ip4op.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ip4op.png; sourceTree = "<group>"; };
+		C85C1A4F17BBA3D400F7AF58 /* ip5op.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ip5op.png; sourceTree = "<group>"; };
 		C8610B3817059CA8008462C6 /* DirectionMPMoviePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionMPMoviePlayerViewController.m; sourceTree = "<group>"; };
 		C8610B3917059CA8008462C6 /* DirectionMPMoviePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionMPMoviePlayerViewController.h; sourceTree = "<group>"; };
 		C86FD1FE16D3704000CB4898 /* pixjam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pixjam.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -424,9 +428,11 @@
 				C8AE39131713FD09000D62E8 /* nav@2x.png */,
 				C8AE39141713FD09000D62E8 /* sharelogo.png */,
 				C8AE39151713FD09000D62E8 /* sharelogo@2x.png */,
+				C85C1A4D17BBA3CD00F7AF58 /* ip4op.png */,
 				C8AE39161713FD09000D62E8 /* tumblr-h.png */,
 				C8AE39171713FD09000D62E8 /* tumblr-h@2x.png */,
 				C8AE39181713FD09000D62E8 /* tumblr.png */,
+				C85C1A4F17BBA3D400F7AF58 /* ip5op.png */,
 				C8AE39191713FD09000D62E8 /* tumblr@2x.png */,
 				C8AE391A1713FD09000D62E8 /* twitter-h.png */,
 				C8AE391B1713FD09000D62E8 /* twitter-h@2x.png */,
@@ -786,6 +792,8 @@
 				C839E486173A4F4200CB0FF0 /* instagram_on@2x.png in Resources */,
 				C80D5263173CB39C008C2FB1 /* djlogo.png in Resources */,
 				C84E0B091747342B0081B56F /* kg.ttf in Resources */,
+				C85C1A4E17BBA3CD00F7AF58 /* ip4op.png in Resources */,
+				C85C1A5017BBA3D400F7AF58 /* ip5op.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -910,8 +918,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A00D85F5DD7243CD846C997E /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: nan cheng (S7ZU5ADZVY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: nan cheng (S7ZU5ADZVY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: CHENG NAN (R79JFQ5VKW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: CHENG NAN (R79JFQ5VKW)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -925,8 +933,8 @@
 					"-lsqlite3.0",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3A702FFB-161B-40E2-A828-12C316A909E9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3A702FFB-161B-40E2-A828-12C316A909E9";
+				PROVISIONING_PROFILE = "0A8B1133-71DF-4603-93CA-B8C257C88E9C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0A8B1133-71DF-4603-93CA-B8C257C88E9C";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -935,8 +943,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A00D85F5DD7243CD846C997E /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: nan cheng (S7ZU5ADZVY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: nan cheng (S7ZU5ADZVY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: CHENG NAN (R79JFQ5VKW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: CHENG NAN (R79JFQ5VKW)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -950,8 +958,8 @@
 					"-lsqlite3.0",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3A702FFB-161B-40E2-A828-12C316A909E9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3A702FFB-161B-40E2-A828-12C316A909E9";
+				PROVISIONING_PROFILE = "0A8B1133-71DF-4603-93CA-B8C257C88E9C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0A8B1133-71DF-4603-93CA-B8C257C88E9C";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

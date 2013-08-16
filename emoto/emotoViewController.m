@@ -25,12 +25,28 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 - (void)viewDidLoad
 {
     
-    [self playMovieAtURL];
+    [self op];
     [super viewDidLoad];
     self.navigationController.delegate = self;
     self.albumbg.hidden = YES;
     self.photoBTN.hidden = YES;
     devicePosition = AVCaptureDevicePositionBack;
+}
+
+-(void)op{
+    NSString *name;
+    if(iPhone5){
+        name = @"ip4op";
+    }else{
+        name = @"ip5op";
+    }
+    UIImage *opimage = [UIImage imageNamed:name];
+    [self.opbtn setBackgroundImage:opimage forState:UIControlStateNormal];
+}
+
+- (IBAction)start:(id)sender {
+    self.opbtn.hidden = YES;
+    [self playVideoFinished:nil];
 }
 
 
@@ -879,6 +895,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
     [self setHintbg:nil];
     [self setRightbg:nil];
     [self setCamerabtn:nil];
+    [self setOpbtn:nil];
     [super viewDidUnload];
 }
 
