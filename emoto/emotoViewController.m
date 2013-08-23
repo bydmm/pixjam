@@ -86,7 +86,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
     [self focusHandle];
     [self initFLashLight];
     [self displayHint];
-    timerstatus = YES;
+    timerstatus = NO;
     [self resetshoot];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(resetshoot)
