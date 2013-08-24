@@ -22,7 +22,7 @@
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>com.hmi.emoto.family</string>
+	<string>com.hmi.emoto.party</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -40,7 +40,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb181120685370705</string>
+				<string>fb432434460205558</string>
 			</array>
 		</dict>
 		<dict>
