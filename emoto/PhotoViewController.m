@@ -293,7 +293,7 @@
 {
     [SVProgressHUD showWithStatus:@"Share to facebook"];
     NSMutableString *message = [[NSMutableString alloc] initWithString:self.statusMessage.text];
-    [message appendString:@" @pixjam "];
+    [message appendString:@" #pixjam "];
 
     NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
     [params setObject:message forKey:@"message"];
